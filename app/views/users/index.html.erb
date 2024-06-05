@@ -1,6 +1,7 @@
 <!-- app/views/users/index.html.erb -->
 <h1>Liste des utilisateurs</h1>
 
+
 <ul>
   <% @users.each do |user| %>
     <li><%= user.email %></li>
@@ -8,3 +9,8 @@
     <li><%= user.last_name %></li>
   <% end %>
 </ul>
+
+
+<% if user_signed_in? %>
+  <%= link_to "Sign Out", destroy_user_session_path, data: { "turbo-method": :delete } %>
+<% end %>
