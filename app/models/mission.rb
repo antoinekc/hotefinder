@@ -5,4 +5,5 @@ class Mission < ApplicationRecord
   has_many :categories, through: :missions_categories_join
   belongs_to :city
   belongs_to :review
+
 end
