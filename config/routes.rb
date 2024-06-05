@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
   resources :welcome, only: [:index]
   resources :missions
+
   devise_for :users, controllers: {
     registrations: 'users/registrations',
     sessions: 'users/sessions'
   }
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Ajoutez une route pour l'index des utilisateurs
