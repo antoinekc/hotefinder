@@ -18,6 +18,7 @@ Faker::Config.locale = 'fr'
 User.destroy_all
 City.destroy_all
 Mission.destroy_all
+Category.destroy_all
 
 # Admin creation 
 
@@ -102,26 +103,30 @@ status = ["Disponible", "Indisponible", "Débordé"]
 
 20.times do
   Mission.create(
-    title: Faker::Lorem.words(number: 2),
+    title: "Mission #{rand(1..40)}",
     description:  Faker::Lorem.paragraph, 
     start_date: Faker::Date.between(from: 2.days.ago, to: 15.days.from_now), #=> #<Date: 2014-09-24>
     end_date: Faker::Date.between(from: 15.days.from_now, to: 60.days.from_now),
     status: status.sample,
-    host: rand(1..20),
-    owner: rand(11..30)
+    city_id: 1,
+    host_id: rand(1..20),
+    owner_id: rand(11..30)
   )
-  end
+end
   
 
 # CATEGORIES
 
-category.create(name:"Remise des clés")
-category.create(name:"Ménage")
-category.create(name:"Shooting photo")
-category.create(name:"Gestion de l'annonce")
-category.create(name:"Mise en ligne de l'annonce")
-category.create(name:"Accueil des voyageurs")
-category.create(name:"Bôite à clés")
-category.create(name:"Départ des voyageurs")
-category.create(name:"Etat des lieux")
-category.create(name:"Fourniture des draps")
+Category.create(name:"Remise des clés")
+Category.create(name:"Ménage")
+Category.create(name:"Shooting photo")
+Category.create(name:"Gestion de l'annonce")
+Category.create(name:"Mise en ligne de l'annonce")
+Category.create(name:"Accueil des voyageurs")
+Category.create(name:"Bôite à clés")
+Category.create(name:"Départ des voyageurs")
+Category.create(name:"Etat des lieux")
+Category.create(name:"Fourniture des draps")
+
+
+puts "Seed successful ! "

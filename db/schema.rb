@@ -51,9 +51,11 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_05_084621) do
     t.date "end_date"
     t.bigint "host_id"
     t.bigint "owner_id"
+    t.bigint "city_id"
     t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["city_id"], name: "index_missions_on_city_id"
     t.index ["host_id"], name: "index_missions_on_host_id"
     t.index ["owner_id"], name: "index_missions_on_owner_id"
   end
