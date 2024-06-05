@@ -10,3 +10,7 @@
   <li><%= @user.is_host %></li>
   <li><%= @user.is_available %></li>
 </ul>
+
+<% if current_user == @user || current_user.is_admin %>
+  <%= link_to 'Modifier les informations', edit_user_path(@user) %>
+<% end %>
