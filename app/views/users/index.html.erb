@@ -1,12 +1,22 @@
-<!-- app/views/users/index.html.erb -->
-<h1>Liste des utilisateurs</h1>
+<h1>Liste des utilisateurs (hôtes)</h1>
 
 
 <ul>
   <% @users.each do |user| %>
-    <li><%= user.email %></li>
-    <li><%= user.first_name %></li>
-    <li><%= user.last_name %></li>
+    <% if user.is_host %>
+      <li><%= user.email %></li>
+      <li><%= user.first_name %></li>
+      <li><%= user.last_name %></li>
+      <li><%= user.phone_number %></li>
+      <li><%= user.birthdate %></li>
+      <li><%= user.commission %></li>
+      <li><%= user.is_host %></li>
+      <li><%= user.is_owner %></li>
+      <li><%= user.is_available %></li>
+      <br>
+      <li><%= link_to 'show', user_path(user) %></li>
+      <br>
+    <% end %>
   <% end %>
 </ul>
 
