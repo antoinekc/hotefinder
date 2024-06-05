@@ -75,3 +75,7 @@ gem "table_print", "~> 1.5"
 gem "faker", "~> 3.4"
 
 gem "tailwindcss-rails", "~> 2.6"
+
+# gem "dockerfile-rails", ">= 1.6", :group => :development
+
+# gem 'dotenv-rails', groups: [:development, :test, :production]
