@@ -26,6 +26,7 @@ class MissionsController < ApplicationController
   # GET /missions/new
   def new
     @mission = Mission.new
+    @user = User.find(params[:host_id]) if params[:host_id].present? # Suppose que vous passez l'id de l'host dans les paramètres
   end
 
   # GET /missions/1/edit
@@ -39,6 +40,7 @@ class MissionsController < ApplicationController
     @mission.owner = current_user # Assurez-vous que l'utilisateur connecté est le propriétaire de la mission
 
     # Récupérer l'utilisateur (host) à partir de params
+    if params[:mission][:host_id].present?
     @user = User.find(params[:mission][:host_id])
     
     # Assurez-vous que l'utilisateur (host) est correctement défini avant de l'assigner à la mission
@@ -50,6 +52,7 @@ class MissionsController < ApplicationController
       redirect_to root_path, alert: "Host not found"
       return
     end
+  end
 
     # Récupérer ou créer un objet City correspondant au nom de la ville fourni
     city_name = params[:mission].delete(:city) # Supprimer la clé :city des paramètres de mission
@@ -102,6 +105,6 @@ class MissionsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def mission_params
-      params.require(:mission).permit(:title, :description, :start_date, :end_date, :host_id, :city, :postal_code)
+      params.require(:mission).permit(:title, :description, :start_date, :end_date, :city_name, :postal_code, :city_id, :host_id)
     end
 end
