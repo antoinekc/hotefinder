@@ -1,42 +1,35 @@
 <body>
   <nav>
     <div class='bg-HFmain-200 h-16 flex items-center'>
-      <ul class='w-full flex flex justify-between m-4'>
+      <ul class='w-full flex justify-between items-center m-4'>
         <li>
           <%= link_to root_path do %>
-            <%= image_tag 'icons/Bg_logo.svg', alt: 'Logo', class: 'size-14 stroke-white ' %>
+            <%= image_tag 'icons/Bg_logo.svg', alt: 'Logo', class: 'size-14 stroke-white' %>
           <% end %>
         </li>
         <li>
-			<%= link_to missions_path, class: 'text-white place-items-center justify-center' do %>
-        	<%= image_tag 'icons/list-check.svg', alt: 'Missions', class: 'size-8' %>
-			Missions
+          <%= link_to missions_path, class: 'text-white flex flex-col items-center' do %>
+            <%= image_tag 'icons/list-check.svg', alt: 'Missions', class: 'flex size-8' %>
+            <span>Missions</span>
           <% end %>
         </li>
         <li>
-          <%= link_to '#', class: 'text-white' do %>
-		  <%= image_tag 'icons/home.svg', alt: 'Annuaire', class: 'size-8' %>
-            Annuaire
+          <%= link_to users_path, class: 'text-white flex flex-col items-center' do %>
+            <%= image_tag 'icons/home.svg', alt: 'Annuaire', class: 'size-8' %>
+            <span>Annuaire</span>
           <% end %>
         </li>
-		<li>
-		<div class="place-items-center flex items-center space-x-3">
-		<li>
-			<%= image_tag 'icons/user.svg', alt: 'Profile', class: 'size-8' %>
-			<%= link_to '#', class: 'text-white' do %>
-        	Profile
-			<% end %>
-		</li>
-		<li class='flex items-center'>
-			<% if user_signed_in? %>
-        	<%= link_to user_path(current_user), class: "btn-primary mr-4 hover:HFsecondery-100" do %>
-          	<i class="fa-solid fa-user"></i> Profile
-       	 	<% end %>
-       		 <%= button_to "Logout", destroy_user_session_path, method: :delete, class: "btn-secondary" %>
-     		 <% else %>
-       		 <%= link_to "Login", new_user_session_path, class: "btn-primary mr-4 hover:HFsecondery-100" %>
-       		 <%= link_to "Sign Up", new_user_registration_path, class: "btn-primary mr-4 hover:HFsecondery-100" %>
-     		 <% end %>
+        <li class='flex justify-right items-center space-x-3'>
+          <% if user_signed_in? %>
+            <%= link_to user_path(current_user), class: 'text-white flex flex-col items-center' do %>
+              <%= image_tag 'icons/user.svg', alt: 'Profile', class: 'size-8 mr-6' %>
+              <span class: 'mr-6'>Profile</span>
+            <% end %>
+            <%= button_to "Logout", destroy_user_session_path, method: :delete, class: 'btn-secondary' %>
+          <% else %>
+            <%= link_to "Login", new_user_session_path, class: 'btn-primary hover:bg-HFmain-100' %>
+            <%= link_to "Sign Up", new_user_registration_path, class: 'btn-primary hover:bg-HFmain-100' %>
+          <% end %>
         </li>
         <li>
           <%= image_tag 'icons/menu-burger.svg', alt: 'Burger', class: 'size-12' %>
@@ -45,6 +38,7 @@
     </div>
   </nav>
 </body>
+
 <!--
 			<li><a class="text-sm text-gray-400 hover:text-gray-500" href="#">Contact</a></li>
 		</ul>
@@ -132,6 +126,4 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 });
-</script>-->
-
-<footer></footer>
+</script> -->

@@ -11,20 +11,31 @@
     @apply py-2 px-4 bg-blue-200;
   }
 }
-
 */
 
 .btn-primary{
-  background-color: 'HFsecondary-200';
-  color: 'HFlight';
-  border: 1px white;
+  background-color: 'HFlight';
+  border: 3px white;
   padding: 6% 16px; /* 4px high, 16px wide */
   font-size: 12px; /* Primary font size */
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Slight shadow */
   transition: border-color 0.3s, color 0.3s; /* Smooth transition */
 }
 
-.button:hover {
+.btn-primary:hover {
+  border-color: 'HFlight'; 
+  color:'HFlight';
+}
+
+.btn-secondary{
+  border: 5px rgb(255, 255, 255);
+  padding: 6% 16px; /* 4px high, 16px wide */
+  font-size: 12px; /* Primary font size */
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Slight shadow */
+  transition: border-color 0.3s, color 0.3s; /* Smooth transition */
+}
+
+.btn-secondary:hover {
   border-color: 'HFlight'; 
   color:'HFlight';
 }
