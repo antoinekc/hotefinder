@@ -21,7 +21,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[7.1]
       t.float :commission
       t.boolean :is_host
       t.boolean :is_owner
-      t.boolean :is_available
+      t.string :is_available
       t.boolean :is_admin
 
       ## Trackable
