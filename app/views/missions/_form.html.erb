@@ -1,52 +1,17 @@
-<%= form_with(model: mission, class: "space-y-6") do |form| %>
+<%= form_with(model: mission, class: "contents") do |form| %>
   <% if mission.errors.any? %>
-    <div id="error_explanation" class="bg-red-50 border border-red-400 text-red-700 px-4 py-3 rounded relative">
-      <h2 class="font-bold mb-2"><%= pluralize(mission.errors.count, "error") %> prohibited this mission from being saved:</h2>
-      <ul class="list-disc pl-5">
-        <% mission.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
+    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
+      <h2><%= pluralize(mission.errors.count, "error") %> prohibited this mission from being saved:</h2>
+
+      <ul>
+        <% mission.errors.each do |error| %>
+          <li><%= error.full_message %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :title, class: "block text-sm font-medium text-gray-700" %>
-    <%= form.text_field :title, class: "mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" %>
-  </div>
-
-  <div>
-    <%= form.label :description, class: "block text-sm font-medium text-gray-700" %>
-    <%= form.text_area :description, class: "mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" %>
-  </div>
-
-  <div>
-    <%= form.label :start_date, class: "block text-sm font-medium text-gray-700" %>
-    <%= form.date_select :start_date, class: "mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" %>
-  </div>
-
-  <div>
-    <%= form.label :end_date, class: "block text-sm font-medium text-gray-700" %>
-    <%= form.date_select :end_date, class: "mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" %>
-  </div>
-
-  <div>
-    <%= form.label :city_id,"Ville", class: "block text-sm font-medium text-gray-700" %>
-    <%= form.select :city_id, [['Paris', 'Paris']], {}, class: "mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" %>
-  </div>
-
-  <div>
-    <%= form.label :host_id, "Concierge", class: "block text-sm font-medium text-gray-700" %>
-    <%= form.select :host_id, options_for_select(User.all.map{ |user| ["#{user.first_name} #{user.last_name}", user.id] }), {}, class: "mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" %>
-  </div>
-
-  <%= form.hidden_field :host_id, value: @user.id if @user.present? %>
-
-  <%= form.label :postal_code,"Arrondissement", class: "block text-sm font-medium text-gray-700" %>
-  <%= form.select :postal_code, options_for_select(paris_zip_codes), {}, class: "mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" %>  
-
-
-  <div class="flex justify-end">
-    <%= form.submit "Save Mission", class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer hover:bg-blue-700" %>
+  <div class="inline">
+    <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
   </div>
 <% end %>
