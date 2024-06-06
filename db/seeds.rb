@@ -20,7 +20,7 @@ City.destroy_all
 Mission.destroy_all
 Category.destroy_all
 
-# Admin creation 
+# Admin creation
 
 admin = User.create!(
   first_name: "admin",
@@ -31,8 +31,8 @@ admin = User.create!(
   password: '123456',
   password_confirmation: '123456',
   is_admin: true, # Add admin status
-  is_host: true, 
-  is_owner: true, 
+  is_host: true,
+  is_owner: true,
   is_available: true,
   commission: 20
   )
@@ -51,7 +51,8 @@ admin = User.create!(
     is_admin: Faker::Boolean.boolean, # Add admin status
     is_host: true,
     is_owner: false,
-    is_available: Faker::Boolean.boolean
+    is_available: Faker::Boolean.boolean,
+    description: Faker::Lorem.paragraph
   )
 end
 
@@ -67,7 +68,8 @@ end
     is_admin: Faker::Boolean.boolean, # Add admin status
     is_host: true,
     is_owner: true,
-    is_available: Faker::Boolean.boolean
+    is_available: Faker::Boolean.boolean,
+    description: Faker::Lorem.paragraph
   )
 end
 
@@ -97,14 +99,14 @@ x = 75000
   )
 end
 
-# MISSIONS 
+# MISSIONS
 
 status = ["Disponible", "Indisponible", "Débordé"]
 
 20.times do
   Mission.create(
     title: "Mission #{rand(1..40)}",
-    description:  Faker::Lorem.paragraph, 
+    description:  Faker::Lorem.paragraph,
     start_date: Faker::Date.between(from: 2.days.ago, to: 15.days.from_now), #=> #<Date: 2014-09-24>
     end_date: Faker::Date.between(from: 15.days.from_now, to: 60.days.from_now),
     status: status.sample,
@@ -113,7 +115,7 @@ status = ["Disponible", "Indisponible", "Débordé"]
     owner_id: rand(11..30)
   )
 end
-  
+
 
 # CATEGORIES
 
