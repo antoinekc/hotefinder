@@ -11,6 +11,11 @@
       <li><%= user.birthdate %></li>
       <li><%= user.commission %></li>
       <li><%= user.is_available %></li>
+
+      <% if user.avatar.attached? %>
+        <%= image_tag user.avatar.variant(resize_to_fill: [150, 150]) %>
+      <% end %>
+      
       <br>
       <li><%= link_to 'show', user_path(user) %></li>
       <br>
