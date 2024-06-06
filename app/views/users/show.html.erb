@@ -12,7 +12,7 @@
 </ul>
 
 <% if @user.avatar.attached? %>
-  <%= image_tag @user.avatar.variant(resize: "100x100") %>
+  <%= image_tag @user.avatar.variant(resize_to_fill: [150, 150]) %>
 <% end %>
 
 
