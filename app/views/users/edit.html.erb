@@ -1,6 +1,6 @@
 <h1>Modifier les informations de l'utilisateur</h1>
 
-<%= form_for(@user) do |f| %>
+<%= form_for(@user, html: { multipart: true }) do |f| %>
   <div class="field">
     <%= f.label :email %><br>
     <%= f.email_field :email %>
@@ -29,6 +29,11 @@
   <div class="field">
     <%= f.label :commission %><br>
     <%= f.number_field :commission %>
+  </div>
+
+  <div class="field">
+    <%= f.label :avatar %><br>
+    <%= f.file_field :avatar %>
   </div>
 
   <div class="actions">
