@@ -33,11 +33,13 @@ admin = User.create!(
   is_admin: true, # Add admin status
   is_host: true,
   is_owner: true,
-  is_available: true,
+  is_available: "Indisponible",
   commission: 20
   )
 
 # USERS
+
+disponibilité = ["Disponible", "Indisponible", "Débordé"]
 
 10.times do
   user = User.create!(
@@ -51,7 +53,7 @@ admin = User.create!(
     is_admin: Faker::Boolean.boolean, # Add admin status
     is_host: true,
     is_owner: false,
-    is_available: Faker::Boolean.boolean,
+    is_available: disponibilité.sample,
     description: Faker::Lorem.paragraph
   )
 end
@@ -68,7 +70,7 @@ end
     is_admin: Faker::Boolean.boolean, # Add admin status
     is_host: true,
     is_owner: true,
-    is_available: Faker::Boolean.boolean,
+    is_available: disponibilité.sample,
     description: Faker::Lorem.paragraph
   )
 end
@@ -101,7 +103,9 @@ end
 
 # MISSIONS
 
-status = ["Disponible", "Indisponible", "Débordé"]
+
+status = ["Crée", "Acceptée", "Refusée", "En cours"]
+postal_code = ["75001","75002","75003","75004","75005","75006","75007","75008","75009","75010","75011","75012","75013","75014","75016","75016","75017","75018","75019","75020"]
 
 20.times do
   Mission.create(
@@ -112,7 +116,8 @@ status = ["Disponible", "Indisponible", "Débordé"]
     status: status.sample,
     city_id: 1,
     host_id: rand(1..20),
-    owner_id: rand(11..30)
+    owner_id: rand(11..30),
+    postal_code: postal_code.sample
   )
 end
 
