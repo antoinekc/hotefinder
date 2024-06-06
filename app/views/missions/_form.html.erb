@@ -31,18 +31,18 @@
   </div>
 
   <div>
-    <%= form.label :city_id, class: "block text-sm font-medium text-gray-700" %>
+    <%= form.label :city_id,"Ville", class: "block text-sm font-medium text-gray-700" %>
     <%= form.select :city_id, [['Paris', 'Paris']], {}, class: "mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" %>
   </div>
 
   <div>
-    <%= form.label :host_id, class: "block text-sm font-medium text-gray-700" %>
-    <%= form.text_field :host_id, class: "mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" %>
+    <%= form.label :host_id, "Concierge", class: "block text-sm font-medium text-gray-700" %>
+    <%= form.select :host_id, options_for_select(User.all.map{ |user| ["#{user.first_name} #{user.last_name}", user.id] }), {}, class: "mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" %>
   </div>
-  
+
   <%= form.hidden_field :host_id, value: @user.id if @user.present? %>
 
-  <%= form.label :postal_code, class: "block text-sm font-medium text-gray-700" %>
+  <%= form.label :postal_code,"Arrondissement", class: "block text-sm font-medium text-gray-700" %>
   <%= form.select :postal_code, options_for_select(paris_zip_codes), {}, class: "mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" %>  
 
 
