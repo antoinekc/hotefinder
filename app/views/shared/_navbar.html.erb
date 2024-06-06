@@ -1,29 +1,47 @@
 <body>
-	<nav class='size-full container mx-auto items-center'>
-		<div class = 'bg-HFmain-200 h-16 flex content-center'>
-			 <ul class = 'size-full flex space-x-20 '>
-			 <li>
-				<a link_to root_path>
-			 	<%= image_tag 'icons/logo.svg', alt: 'Logo', class: 'size-16 stroke-white'%>
-				</a>
-		    </li>
-       		 <li>
-			    <%= image_tag 'icons/list-check.svg', alt: 'Home', class: 'size-8' %>
-          		<a href="#" class ='text-white'> Missions</a>
-			</li>
-			<li>
-
-        		<%= image_tag 'icons/home.svg', alt: 'Mission', class: 'size-8'%>
-				<a link_to  class ='text-white'>Home</a>
-			</li>
-      		<li >
-        		<%= image_tag 'icons/menu-burger.svg', alt: 'Burger', class: 'size-12' %>
-      		</li>
-			</ul>
-		</div>
-      
-			</div>
-		</div>
+  <nav>
+    <div class='bg-HFmain-200 h-16 flex items-center'>
+      <ul class='w-full flex flex justify-between m-4'>
+        <li>
+          <%= link_to root_path do %>
+            <%= image_tag 'icons/Bg_logo.svg', alt: 'Logo', class: 'size-14 stroke-white ' %>
+          <% end %>
+        </li>
+        <li>
+			<%= link_to missions_path, class: 'text-white place-items-center justify-center' do %>
+        	<%= image_tag 'icons/list-check.svg', alt: 'Missions', class: 'size-8' %>
+			Missions
+          <% end %>
+        </li>
+        <li>
+          <%= link_to '#', class: 'text-white' do %>
+		  <%= image_tag 'icons/home.svg', alt: 'Annuaire', class: 'size-8' %>
+            Annuaire
+          <% end %>
+        </li>
+		<li>
+		<div class="place-items-center flex items-center space-x-3">
+		<li>
+			<%= image_tag 'icons/user.svg', alt: 'Profile', class: 'size-8' %>
+			<%= link_to '#', class: 'text-white' do %>
+        	Profile
+			<% end %>
+		</li>
+		<li class='flex items-center'>
+			<% if user_signed_in? %>
+        	<%= link_to user_path(current_user), class: "btn-primary mr-4 hover:HFsecondery-100" do %>
+          	<i class="fa-solid fa-user"></i> Profile
+       	 	<% end %>
+       		 <%= button_to "Logout", destroy_user_session_path, method: :delete, class: "btn-secondary" %>
+     		 <% else %>
+       		 <%= link_to "Login", new_user_session_path, class: "btn-primary mr-4 hover:HFsecondery-100" %>
+       		 <%= link_to "Sign Up", new_user_registration_path, class: "btn-primary mr-4 hover:HFsecondery-100" %>
+     		 <% end %>
+        </li>
+        <li>
+          <%= image_tag 'icons/menu-burger.svg', alt: 'Burger', class: 'size-12' %>
+        </li>
+      </ul>
     </div>
   </nav>
 </body>
@@ -67,11 +85,7 @@
 					</li>
 				</ul>
 			</div>
-			<div class="mt-auto">
-				<div class="pt-6">
-					<a class="block px-4 py-3 mb-3 leading-loose text-xs text-center font-semibold leading-none bg-gray-50 hover:bg-gray-100 rounded-xl" href="#">Sign in</a>
-					<a class="block px-4 py-3 mb-2 leading-loose text-xs text-center text-white font-semibold bg-blue-600 hover:bg-blue-700  rounded-xl" href="#">Sign Up</a>
-				</div>
+			
 				<p class="my-4 text-xs text-center text-gray-400">
 					<span>Copyright © 2024</span>
 				</p>
