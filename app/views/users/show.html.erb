@@ -11,6 +11,11 @@
   <li><%= @user.is_available %></li>
 </ul>
 
+<% if @user.avatar.attached? %>
+  <%= image_tag @user.avatar.variant(resize: "100x100") %>
+<% end %>
+
+
 <% if current_user == @user || current_user.is_admin %>
   <%= link_to 'Modifier les informations', edit_user_path(@user) %>
 <% end %>

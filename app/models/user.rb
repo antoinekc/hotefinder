@@ -9,4 +9,8 @@ class User < ApplicationRecord
   has_many :received_missions, foreign_key: 'host_id', class_name: "Mission"
   has_many :users_categories_join
   has_many :categories, through: :users_categories_join
+
+  has_one_attached :avatar do |attachable|
+    attachable.variant :thumb, resize_to_fill: [150, 150]
+  end
 end
