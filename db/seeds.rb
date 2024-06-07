@@ -35,13 +35,16 @@ admin = User.create!(
   is_admin: true,
   is_host: true,
   is_owner: true,
-  is_available: true,
+  is_available: "Indisponible",
   commission: 20
 )
 
 puts "admin seeded"
 
 # USERS
+disponibilité = ["Disponible", "Indisponible", "Débordé"]
+
+
 10.times do
   user = User.create!(
     first_name: Faker::Name.first_name,
@@ -54,7 +57,7 @@ puts "admin seeded"
     is_admin: Faker::Boolean.boolean,
     is_host: true,
     is_owner: false,
-    is_available: Faker::Boolean.boolean,
+    is_available: disponibilité.sample,
     description: Faker::Lorem.paragraph
   )
 
@@ -81,7 +84,7 @@ puts "hosts seeded"
     is_admin: Faker::Boolean.boolean,
     is_host: true,
     is_owner: true,
-    is_available: Faker::Boolean.boolean,
+    is_available: disponibilité.sample,
     description: Faker::Lorem.paragraph
   )
 
@@ -134,7 +137,8 @@ end
 puts "cities seeded"
 
 # MISSIONS
-status = ["Disponible", "Indisponible", "Débordé"]
+status = ["Crée", "Acceptée", "Refusée", "En cours"]
+postal_code = ["75001","75002","75003","75004","75005","75006","75007","75008","75009","75010","75011","75012","75013","75014","75016","75016","75017","75018","75019","75020"]
 
 20.times do
   Mission.create(
@@ -145,7 +149,8 @@ status = ["Disponible", "Indisponible", "Débordé"]
     status: status.sample,
     city_id: 1,
     host_id: rand(1..20),
-    owner_id: rand(11..30)
+    owner_id: rand(11..30),
+    postal_code: postal_code.sample
   )
 end
 
