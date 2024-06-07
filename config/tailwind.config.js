@@ -15,14 +15,15 @@ module.exports = {
       },
       colors: { 
         test: '#6e61fe',
-        HFmain: {
+        HFblue: {
           100: '#8f85fe',
           200: '#6e61fe',
           300: '#6e61fe'
         },
-        HFsecond: {
+        HFred: {
           100: '#F7A1A1',
-          200: '#f58282'
+          200: '#f58282',
+          300: '#F47B7B'
         },
         HFlight: '#f1f1f1',
         HFdark: '#737373'
