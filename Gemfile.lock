@@ -113,6 +113,7 @@ GEM
       rack-test (>= 0.6.3)
       regexp_parser (>= 1.5, < 3.0)
       xpath (~> 3.2)
+    childprocess (5.0.0)
     concurrent-ruby (1.3.1)
     connection_pool (2.4.1)
     crass (1.0.6)
@@ -126,6 +127,7 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    domain_name (0.6.20240107)
     dotenv (3.1.2)
     dotenv-rails (3.1.2)
       dotenv (= 3.1.2)
@@ -142,6 +144,9 @@ GEM
     ffi (1.17.0-x86_64-linux-gnu)
     globalid (1.2.1)
       activesupport (>= 6.1)
+    http-accept (1.7.0)
+    http-cookie (1.0.6)
+      domain_name (~> 0.5)
     i18n (1.14.5)
       concurrent-ruby (~> 1.0)
     image_processing (1.12.2)
@@ -157,6 +162,11 @@ GEM
     jmespath (1.6.2)
     jsbundling-rails (1.3.0)
       railties (>= 6.0.0)
+    launchy (3.0.1)
+      addressable (~> 2.8)
+      childprocess (~> 5.0)
+    letter_opener (1.10.0)
+      launchy (>= 2.2, < 4)
     loofah (2.22.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
@@ -165,8 +175,16 @@ GEM
       net-imap
       net-pop
       net-smtp
+    mailjet (1.7.11)
+      activesupport (>= 5.0.0)
+      rack (>= 1.4.0)
+      rest-client (>= 2.1.0)
+      yajl-ruby
     marcel (1.0.4)
     matrix (0.4.2)
+    mime-types (3.5.2)
+      mime-types-data (~> 3.2015)
+    mime-types-data (3.2024.0604)
     mini_magick (4.12.0)
     mini_mime (1.1.5)
     minitest (5.23.1)
@@ -181,6 +199,7 @@ GEM
       timeout
     net-smtp (0.5.0)
       net-protocol
+    netrc (0.11.0)
     nio4r (2.7.3)
     nokogiri (1.16.5-aarch64-linux)
       racc (~> 1.4)
@@ -194,6 +213,10 @@ GEM
       racc (~> 1.4)
     nokogiri (1.16.5-x86_64-linux)
       racc (~> 1.4)
+    open-uri (0.4.1)
+      stringio
+      time
+      uri
     orm_adapter (0.5.0)
     pg (1.5.6)
     psych (5.1.2)
@@ -248,6 +271,11 @@ GEM
     responders (3.1.1)
       actionpack (>= 5.2)
       railties (>= 5.2)
+    rest-client (2.1.0)
+      http-accept (>= 1.7.0, < 2.0)
+      http-cookie (>= 1.0.2, < 2.0)
+      mime-types (>= 1.16, < 4.0)
+      netrc (~> 0.8)
     rexml (3.2.8)
       strscan (>= 3.0.9)
     rouge (4.2.1)
@@ -284,6 +312,8 @@ GEM
     tailwindcss-rails (2.6.0-x86_64-linux)
       railties (>= 7.0.0)
     thor (1.3.1)
+    time (0.3.0)
+      date
     timeout (0.4.1)
     turbo-rails (2.0.5)
       actionpack (>= 6.0.0)
@@ -291,6 +321,7 @@ GEM
       railties (>= 6.0.0)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
+    uri (0.13.0)
     warden (1.2.9)
       rack (>= 2.0.9)
     web-console (4.2.1)
@@ -305,6 +336,7 @@ GEM
     websocket-extensions (0.1.5)
     xpath (3.2.0)
       nokogiri (~> 1.8)
+    yajl-ruby (1.4.3)
     zeitwerk (2.6.15)
 
 PLATFORMS
@@ -327,6 +359,9 @@ DEPENDENCIES
   image_processing (~> 1.2)
   jbuilder
   jsbundling-rails
+  letter_opener (~> 1.10)
+  mailjet (~> 1.7)
+  open-uri (~> 0.4.1)
   pg (~> 1.1)
   puma (>= 5.0)
   rails (~> 7.1.3, >= 7.1.3.3)
