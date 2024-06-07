@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!, only: [:show, :edit, :update]
-  before_action :correct_user, only: [:edit, :update]
+  before_action :authenticate_user!, only: [:show, :edit, :update, :destroy]
+  before_action :correct_user, only: [:edit, :update, :destroy]
 
 
   def index
@@ -22,6 +22,14 @@ class UsersController < ApplicationController
     else
       flash[:alert] = @user.errors.full_messages.join(", ")
       render :edit
+    end
+  end
+
+  def destroy
+    @user.destroy
+    respond_to do |format|
+      format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
+      format.json { head :no_content }
     end
   end
 
