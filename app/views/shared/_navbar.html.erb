@@ -1,6 +1,6 @@
 <body>
   <nav>
-    <div class='bg-HFmain-200 h-16 flex items-center'>
+    <div class='bg-HFblue-200 h-16 flex items-center'>
       <ul class='w-full flex justify-between items-center m-4'>
         <li>
           <%= link_to root_path do %>
@@ -27,8 +27,8 @@
             <% end %>
             <%= button_to "Logout", destroy_user_session_path, method: :delete, class: 'btn-secondary' %>
           <% else %>
-            <%= link_to "Login", new_user_session_path, class: 'btn-primary hover:bg-HFmain-100' %>
-            <%= link_to "Sign Up", new_user_registration_path, class: 'btn-primary hover:bg-HFmain-100' %>
+            <%= link_to "Login", new_user_session_path, class: 'btn-primary hover:bg-HFblue-100' %>
+            <%= link_to "Sign Up", new_user_registration_path, class: 'btn-primary hover:bg-HFblue-100' %>
           <% end %>
         </li>
         <li>
