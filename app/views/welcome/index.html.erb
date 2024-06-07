@@ -1,10 +1,128 @@
-<div>
-  <h1 class="font-bold text-4xl">Welcome#index</h1>
-  <p>Find me in app/views/welcome/index.html.erb</p>
-
-  <% if user_signed_in? %>
-  <%= button_to 'Sign Out', destroy_user_session_path, method: :delete, data: { confirm: 'Are you sure you want to sign out?' }, class: 'btn btn-danger' %>
-  <% else %>
-  <%= button_to 'Sign In', new_user_session_path, method: :post, data: { confirm: 'Are you sure you want to sign out?' }, class: 'btn btn-danger' %>
-<% end %>
+<!-- Feature Presentation Section -->
+<div class="relative isolate overflow-hidden bg-gray-900 h-100 py-24 sm:py-32">
+  <img src=https://img.freepik.com/photos-gratuite/amis-voyageant-decouvrant-nouveaux-endroits_23-2149124764.jpg?w=1380&t=st=1717661167~exp=1717661767~hmac=f003cd632a22b5614e823b2bdd02bec279ccb2efe401cb588b457405327a7d58 alt="" class="absolute inset-0 -z-10 h-full w-full object-cover object-center">
+  <div class="absolute inset-0 bg-black opacity-50 z-10"></div> <!-- Overlay with lower z-index -->
+  <div class="relative z-20 mx-auto max-w-[60%] px-6 lg:px-8 h-full flex flex-col justify-center"> <!-- Adjusted width to 60% -->
+    <div class="mx-auto max-w-2xl text-center lg:text-center">
+      <h2 class="text-4xl font-bold tracking-tight text-white sm:text-6xl">Hote Finder</h2>
+      <p class="mt-6 my-8 mx-0 text-lg leading-8 text-gray-300">Tous les services dont vous avez besoin pour la location courte durée!</p>
+      <a href="#" class="btn btn-primary ">Sign-up</a>
+    </div>
+  </div>
 </div>
+
+<div>
+<main class="container mx-auto px-5">
+<!-- Feature Presentation Section -->
+<div class="bg-white py-24 sm:py-32">
+  <div class="mx-auto max-w-7xl px-6 lg:px-8">
+    <div class="mx-auto max-w-2xl lg:text-center">
+      <p class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Hote Finder c'est quoi?</p>
+      <dd class="mt-2 text-base leading-7 text-gray-600">Spécialiste de la mise en relation entre Propriétaire et prestataire de service de proximité.</dd>
+    </div>
+    <div class="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
+      <dl class="grid max-w-xl grid-cols-1 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-3 lg:gap-y-16">
+        <div class="relative text-center">
+          <div class="mx-auto flex h-16 w-16 items-center justify-center rounded-lg bg-indigo-600">
+            <svg class="h-10 w-10 text-white" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M8.032 12 9.976 13.984 14.936 9.024M18.486 14.296 19.379 13.403a1.984 1.984 0 0 0 0-2.806l-.893-.893a1.984 1.984 0 0 1-.581-1.403V7.04a1.984 1.984 0 0 0-1.984-1.984h-1.262a1.983 1.983 0 0 1-1.403-.581l-.893-.893a1.984 1.984 0 0 0-2.806 0l-.893.893a1.984 1.984 0 0 1-1.403.581H7.04A1.984 1.984 0 0 0 5.055 7.04v1.262c0 .527-.209 1.031-.581 1.403l-.893.893a1.984 1.984 0 0 0 0 2.806l.893.893c.372.372.581.876.581 1.403v1.262a1.984 1.984 0 0 0 1.984 1.984h1.262c.527 0 1.031.209 1.403.581l.893.893a1.984 1.984 0 0 0 2.806 0l.893-.893a1.985 1.985 0 0 1 1.403-.581h1.262a1.984 1.984 0 0 0 1.984-1.984V15.7c0-.527.209-1.031.581-1.403Z"/>
+            </svg>
+          </div>
+          <dt class="mt-4 text-base font-semibold leading-7 text-gray-900">Des concierges de confiance</dt>
+          <dd class="mt-2 text-base leading-7 text-gray-600">Prenez contact avec nos prestataire, lisez les avis de la communauté, choisissez en toute tranquilité.</dd>
+        </div>
+        <div class="relative text-center">
+          <div class="mx-auto flex h-16 w-16 items-center justify-center rounded-lg bg-indigo-600">
+            <svg class="h-10 w-10 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />
+            </svg>
+          </div>
+          <dt class="mt-4 text-base font-semibold leading-7 text-gray-900">SSL certificates</dt>
+          <dd class="mt-2 text-base leading-7 text-gray-600">Sit quis amet rutrum tellus ullamcorper ultricies libero dolor eget. Sem sodales gravida quam turpis enim lacus amet.</dd>
+        </div>
+        <div class="relative text-center">
+          <div class="mx-auto flex h-16 w-16 items-center justify-center rounded-lg bg-indigo-600">
+            <svg class="h-10 w-10 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" />
+            </svg>
+          </div>
+          <dt class="mt-4 text-base font-semibold leading-7 text-gray-900">Simple queues</dt>
+          <dd class="mt-2 text-base leading-7 text-gray-600">Quisque est vel vulputate cursus. Risus proin diam nunc commodo. Lobortis auctor congue commodo diam neque.</dd>
+        </div>
+      
+      </dl>
+    </div>
+  </div>
+  </div>
+
+    <!-- User Showcase Section -->
+    <section class="py-12 mx-4">
+      <h2 class="text-3xl font-bold mb-8 text-center">Our Users</h2>
+      <div class="flex overflow-x-auto space-x-4">
+        
+
+<div class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+    <a href="#">
+        <img class="p-8 rounded-t-lg" src="/docs/images/products/apple-watch.png" alt="product image" />
+    </a>
+    <div class="px-5 pb-5">
+        <a href="#">
+            <h5 class="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">Apple Watch Series 7 GPS, Aluminium Case, Starlight Sport</h5>
+        </a>
+        <div class="flex items-center mt-2.5 mb-5">
+            <div class="flex items-center space-x-1 rtl:space-x-reverse">
+                <svg class="w-4 h-4 text-yellow-300" aria-hidden="true" xmlns=http://www.w3.org/2000/svg fill="currentColor" viewBox="0 0 22 20">
+                    <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
+                </svg>
+                <svg class="w-4 h-4 text-yellow-300" aria-hidden="true" xmlns=http://www.w3.org/2000/svg fill="currentColor" viewBox="0 0 22 20">
+                    <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
+                </svg>
+                <svg class="w-4 h-4 text-yellow-300" aria-hidden="true" xmlns=http://www.w3.org/2000/svg fill="currentColor" viewBox="0 0 22 20">
+                    <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
+                </svg>
+                <svg class="w-4 h-4 text-yellow-300" aria-hidden="true" xmlns=http://www.w3.org/2000/svg fill="currentColor" viewBox="0 0 22 20">
+                    <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
+                </svg>
+                <svg class="w-4 h-4 text-gray-200 dark:text-gray-600" aria-hidden="true" xmlns=http://www.w3.org/2000/svg fill="currentColor" viewBox="0 0 22 20">
+                    <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
+                </svg>
+            </div>
+            <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ms-3">5.0</span>
+        </div>
+        <div class="flex items-center justify-between">
+            <span class="text-3xl font-bold text-gray-900 dark:text-white">$599</span>
+            <a href="#" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add to cart</a>
+        </div>
+    </div>
+</div>
+
+        <div class="flex-shrink-0 w-64 bg-white shadow-lg rounded-lg p-4 mx-2">
+          <img src="/path/to/user2.jpg" alt="User 2" class="h-40 w-full object-cover rounded-t-lg">
+          <div class="p-4">
+            <h3 class="text-xl font-semibold">User 2</h3>
+            <p class="text-gray-600">User 2 description...</p>
+          </div>
+        </div>
+        <div class="flex-shrink-0 w-64 bg-white shadow-lg rounded-lg p-4 mx-2">
+          <img src="/path/to/user3.jpg" alt="User 3" class="h-40 w-full object-cover rounded-t-lg">
+          <div class="p-4">
+            <h3 class="text-xl font-semibold">User 3</h3>
+            <p class="text-gray-600">User 3 description...</p>
+          </div>
+        </div>
+        <!-- Add more user cards as needed -->
+      </div>
+    </section>
+
+    <!-- Authentication Buttons Section -->
+    <section class="text-center py-12 mx-4">
+      <% if user_signed_in? %>
+        <%= button_to 'Sign Out', destroy_user_session_path, method: :delete, data: { confirm: 'Are you sure you want to sign out?' }, class: 'btn btn-danger' %>
+      <% else %>
+        <%= button_to 'Sign In', new_user_session_path, method: :post, data: { confirm: 'Are you sure you want to sign out?' }, class: 'btn btn-danger' %>
+      <% end %>
+    </section>
+    
+  </main>
+</div>
+
