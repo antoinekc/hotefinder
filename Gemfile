@@ -83,3 +83,5 @@ gem 'dotenv-rails', groups: [:development, :test, :production]
 gem "ruby-vips"
 
 gem "aws-sdk-s3", "~> 1.152"
+
+gem "open-uri", "~> 0.4.1"
