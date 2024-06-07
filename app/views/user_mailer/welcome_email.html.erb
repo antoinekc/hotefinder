@@ -1,0 +1,13 @@
+<main class="flex flex-col prose">
+    <%= image_tag('icons/logo.svg') %>
+
+    <h1>Bienvenue sur Hotefinder, <%= @user.first_name %>!</h1>
+
+    <p>Merci pour votre confiance</p>
+
+    <p>Vous pouvez consulter <%= link_to "l'annuaire des concierges.", users_url %></p>
+
+    <p class="btn btn-primary"><%= link_to 'Pensez à compléter votre profil pour un meilleur référencement!', user_url(@user) %></p>
+
+    <p>If you did not sign up for this account, please ignore this email.</p>
+</main>
