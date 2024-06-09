@@ -60,7 +60,7 @@ Rails.application.configure do
   config.log_tags = [ :request_id ]
 
   # hôte pour envoyer des mails
-  config.action_mailer.default_url_options = { host: 'votre-domaine.herokuapp.com' }
+  config.action_mailer.default_url_options = { host: 'https://hotefinder-3980cefcc9bb.herokuapp.com/' }
 
   # "info" includes generic and useful information about system operation, but avoids logging too much
   # information to avoid inadvertent exposure of personally identifiable information (PII). If you

@@ -80,5 +80,8 @@ test:
 production:
   <<: *default
   database: hotefinder_production
-  username: hotefinder
+  username: <%= ENV["HOTEFINDER_DATABASE_USERNAME"] %>
   password: <%= ENV["HOTEFINDER_DATABASE_PASSWORD"] %>
+  host: <%= ENV["HOTEFINDER_DATABASE_HOST"] %>
+  port: <%= ENV.fetch("HOTEFINDER_DATABASE_PORT", 5432) %>
+
