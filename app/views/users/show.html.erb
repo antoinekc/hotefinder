@@ -1,29 +1,44 @@
-<h1>Informations de <%= @user.first_name %></h1>
-
-<ul>
-  <li><%= @user.email %></li>
-  <li><%= @user.first_name %></li>
-  <li><%= @user.last_name %></li>
-  <li><%= @user.phone_number %></li>
-  <li><%= @user.birthdate %></li>
-  <li><%= @user.commission %></li>
-  <li><%= @user.description %></li>
-  <li><%= @user.is_available %></li>
-</ul>
-
-<% if @user.avatar.attached? %>
-  <%= image_tag @user.avatar.variant(resize_to_fill: [150, 150]) %>
-<% end %>
-
-
-<% if current_user == @user || current_user.is_admin %>
-  <%= link_to 'Modifier les informations', edit_user_path(@user) %>
-<% end %>
-
-<% if current_user == @user || current_user.is_admin %>
-  <%= button_to 'Supprimer votre compte', @user, method: :delete, data: { confirm: "Are you sure you want to delete your account?" }, class: "btn btn-danger" %>
-<% end %>
-
-<% if current_user != @user %>
-  <%= link_to 'Proposer une mission', new_mission_path(host_id: @user.id), class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" %>
-<% end %>
+<div class="container mx-auto px-4 py-8">
+  <div class="flex flex-wrap items-center justify-center">
+    <!-- Photo agrandie -->
+    <div class="w-full md:w-1/2 lg:w-1/3 xl:w-1/4 mb-4">
+      <% if @user.avatar.attached? %>
+        <%= image_tag @user.avatar.variant(resize_to_fill: [450, 450]), class: "rounded-lg shadow-xl" %>
+      <% end %>
+    </div>
+    <!-- Informations -->
+    <div class="w-full md:w-1/2 lg:w-2/3 xl:w-3/4 md:pl-8 lg:pl-12 mb-8 md:mb-0">
+      <h1 class="text-3xl font-bold mb-4"><%= "Informations de #{@user.first_name}" %></h1>
+      <ul class="mb-4">
+        <li><span class="font-bold">Email:</span> <%= @user.email %></li>
+        <li><span class="font-bold">Prénom:</span> <%= @user.first_name %></li>
+        <li><span class="font-bold">Nom:</span> <%= @user.last_name %></li>
+        <li><span class="font-bold">Téléphone:</span> <%= @user.phone_number %></li>
+        <li><span class="font-bold">Date de naissance:</span> <%= @user.birthdate %></li>
+        <li><span class="font-bold">Commission:</span> <%= @user.commission %></li>
+        <li><span class="font-bold">Disponibilité:</span> <%= @user.is_available %></li>
+      </ul>
+      <!-- Boutons d'action -->
+      <div class="flex flex-wrap items-center">
+        <% if current_user == @user || current_user.is_admin %>
+          <%= link_to 'Modifier les informations', edit_user_path(@user), class: "btn-primary mr-4 mb-2" %>
+        <% end %>
+        <% if current_user == @user || current_user.is_admin %>
+          <%= button_to 'Supprimer votre compte', @user, method: :delete, data: { confirm: "Are you sure you want to delete your account?" }, class: "btn-danger mb-2" %>
+        <% end %>
+        <% if current_user != @user %>
+          <%= link_to 'Proposer une mission', new_mission_path(host_id: @user.id), class: "btn-primary mb-2" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <!-- Description -->
+  <div class="mt-8 text-center">
+    <h2 class="text-2xl font-bold mb-4">Description</h2>
+    <%= @user.description %>
+  </div>
+  <!-- Décoration -->
+  <div class="flex justify-center mt-8">
+    <div class="h-1 w-32 bg-blue-500 rounded-full mb-4"></div>
+  </div>
+</div>
