@@ -19,7 +19,6 @@ class Mission < ApplicationRecord
 end
 
 
-
 # class Mission < ApplicationRecord
 #   belongs_to :owner, class_name: "User", 
 #   belongs_to :host, class_name: "User"
