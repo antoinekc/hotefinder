@@ -1,6 +1,7 @@
 class Mission < ApplicationRecord
 
   validate :start_date_cannot_be_in_the_past
+  validate :end_date_cannot_be_before_start_date
 
   belongs_to :owner, class_name: "User", foreign_key: "owner_id"
   belongs_to :host, class_name: "User", foreign_key: "host_id"
@@ -12,19 +13,14 @@ class Mission < ApplicationRecord
 
   def start_date_cannot_be_in_the_past
     if start_date.present? && start_date < Date.today
-      errors.add(:start_date, "Ne pas pas être antérieure à la date du jour.")
+      errors.add(:start_date, "ne peut pas être antérieure à la date du jour.")
+    end
+  end
+
+  def end_date_cannot_be_before_start_date
+    if end_date.present? && end_date < start_date
+      errors.add(:start_date, "ne peut pas être antérieure à la date du démarrage.")
     end
   end
 
 end
-
-
-
-# class Mission < ApplicationRecord
-#   belongs_to :owner, class_name: "User", 
-#   belongs_to :host, class_name: "User"
-#   has_many :missions_categories_join
-#   has_many :categories, through: :missions_categories_join
-#   belongs_to :city
-
-# end
