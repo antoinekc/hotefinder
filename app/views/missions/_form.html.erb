@@ -36,14 +36,14 @@
     <%= form.date_select :end_date, class: "mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" %>
   </div>
 
-<div>
-  <%= form.label :host_id, "Concierge", class: "block text-sm font-medium text-gray-700" %>
-  <% if @user.blank? %>
-    <%= form.select :host_id, options_for_select(User.all.map{ |user| ["#{user.first_name} #{user.last_name}", user.id] }), { include_blank: true }, class: "mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" %>
-  <% else %>
-    <%= form.text_field :host_id, value: @user.first_name, readonly: true, class: "mt-1 block w-full shadow-sm sm:text-sm border-gray-300 bg-gray-200 rounded-md" %>
-  <% end %>
-</div>
+  <div>
+    <%= form.label :host_id, "Concierge", class: "block text-sm font-medium text-gray-700" %>
+    <% if @mission.persisted? %>
+      <%= form.select :host_id, options_for_select(User.all.map { |user| ["#{user.first_name} #{user.last_name}", user.id] }, @mission.host_id), { include_blank: true }, class: "mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" %>
+    <% else %>
+      <%= form.select :host_id, options_for_select(User.all.map { |user| ["#{user.first_name} #{user.last_name}", user.id] }, params[:host_id]), { include_blank: true }, class: "mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" %>
+    <% end %>
+  </div>
 
   <%= form.hidden_field :host_id, value: @user.id if @user.present? %>
 
