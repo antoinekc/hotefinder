@@ -25,11 +25,16 @@ class MissionsController < ApplicationController
 
   def new
     @mission = Mission.new
-    # @user = User.find(params[:host_id]) if params[:host_id].present?
+      if params[:host_id].present?
+        @user = User.find(params[:host_id])
+      else
+        @user = nil
+      end
   end
 
-
   def edit
+    @mission = Mission.find(params[:id])
+    @user = @mission.host 
   end
 
   def create
@@ -46,10 +51,6 @@ class MissionsController < ApplicationController
         return
       end
     end
-
-    # city_name = params[:mission].delete(:city)
-    # city = City.find_or_create_by(name: city_name)
-    # @mission.city = city
 
     respond_to do |format|
       if @mission.save
