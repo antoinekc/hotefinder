@@ -18,6 +18,7 @@
       <div class="bg-white shadow-md rounded-lg p-5 mb-5">
         <h2 class="text-lg font-medium mb-2"><%= mission.title %></h2>
         <p class="mb-2"><%= mission.description %></p>
+        <p class="mb-2"><%= mission.host.first_name %> <%= mission.host.last_name %></p>
         <p class="mb-2">Début: <%= mission.start_date %></p>
         <p class="mb-4">Fin: <%= mission.end_date %></p>
 

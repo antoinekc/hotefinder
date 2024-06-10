@@ -34,7 +34,6 @@ class MissionsController < ApplicationController
 
   def edit
     @mission = Mission.find(params[:id])
-    @user = @mission.host 
   end
 
   def create
