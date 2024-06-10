@@ -1,0 +1,15 @@
+u = User.create(
+  email: "antoine@antoine.com", 
+  password: "123456", 
+  password_confirmation: "123456", 
+  first_name: "John", 
+  last_name: "Doe", 
+  phone_number: "1234567890", 
+  birthdate: "1990-01-01", 
+  commission: 10.0, 
+  is_host: true, 
+  is_owner: true, 
+  is_available: true, 
+  is_admin: true, 
+  description: "Example user"
+)

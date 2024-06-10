@@ -9,11 +9,11 @@ class User < ApplicationRecord
   has_many :categories, through: :users_categories_join
 
   # Welcome email
-  after_create :send_welcome_email
+  # after_create :send_welcome_email
 
-  def send_welcome_email
-    UserMailer.welcome_email(self).deliver_now
-  end
+  # def send_welcome_email
+  #   UserMailer.welcome_email(self).deliver_now
+  # end
 
   # Avatar image
   has_one_attached :avatar do |attachable|

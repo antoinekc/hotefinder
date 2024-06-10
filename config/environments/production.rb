@@ -97,4 +97,20 @@ Rails.application.configure do
   # ]
   # Skip DNS rebinding protection for the default health check endpoint.
   # config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
+
+  # Configurer SMTP pour l'envoi des e-mails
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.smtp_settings = {
+      address:              'smtp.example.com',
+      port:                 587,
+      domain:               'example.com',
+      user_name:            ENV['SMTP_USERNAME'],
+      password:             ENV['SMTP_PASSWORD'],
+      authentication:       'plain',
+      enable_starttls_auto: true
+    }
+
+    # Définir l'URL par défaut pour les liens générés dans les e-mails
+  config.action_mailer.default_url_options = { host: 'https://hotefinder-3980cefcc9bb.herokuapp.com/' }
+
 end
