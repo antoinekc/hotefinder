@@ -3,6 +3,8 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
+= require missions
+
 @layer components {
 
   /* Buttons */
@@ -11,15 +13,26 @@
   }
 
   .btn-primary {
-    @apply bg-HFblue-300 hover:outline-2 text-white font-bold py-3 px-8 rounded-full;
+    @apply bg-HFblue-200 hover:outline-2 text-white text-sm py-2 px-5 rounded-full;
+  }
+
+  .btn-primary-inverted {
+    @apply bg-white hover:bg-HFblue-200 border-HFblue-200 text-HFblue-200 border-HFblue-200 hover:shadow-md py-2 px-5 rounded-full;
   }
   
+  .btn-primary-nav {
+    @apply bg-HFblue-200 hover:outline-2 text-HFlight py-1 px-5 rounded-full mx-2;
+  }
   .btn-outline-primary {
-    @apply border border-HFblue-300 border-4 text-HFblue-300 hover:bg-HFblue-100 hover:text-white font-bold py-3 px-8 rounded-full;
+    @apply border-HFblue-300 border-4 text-HFblue-300 hover:bg-HFblue-100 hover:text-white font-bold py-3 px-8 rounded-full;
   }
   
   .btn-secondary {
-    @apply bg-amber-500 hover:bg-amber-400 text-white font-bold py-2 px-4 rounded-full;
+    @apply bg-HFred-200 hover:bg-HFred-200 text-white py-2 px-5 rounded-full ;
+  }
+
+  .btn-secondary-nav {
+    @apply bg-HFred-200 hover:bg-HFred-100 text-white py-1 px-5 rounded-full ;
   }
 
   .btn-outline-secondary {
@@ -46,5 +59,11 @@
     background: url('hotefinder/app/assets/images/img/background.jpg') center center / cover no-repeat;
     background-color: rgba(0, 0, 0, 0.5);
     background-blend-mode: darken;
+}
+
+.h1 {
+  color: 'HFblue-200';
+  size: 20px;
+  font-weight: bold;
 }
 }

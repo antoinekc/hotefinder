@@ -3,25 +3,25 @@
     <div class="flex items-center justify-center">
     <div class="bg-HFdark bg-opacity-50 rounded-xl p-8 flex flex-col space-y-4 w-full max-w-sm items-center justify-center mt-5 mb-5">
         <%= image_tag 'icons/Bg_logo.svg', alt: 'Logo', class: 'size-14 stroke-white' %>
-        <h2 class="text-white text-2xl font-semibold">Login</h2>
+        <h2 class="text-white text-2xl font-semibold">Me connecter</h2>
         <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <div class="field">
           <%= f.label :email, class:"text-HFlight flex items-center"%>
           <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "bg-opacity-50 mg-2 rounded-full shadow-md bg-HFlight text-HFdark placeholder-HFlight focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm", placeholder:"hello@hotefinder.com" %>
         </div>
         <div class="field py-6">
-          <%= f.label :password, class:"text-HFlight flex items-center"%>
+          <%= f.label :Mot_de_passe, class:"text-HFlight flex items-center"%>
           <%= f.password_field :password, autocomplete: "current-password", class: "bg-opacity-50 rounded-full shadow-md bg-HFlight text-HFdark placeholder-HFlight focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm", placeholder:"Tout sauf 'azerty123' svp" %>
         </div>
         <% if devise_mapping.rememberable? %>
           <div class="field snap-center">
             <%= f.check_box :remember_me, class:'rounded' %>
-            <%= f.label :remember_me, class: 'text-HFlight' %>
+            <%= f.label :se_rappeler_de_moi, class: 'text-HFlight' %>
           </div>
       <% end %>
       <div class="flex items-center justify-center">
       <button class='rounded flex mt-3'>
-        <%= f.submit "Log in", class: 'bg-HFblue-200 p-2 text-white rounded flex items-center' %>
+        <%= f.submit "Me connecter", class: 'btn-primary' %>
         <% end %>
       </button>
       </div>

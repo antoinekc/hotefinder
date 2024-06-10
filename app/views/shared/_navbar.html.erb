@@ -1,38 +1,42 @@
-  <nav>
-    <div class='bg-HFblue-200 h-16 flex items-center'>
-      <ul class='w-full flex justify-between items-center m-4'>
-        <li>
-          <%= link_to root_path do %>
-            <%= image_tag 'icons/Bg_logo.svg', alt: 'Logo', class: 'size-14 stroke-white' %>
+<nav class='sticky top-0 z-10'>
+  <div class='bg-HFlight h-12 flex items-center'>
+    <ul class='w-full flex justify-between items-center px-4'>
+      <li>
+        <%= link_to root_path do %>
+          <%= image_tag 'icons/Bg_logo.svg', alt: 'Logo', class: 'size-10 stroke-white' %>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to missions_path, class: 'flex items-center' do %>
+          <%= image_tag 'icons/list-check.svg', alt: 'Missions', class: 'size-6' %>
+          <span class="text-HFblue-200 px-2 hidden md:block">Missions</span>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to users_path, class: 'flex items-center' do %>
+          <%= image_tag 'icons/Home.svg', alt: 'Annuaire', class: 'size-6' %>
+          <span class="text-HFblue-200 px-2 hidden md:block">Annuaire</span>
+        <% end %>
+      </li>
+      <li>
+        <% if user_signed_in? %>
+          <div class='flex'>
+          <%= link_to user_path(current_user), class: 'flex items-center' do %>
+            <%= image_tag 'icons/user.svg', alt: 'Profile', class: 'size-6' %>
+            <span class='text-HFblue-200 px-2 hidden md:block'>Profil</span>
           <% end %>
-        </li>
-        <li>
-          <%= link_to missions_path, class: 'text-white flex flex-col items-center' do %>
-            <%= image_tag 'icons/list-check.svg', alt: 'Missions', class: 'flex size-8' %>
-            <span>Missions</span>
-          <% end %>
-        </li>
-        <li>
-          <%= link_to users_path, class: 'text-white flex flex-col items-center' do %>
-            <%= image_tag 'icons/home.svg', alt: 'Annuaire', class: 'size-8' %>
-            <span>Annuaire</span>
-          <% end %>
-        </li>
-        <li class='flex justify-right items-center space-x-3'>
-          <% if user_signed_in? %>
-            <%= link_to user_path(current_user), class: 'text-white flex flex-col items-center' do %>
-              <%= image_tag 'icons/user.svg', alt: 'Profile', class: 'size-8 mr-6' %>
-              <span class= 'mr-6'>Profile</span>
-            <% end %>
-            <%= button_to "Logout", destroy_user_session_path, method: :delete, class: 'btn-secondary' %>
-          <% else %>
-            <%= link_to "Login", new_user_session_path, class: 'btn-primary hover:bg-HFblue-100' %>
-            <%= link_to "Sign Up", new_user_registration_path, class: 'btn-primary hover:bg-HFblue-100' %>
-          <% end %>
-        </li>
-        <li>
-          <%= image_tag 'icons/menu-burger.svg', alt: 'Burger', class: 'size-12' %>
-        </li>
-      </ul>
-    </div>
-  </nav>
+          <%= button_to "Me deconnecter", destroy_user_session_path, method: :delete, class: 'btn-secondary-nav ml-12' %>
+          </div>
+        <% else %>
+          <div class = "flex justify-end items-right">
+          <%= link_to "Me connecter", new_user_session_path, class: 'btn-primary-nav' %>
+          <%= link_to "M'inscrire", new_user_registration_path, class: 'btn-primary-nav' %>
+          </div>
+        <% end %>
+      </li>
+      <li>
+        <%= image_tag 'icons/menu-burger.svg', alt: 'Burger', class: 'size-8' %>
+      </li>
+    </ul>
+  </div>
+</nav>
