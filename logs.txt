@@ -1,0 +1,109 @@
+heroku logs --tail
+2024-06-09T20:20:49.223026+00:00 app[web.1]: I, [2024-06-09T20:20:49.222921 #9]  INFO -- : [373ebff9-015e-4111-a028-90b88f620b92] Started GET "/" for 35.237.4.214 at 2024-06-09 20:20:49 +0000
+2024-06-09T20:20:49.223729+00:00 app[web.1]: I, [2024-06-09T20:20:49.223665 #9]  INFO -- : [373ebff9-015e-4111-a028-90b88f620b92] Processing by WelcomeController#index as HTML
+2024-06-09T20:20:49.232803+00:00 app[web.1]: I, [2024-06-09T20:20:49.232731 #9]  INFO -- : [373ebff9-015e-4111-a028-90b88f620b92]   Rendered layout layouts/application.html.erb (Duration: 8.3ms | Allocations: 1000)
+2024-06-09T20:20:49.232938+00:00 app[web.1]: I, [2024-06-09T20:20:49.232915 #9]  INFO -- : [373ebff9-015e-4111-a028-90b88f620b92] Completed 200 OK in 9ms (Views: 7.6ms | ActiveRecord: 1.1ms | Allocations: 1233)
+2024-06-09T20:20:49.239137+00:00 heroku[router]: at=info method=GET path="/" host=hotefinder-3980cefcc9bb.herokuapp.com request_id=373ebff9-015e-4111-a028-90b88f620b92 fwd="35.237.4.214" dyno=web.1 connect=0ms service=17ms status=200 bytes=9718 protocol=https
+2024-06-09T20:21:15.095589+00:00 app[web.1]: I, [2024-06-09T20:21:15.095467 #6]  INFO -- : [bf86049d-95b2-45f7-b931-51ec59c66812] Started GET "/" for 92.158.189.236 at 2024-06-09 20:21:15 +0000
+2024-06-09T20:21:15.096318+00:00 app[web.1]: I, [2024-06-09T20:21:15.096253 #6]  INFO -- : [bf86049d-95b2-45f7-b931-51ec59c66812] Processing by WelcomeController#index as HTML
+2024-06-09T20:21:15.121573+00:00 app[web.1]: I, [2024-06-09T20:21:15.121469 #6]  INFO -- : [bf86049d-95b2-45f7-b931-51ec59c66812]   Rendered layout layouts/application.html.erb (Duration: 24.4ms | Allocations: 1000)
+2024-06-09T20:21:15.121822+00:00 app[web.1]: I, [2024-06-09T20:21:15.121764 #6]  INFO -- : [bf86049d-95b2-45f7-b931-51ec59c66812] Completed 200 OK in 25ms (Views: 13.1ms | ActiveRecord: 11.9ms | Allocations: 1233)
+2024-06-09T20:21:15.123436+00:00 heroku[router]: at=info method=GET path="/" host=hotefinder-3980cefcc9bb.herokuapp.com request_id=bf86049d-95b2-45f7-b931-51ec59c66812 fwd="92.158.189.236" dyno=web.1 connect=0ms service=29ms status=200 bytes=9726 protocol=https
+2024-06-09T20:21:15.235830+00:00 heroku[router]: at=info method=GET path="/assets/tailwind-144abb5b096584908392d008413695da063c86dd9d4117142e110e8597a62fc1.css" host=hotefinder-3980cefcc9bb.herokuapp.com request_id=47c6cc06-2e2c-4f2e-8545-c8319a0d15ff fwd="92.158.189.236" dyno=web.1 connect=0ms service=1ms status=200 bytes=6809 protocol=https
+2024-06-09T20:21:15.547840+00:00 heroku[router]: at=info method=GET path="/assets/application-ab577da6004b8013e2eb504f719a1ad9286178e41fae7f09674fc16257d54cca.css" host=hotefinder-3980cefcc9bb.herokuapp.com request_id=8fa773c0-c662-4d8a-af2c-3abd11731a89 fwd="92.158.189.236" dyno=web.1 connect=0ms service=2ms status=200 bytes=1196 protocol=https
+2024-06-09T20:21:15.548763+00:00 heroku[router]: at=info method=GET path="/assets/application-f50ea9f12f34680baf709b4508e2968b4ac8319d238ec62c3278e4f4a0511a99.js" host=hotefinder-3980cefcc9bb.herokuapp.com request_id=f6cfcd1d-4f7a-4860-9b22-676542dcb66a fwd="92.158.189.236" dyno=web.1 connect=0ms service=4ms status=200 bytes=54108 protocol=https
+2024-06-09T20:21:15.552978+00:00 heroku[router]: at=info method=GET path="/assets/inter-font-8c3e82affb176f4bca9616b838d906343d1251adc8408efe02cf2b1e4fcf2bc4.css" host=hotefinder-3980cefcc9bb.herokuapp.com request_id=a672736c-250b-4990-aaf7-218fc8bbec76 fwd="92.158.189.236" dyno=web.1 connect=0ms service=1ms status=200 bytes=1848 protocol=https
+2024-06-09T20:21:15.651220+00:00 app[web.1]: I, [2024-06-09T20:21:15.651100 #6]  INFO -- : [1a26a4ec-c753-4d0d-90b1-51475d14a240] Started GET "/assets/tailwindcss/base" for 92.158.189.236 at 2024-06-09 20:21:15 +0000
+2024-06-09T20:21:15.651689+00:00 app[web.1]: E, [2024-06-09T20:21:15.651637 #6] ERROR -- : [1a26a4ec-c753-4d0d-90b1-51475d14a240]
+2024-06-09T20:21:15.651721+00:00 app[web.1]: [1a26a4ec-c753-4d0d-90b1-51475d14a240] ActionController::RoutingError (No route matches [GET] "/assets/tailwindcss/base"):
+2024-06-09T20:21:15.651722+00:00 app[web.1]: [1a26a4ec-c753-4d0d-90b1-51475d14a240]
+2024-06-09T20:21:15.652289+00:00 app[web.1]: I, [2024-06-09T20:21:15.652224 #9]  INFO -- : [ab5cc007-051f-4d91-ba30-2a23f1c3d994] Started GET "/assets/tailwindcss/utilities" for 92.158.189.236 at 2024-06-09 20:21:15 +0000
+2024-06-09T20:21:15.652898+00:00 app[web.1]: E, [2024-06-09T20:21:15.652850 #9] ERROR -- : [ab5cc007-051f-4d91-ba30-2a23f1c3d994]
+2024-06-09T20:21:15.652899+00:00 app[web.1]: [ab5cc007-051f-4d91-ba30-2a23f1c3d994] ActionController::RoutingError (No route matches [GET] "/assets/tailwindcss/utilities"):
+2024-06-09T20:21:15.652900+00:00 app[web.1]: [ab5cc007-051f-4d91-ba30-2a23f1c3d994]
+2024-06-09T20:21:15.653083+00:00 heroku[router]: at=info method=GET path="/assets/tailwindcss/base" host=hotefinder-3980cefcc9bb.herokuapp.com request_id=1a26a4ec-c753-4d0d-90b1-51475d14a240 fwd="92.158.189.236" dyno=web.1 connect=0ms service=2ms status=404 bytes=1966 protocol=https
+2024-06-09T20:21:15.653101+00:00 app[web.1]: I, [2024-06-09T20:21:15.653031 #6]  INFO -- : [f0b9af5b-54a6-4fe8-80d1-f474902d419e] Started GET "/assets/tailwindcss/components" for 92.158.189.236 at 2024-06-09 20:21:15 +0000
+2024-06-09T20:21:15.653612+00:00 app[web.1]: E, [2024-06-09T20:21:15.653564 #6] ERROR -- : [f0b9af5b-54a6-4fe8-80d1-f474902d419e]
+2024-06-09T20:21:15.653612+00:00 app[web.1]: [f0b9af5b-54a6-4fe8-80d1-f474902d419e] ActionController::RoutingError (No route matches [GET] "/assets/tailwindcss/components"):
+2024-06-09T20:21:15.653613+00:00 app[web.1]: [f0b9af5b-54a6-4fe8-80d1-f474902d419e]
+2024-06-09T20:21:15.653954+00:00 heroku[router]: at=info method=GET path="/assets/tailwindcss/utilities" host=hotefinder-3980cefcc9bb.herokuapp.com request_id=ab5cc007-051f-4d91-ba30-2a23f1c3d994 fwd="92.158.189.236" dyno=web.1 connect=0ms service=2ms status=404 bytes=1966 protocol=https
+2024-06-09T20:21:15.655453+00:00 heroku[router]: at=info method=GET path="/assets/tailwindcss/components" host=hotefinder-3980cefcc9bb.herokuapp.com request_id=f0b9af5b-54a6-4fe8-80d1-f474902d419e fwd="92.158.189.236" dyno=web.1 connect=0ms service=4ms status=404 bytes=1966 protocol=https
+2024-06-09T20:21:15.754045+00:00 heroku[router]: at=info method=GET path="/assets/icons/Bg_logo-268b68c6a3f45897f7711e9c19345a5e249e431bf8a672d31df0260b4c714c14.svg" host=hotefinder-3980cefcc9bb.herokuapp.com request_id=f222f5ef-dc90-4bb9-bff4-3e1173e54b85 fwd="92.158.189.236" dyno=web.1 connect=0ms service=1ms status=200 bytes=1006 protocol=https
+2024-06-09T20:21:15.755987+00:00 heroku[router]: at=info method=GET path="/assets/icons/list-check-12e0b8cf14a095468cdae5f80f4cb769515bbd1689416998c00ce6924fd11eab.svg" host=hotefinder-3980cefcc9bb.herokuapp.com request_id=290c95cd-b576-4ce7-a329-5837ea2063db fwd="92.158.189.236" dyno=web.1 connect=0ms service=2ms status=200 bytes=1003 protocol=https
+2024-06-09T20:21:15.839410+00:00 heroku[router]: at=info method=GET path="/assets/icons/home-bbb8271c00b9d45369f7ee332971ea764df4d7ec7c036e6a9ea5dd72a78cdc10.svg" host=hotefinder-3980cefcc9bb.herokuapp.com request_id=23bd0950-7c2a-4117-8616-41a613e224b6 fwd="92.158.189.236" dyno=web.1 connect=0ms service=1ms status=200 bytes=1764 protocol=https
+2024-06-09T20:21:15.839455+00:00 heroku[router]: at=info method=GET path="/assets/icons/menu-burger-89c1f85cb05907160e3c59a2828332e400c153d16ee30821f159df9f8570bfda.svg" host=hotefinder-3980cefcc9bb.herokuapp.com request_id=fbcd8564-1846-4ed2-afb4-258494056eb1 fwd="92.158.189.236" dyno=web.1 connect=0ms service=1ms status=200 bytes=483 protocol=https
+2024-06-09T20:21:16.033106+00:00 heroku[router]: at=info method=GET path="/favicon.ico" host=hotefinder-3980cefcc9bb.herokuapp.com request_id=a39cdb97-5193-4c54-bf06-297ac638c318 fwd="92.158.189.236" dyno=web.1 connect=0ms service=1ms status=200 bytes=207 protocol=https
+2024-06-09T20:24:18.342996+00:00 app[api]: Starting process with command `bash` by user kimkimkimkim0719@gmail.com
+2024-06-09T20:24:24.985580+00:00 heroku[run.4259]: State changed from starting to up
+2024-06-09T20:28:05.029492+00:00 heroku[run.4259]: Process exited with status 0
+2024-06-09T20:28:05.049984+00:00 heroku[run.4259]: State changed from up to complete
+2024-06-09T20:28:31.629111+00:00 app[api]: Starting process with command `bash` by user kimkimkimkim0719@gmail.com
+2024-06-09T20:28:37.990967+00:00 heroku[run.5929]: State changed from starting to up
+2024-06-09T20:34:25.448310+00:00 heroku[run.5929]: Process exited with status 0
+2024-06-09T20:34:25.472987+00:00 heroku[run.5929]: State changed from up to complete
+2024-06-09T20:35:57.000000+00:00 app[api]: Build started by user kimkimkimkim0719@gmail.com
+2024-06-09T20:36:33.629162+00:00 app[api]: Deploy 43410b7b by user kimkimkimkim0719@gmail.com
+2024-06-09T20:36:33.629162+00:00 app[api]: Release v23 created by user kimkimkimkim0719@gmail.com
+2024-06-09T20:36:33.885597+00:00 heroku[web.1]: Restarting
+2024-06-09T20:36:33.935303+00:00 heroku[web.1]: State changed from up to starting
+2024-06-09T20:36:34.557659+00:00 heroku[web.1]: Stopping all processes with SIGTERM
+2024-06-09T20:36:34.605609+00:00 app[web.1]: [2] === puma shutdown: 2024-06-09 20:36:34 +0000 ===
+2024-06-09T20:36:34.610645+00:00 app[web.1]: [2] - Goodbye!
+2024-06-09T20:36:34.611033+00:00 app[web.1]: [2] - Gracefully shutting down workers...
+2024-06-09T20:36:36.022411+00:00 heroku[web.1]: Process exited with status 143
+2024-06-09T20:36:39.000000+00:00 app[api]: Build succeeded
+2024-06-09T20:36:39.633818+00:00 heroku[web.1]: Starting process with command `bundle exec puma -C config/puma.rb`
+2024-06-09T20:36:40.495063+00:00 app[web.1]: [2] Puma starting in cluster mode...
+2024-06-09T20:36:40.495132+00:00 app[web.1]: [2] * Puma version: 6.4.2 (ruby 3.2.2-p53) ("The Eagle of Durango")
+2024-06-09T20:36:40.495133+00:00 app[web.1]: [2] *  Min threads: 5
+2024-06-09T20:36:40.495133+00:00 app[web.1]: [2] *  Max threads: 5
+2024-06-09T20:36:40.495133+00:00 app[web.1]: [2] *  Environment: production
+2024-06-09T20:36:40.495134+00:00 app[web.1]: [2] *   Master PID: 2
+2024-06-09T20:36:40.495134+00:00 app[web.1]: [2] *      Workers: 2
+2024-06-09T20:36:40.495134+00:00 app[web.1]: [2] *     Restarts: (✔) hot (✖) phased
+2024-06-09T20:36:40.495134+00:00 app[web.1]: [2] * Preloading application
+2024-06-09T20:36:44.658397+00:00 app[web.1]: [2] * Listening on http://0.0.0.0:52250
+2024-06-09T20:36:44.658465+00:00 app[web.1]: [2] Use Ctrl-C to stop
+2024-06-09T20:36:44.673868+00:00 app[web.1]: [2] - Worker 0 (PID: 6) booted in 0.01s, phase: 0
+2024-06-09T20:36:44.676048+00:00 app[web.1]: [2] - Worker 1 (PID: 14) booted in 0.0s, phase: 0
+2024-06-09T20:36:44.770646+00:00 heroku[web.1]: State changed from starting to up
+2024-06-09T20:37:59.033306+00:00 app[api]: Starting process with command `bash` by user kimkimkimkim0719@gmail.com
+2024-06-09T20:38:06.267690+00:00 heroku[run.5202]: State changed from starting to up
+2024-06-09T20:39:35.800868+00:00 heroku[run.5202]: Process exited with status 0
+2024-06-09T20:39:35.832632+00:00 heroku[run.5202]: State changed from up to complete
+2024-06-09T20:40:13.011362+00:00 app[web.1]: I, [2024-06-09T20:40:13.011248 #6]  INFO -- : [2660901b-1f32-47f2-a756-280a7dfa7fac] Started GET "/" for 78.118.242.117 at 2024-06-09 20:40:13 +0000
+2024-06-09T20:40:13.013905+00:00 app[web.1]: I, [2024-06-09T20:40:13.013858 #6]  INFO -- : [2660901b-1f32-47f2-a756-280a7dfa7fac] Processing by WelcomeController#index as HTML
+2024-06-09T20:40:13.116516+00:00 app[web.1]: I, [2024-06-09T20:40:13.116447 #6]  INFO -- : [2660901b-1f32-47f2-a756-280a7dfa7fac]   Rendered layout layouts/application.html.erb (Duration: 18.2ms | Allocations: 6655)
+2024-06-09T20:40:13.116819+00:00 app[web.1]: I, [2024-06-09T20:40:13.116785 #6]  INFO -- : [2660901b-1f32-47f2-a756-280a7dfa7fac] Completed 200 OK in 103ms (Views: 17.2ms | ActiveRecord: 36.8ms | Allocations: 14645)
+2024-06-09T20:40:13.119083+00:00 heroku[router]: at=info method=GET path="/" host=hotefinder-3980cefcc9bb.herokuapp.com request_id=2660901b-1f32-47f2-a756-280a7dfa7fac fwd="78.118.242.117" dyno=web.1 connect=0ms service=111ms status=200 bytes=9774 protocol=https
+2024-06-09T20:40:13.425562+00:00 heroku[router]: at=info method=GET path="/assets/application-c12c4976dfe1a68b73a5a40c60054e7df95584139e1b09a0589d7868e01c57d0.css" host=hotefinder-3980cefcc9bb.herokuapp.com request_id=d967b7a4-4eb5-43e1-9425-087dbaa35409 fwd="78.118.242.117" dyno=web.1 connect=0ms service=1ms status=200 bytes=1216 protocol=https
+2024-06-09T20:40:13.526858+00:00 heroku[router]: at=info method=GET path="/assets/inter-font-8c3e82affb176f4bca9616b838d906343d1251adc8408efe02cf2b1e4fcf2bc4.css" host=hotefinder-3980cefcc9bb.herokuapp.com request_id=e8323eb8-6fbe-445d-a375-4800f10a457a fwd="78.118.242.117" dyno=web.1 connect=0ms service=1ms status=304 bytes=131 protocol=https
+2024-06-09T20:40:13.613131+00:00 heroku[router]: at=info method=GET path="/assets/application-f50ea9f12f34680baf709b4508e2968b4ac8319d238ec62c3278e4f4a0511a99.js" host=hotefinder-3980cefcc9bb.herokuapp.com request_id=15df80bb-da12-4834-afc9-04e512421df3 fwd="78.118.242.117" dyno=web.1 connect=0ms service=1ms status=304 bytes=131 protocol=https
+2024-06-09T20:40:13.621011+00:00 heroku[router]: at=info method=GET path="/assets/icons/list-check-12e0b8cf14a095468cdae5f80f4cb769515bbd1689416998c00ce6924fd11eab.svg" host=hotefinder-3980cefcc9bb.herokuapp.com request_id=ccad3810-6e3c-40e6-b701-fc71539ad36d fwd="78.118.242.117" dyno=web.1 connect=0ms service=1ms status=304 bytes=131 protocol=https
+2024-06-09T20:40:13.623927+00:00 heroku[router]: at=info method=GET path="/assets/icons/Bg_logo-268b68c6a3f45897f7711e9c19345a5e249e431bf8a672d31df0260b4c714c14.svg" host=hotefinder-3980cefcc9bb.herokuapp.com request_id=cc1992d3-6039-499d-b171-ca6c2aac7c8f fwd="78.118.242.117" dyno=web.1 connect=1ms service=5ms status=304 bytes=131 protocol=https
+2024-06-09T20:40:13.633720+00:00 heroku[router]: at=info method=GET path="/assets/icons/home-bbb8271c00b9d45369f7ee332971ea764df4d7ec7c036e6a9ea5dd72a78cdc10.svg" host=hotefinder-3980cefcc9bb.herokuapp.com request_id=6ae757d4-8452-4378-9f21-a6a05aa4915f fwd="78.118.242.117" dyno=web.1 connect=0ms service=0ms status=304 bytes=131 protocol=https
+2024-06-09T20:40:13.645196+00:00 heroku[router]: at=info method=GET path="/assets/icons/menu-burger-89c1f85cb05907160e3c59a2828332e400c153d16ee30821f159df9f8570bfda.svg" host=hotefinder-3980cefcc9bb.herokuapp.com request_id=d29291ad-264d-460c-92ad-de3142eccb31 fwd="78.118.242.117" dyno=web.1 connect=0ms service=0ms status=304 bytes=131 protocol=https
+2024-06-09T20:40:13.998387+00:00 heroku[router]: at=info method=GET path="/favicon.ico" host=hotefinder-3980cefcc9bb.herokuapp.com request_id=22c78768-ca21-40bd-ac29-cf9eb924778a fwd="78.118.242.117" dyno=web.1 connect=0ms service=1ms status=200 bytes=207 protocol=https
+2024-06-09T20:40:15.438451+00:00 app[web.1]: I, [2024-06-09T20:40:15.438092 #14]  INFO -- : [e1be66b7-4303-42c9-995c-9542ea7c010e] Started GET "/users/sign_up" for 78.118.242.117 at 2024-06-09 20:40:15 +0000
+2024-06-09T20:40:15.445312+00:00 app[web.1]: I, [2024-06-09T20:40:15.445234 #14]  INFO -- : [e1be66b7-4303-42c9-995c-9542ea7c010e] Processing by Users::RegistrationsController#new as HTML
+2024-06-09T20:40:15.803319+00:00 app[web.1]: I, [2024-06-09T20:40:15.803250 #14]  INFO -- : [e1be66b7-4303-42c9-995c-9542ea7c010e]   Rendered layout layouts/application.html.erb (Duration: 9.4ms | Allocations: 5644)
+2024-06-09T20:40:15.803601+00:00 app[web.1]: I, [2024-06-09T20:40:15.803575 #14]  INFO -- : [e1be66b7-4303-42c9-995c-9542ea7c010e] Completed 200 OK in 358ms (Views: 12.5ms | ActiveRecord: 160.5ms | Allocations: 31225)
+2024-06-09T20:40:15.805503+00:00 heroku[router]: at=info method=GET path="/users/sign_up" host=hotefinder-3980cefcc9bb.herokuapp.com request_id=e1be66b7-4303-42c9-995c-9542ea7c010e fwd="78.118.242.117" dyno=web.1 connect=0ms service=372ms status=200 bytes=6980 protocol=https
+2024-06-09T20:40:26.207125+00:00 app[web.1]: I, [2024-06-09T20:40:26.207050 #14]  INFO -- : [63b5e891-f835-40ba-aa2d-2b672ece5147] Started POST "/users" for 78.118.242.117 at 2024-06-09 20:40:26 +0000
+2024-06-09T20:40:26.208078+00:00 app[web.1]: I, [2024-06-09T20:40:26.208026 #14]  INFO -- : [63b5e891-f835-40ba-aa2d-2b672ece5147] Processing by Users::RegistrationsController#create as TURBO_STREAM
+2024-06-09T20:40:26.208119+00:00 app[web.1]: I, [2024-06-09T20:40:26.208092 #14]  INFO -- : [63b5e891-f835-40ba-aa2d-2b672ece5147]   Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"antoine@antoine.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+2024-06-09T20:40:26.454087+00:00 app[web.1]: I, [2024-06-09T20:40:26.454021 #14]  INFO -- : [63b5e891-f835-40ba-aa2d-2b672ece5147]   Rendered layout layouts/mailer.html.erb (Duration: 0.9ms | Allocations: 509)
+2024-06-09T20:40:26.459039+00:00 app[web.1]: I, [2024-06-09T20:40:26.458921 #14]  INFO -- : [63b5e891-f835-40ba-aa2d-2b672ece5147] Completed 500 Internal Server Error in 251ms (ActiveRecord: 8.8ms | Allocations: 8121)
+2024-06-09T20:40:26.460303+00:00 app[web.1]: E, [2024-06-09T20:40:26.460260 #14] ERROR -- : [63b5e891-f835-40ba-aa2d-2b672ece5147]
+2024-06-09T20:40:26.460305+00:00 app[web.1]: [63b5e891-f835-40ba-aa2d-2b672ece5147] ArgumentError (SMTP-AUTH requested but missing user name):
+2024-06-09T20:40:26.460305+00:00 app[web.1]: [63b5e891-f835-40ba-aa2d-2b672ece5147]
+2024-06-09T20:40:26.460306+00:00 app[web.1]: [63b5e891-f835-40ba-aa2d-2b672ece5147] app/models/user.rb:15:in `send_welcome_email'
+2024-06-09T20:40:26.461538+00:00 heroku[router]: at=info method=POST path="/users" host=hotefinder-3980cefcc9bb.herokuapp.com request_id=63b5e891-f835-40ba-aa2d-2b672ece5147 fwd="78.118.242.117" dyno=web.1 connect=0ms service=263ms status=500 bytes=1891 protocol=https
+2024-06-09T20:47:55.870518+00:00 app[web.1]: I, [2024-06-09T20:47:55.870431 #14]  INFO -- : [c5925d46-6b2b-4ac6-9a33-8bb9bfb92f6e] Started GET "/" for 78.118.242.117 at 2024-06-09 20:47:55 +0000
+2024-06-09T20:47:55.871358+00:00 app[web.1]: I, [2024-06-09T20:47:55.871306 #14]  INFO -- : [c5925d46-6b2b-4ac6-9a33-8bb9bfb92f6e] Processing by WelcomeController#index as HTML
+2024-06-09T20:47:56.058070+00:00 app[web.1]: I, [2024-06-09T20:47:56.058000 #14]  INFO -- : [c5925d46-6b2b-4ac6-9a33-8bb9bfb92f6e]   Rendered layout layouts/application.html.erb (Duration: 184.6ms | Allocations: 4366)
+2024-06-09T20:47:56.058214+00:00 app[web.1]: I, [2024-06-09T20:47:56.058188 #14]  INFO -- : [c5925d46-6b2b-4ac6-9a33-8bb9bfb92f6e] Completed 200 OK in 187ms (Views: -56.7ms | ActiveRecord: 242.1ms | Allocations: 5197)
+2024-06-09T20:47:56.059563+00:00 heroku[router]: at=info method=GET path="/" host=hotefinder-3980cefcc9bb.herokuapp.com request_id=c5925d46-6b2b-4ac6-9a33-8bb9bfb92f6e fwd="78.118.242.117" dyno=web.1 connect=0ms service=190ms status=200 bytes=9764 protocol=https
+2024-06-09T20:47:56.275370+00:00 heroku[router]: at=info method=GET path="/assets/tailwind-144abb5b096584908392d008413695da063c86dd9d4117142e110e8597a62fc1.css" host=hotefinder-3980cefcc9bb.herokuapp.com request_id=5a3f3e50-2999-4883-89f2-68afb23708ea fwd="78.118.242.117" dyno=web.1 connect=0ms service=1ms status=304 bytes=131 protocol=https
+2024-06-09T20:47:56.371479+00:00 heroku[router]: at=info method=GET path="/assets/application-c12c4976dfe1a68b73a5a40c60054e7df95584139e1b09a0589d7868e01c57d0.css" host=hotefinder-3980cefcc9bb.herokuapp.com request_id=24b25e83-b9da-4bd8-8e97-a9b6745fa14c fwd="78.118.242.117" dyno=web.1 connect=0ms service=1ms status=304 bytes=131 protocol=https
+2024-06-09T20:47:57.036850+00:00 heroku[router]: at=info method=GET path="/favicon.ico" host=hotefinder-3980cefcc9bb.herokuapp.com request_id=823b7131-feee-4872-9e8e-4dbee5d90932 fwd="78.118.242.117" dyno=web.1 connect=0ms service=1ms status=304 bytes=131 protocol=https
