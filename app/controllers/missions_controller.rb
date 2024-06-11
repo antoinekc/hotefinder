@@ -1,9 +1,9 @@
 class MissionsController < ApplicationController
   before_action :authenticate_user!, only: [:index, :show, :edit, :update, :create, :destroy]
   before_action :set_mission, only: %i[ show edit update destroy ]
+  before_action :authorize_edit!, only: %i[edit update]
 
   helper_method :paris_zip_codes
-
 
   def index
     if current_user.is_owner
@@ -18,13 +18,13 @@ class MissionsController < ApplicationController
     end
   end
 
-
   def show
   end
 
-
   def new
-    @mission = Mission.new
+    @mission = Mission.new(status: MissionStatusService::INITIAL_STATUS)
+    @status_service = MissionStatusService.new(current_user, @mission)
+    @allowed_statuses = @status_service.allowed_statuses
       if params[:host_id].present?
         @user = User.find(params[:host_id])
       else
@@ -33,13 +33,17 @@ class MissionsController < ApplicationController
   end
 
   def edit
+    @status_service = MissionStatusService.new(current_user, @mission)
+    @allowed_statuses = @status_service.allowed_statuses
     @mission = Mission.find(params[:id])
   end
 
   def create
     @mission = Mission.new(mission_params)
     @mission.owner = current_user
-
+    if @mission.status.blank?
+      @mission.status = MissionStatusService::INITIAL_STATUS
+    end
     if params[:mission][:host_id].present?
       @user = User.find(params[:mission][:host_id])
 
@@ -68,8 +72,10 @@ class MissionsController < ApplicationController
   end
 
   def update
+    @status_service = MissionStatusService.new(current_user, @mission)
+    new_status = mission_params[:status]
     respond_to do |format|
-      if @mission.update(mission_params)
+      if @mission.update(mission_params) && @mission.update(mission_params)
         format.html { redirect_to mission_url(@mission), notice: "Mission was successfully updated." }
         format.json { render :show, status: :ok, location: @mission }
       else
@@ -78,7 +84,6 @@ class MissionsController < ApplicationController
       end
     end
   end
-
 
   def destroy
     @mission.destroy!
@@ -90,11 +95,21 @@ class MissionsController < ApplicationController
   end
 
   private
+
     def set_mission
       @mission = Mission.find(params[:id])
     end
 
     def mission_params
-      params.require(:mission).permit(:title, :description, :start_date, :end_date, :postal_code, :city_id, :host_id)
+      params.require(:mission).permit(:title, :description, :start_date, :end_date, :postal_code, :city_id, :host_id, :status)
+    end
+
+    def authorize_edit!
+      @status_service = MissionStatusService.new(current_user, @mission)
+      puts "$" *200
+      puts @status_service.allowed_statuses
+      unless @status_service.allowed_statuses.include?(@mission.status)
+        #redirect_to missions_path, alert: "You are not authorized to edit this mission."
+      end
     end
 end
