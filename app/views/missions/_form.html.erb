@@ -47,6 +47,10 @@
 
   <%= form.hidden_field :host_id, value: @user.id if @user.present? %>
 
+   <div class="flex justify-center">
+    <%= form.submit "Save Mission", class: "btn-primary" %><br><br>
+  </div>
+
   <div class = 'flex items-center'>
     <%= form.label :postal_code,"Arrondissement", class: "block text-sm font-medium text-HFblue-200 mr-2" %>
     <%= form.select :postal_code, options_for_select(paris_zip_codes), class: "mt-1 block w-full shadow-sm sm:text-sm rounded-md text-HFdark border-HFlight hoover:border-HFblue-200" %>  
