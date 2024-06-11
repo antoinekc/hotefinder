@@ -1,32 +1,42 @@
-
-
 <body>
-<div class="w-full">
+<div class="w-full mt-5">
   <% if notice.present? %>
     <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
   <% end %>
 
   <% content_for :title, "Missions" %>
 
-  <div class="flex justify-between items-center mb-5">
-    <h1 class="font-bold text-4xl">Missions</h1>
-    <%= link_to "New mission", new_mission_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
-  </div>
-
-  <div id="missions" class="min-w-full">
-    <% @missions.each do |mission| %>
-      <div class="bg-white shadow-md rounded-lg p-5 mb-5">
-        <h2 class="text-lg font-medium mb-2"><%= mission.title %></h2>
-        <p class="mb-2"><%= mission.description %></p>
-        <p class="mb-2"><%= mission.host.first_name %> <%= mission.host.last_name %></p>
-        <p class="mb-2">Début: <%= mission.start_date %></p>
-        <p class="mb-4">Fin: <%= mission.end_date %></p>
-
-        <%= link_to "Show this mission", mission_path(mission), class: "ml-2 rounded-lg py-2 px-4 bg-gray-100 inline-block font-medium" %>
-        <%= link_to "Edit", edit_mission_path(mission), class: "ml-2 rounded-lg py-2 px-4 bg-gray-100 inline-block font-medium" %>
-        <%= button_to "Delete", mission, method: :delete, class: "ml-2 rounded-lg py-2 px-4 bg-red-500 text-white font-medium" %>
-      </div>
-    <% end %>
-  </div>
+<div class="flex flex-col items-center mb-5 justify-center">
+  <h1 class="font-bold text-4xl text-HFblue-200 mb-5">Missions</h1>
+  <%= link_to "Ajouter une nouvelle mission", new_mission_path, class: "btn-primary mt-5 mb-5" %>
 </div>
+
+<div id="missions" class="flex justify-center flex-wrap p-2 ml-2 space-x-4">
+  <% @missions.each do |mission| %>
+    <div class="mb-5 mt-5 ml-5 bg-HFlight shadow-md rounded-lg p-5 m-5 w-2/5">
+      <h2 class="text-2xl font-bold text-HFblue-200 mb-5"><%= mission.title %></h2>
+      <div class="description mb-5 w-full relative" style="display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;">
+        <%= mission.description %>
+      </div>
+      <p class="mb-2"><%= mission.host.first_name %> <%= mission.host.last_name %></p>
+      <div class="flex items-center mb-2">
+        <p class="mb-2 text-HFblue-200">Début: <%= mission.start_date %></p>
+      </div>
+      <p class="mb-4 text-HFblue-200">Fin: <%= mission.end_date %></p>
+      <div class="flex mt-10 justify-between">
+        <div>
+          <%= link_to "Voir cette mission", mission_path(mission), class: "btn-primary" %>
+        </div>
+        <div>
+          <%= link_to "Modifier", edit_mission_path(mission), class: "rounded py-2 px-2 bg-HFlight inline-block font-medium" %>
+        </div>
+        <div>
+          <%= button_to "Supprimer", mission, method: :delete, class: "btn-secondary" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+
 </body>

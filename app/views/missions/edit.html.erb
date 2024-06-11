@@ -1,8 +1,10 @@
-<div class="mx-auto md:w-2/3 w-full">
-  <h1 class="font-bold text-4xl">Editing mission</h1>
+<div class="mx-auto w-5/6 w-full flex flex-col items-center">
+  <h1 class="font-bold text-2xl text-HFblue-200">Editing mission</h1>
 
   <%= render "form", mission: @mission %>
 
-  <%= link_to "Show this mission", @mission, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-  <%= link_to "Back to missions", missions_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+  <div class="flex justify-center">
+    <%= link_to "Show this mission", @mission, class: "mx-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to "Back to missions", missions_path, class: "mx-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+  </div>
 </div>
