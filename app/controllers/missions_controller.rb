@@ -60,14 +60,32 @@ class MissionsController < ApplicationController
   def update
     the_choice
 
-    respond_to do |format|
-      if @mission.save
-        format.html { redirect_to mission_url(@mission), notice: "Mission status was successfully updated." }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
+
+    if params[:mission].present?
+      # Regular update with mission parameters
+      respond_to do |format|
+        if @mission.update(mission_params)
+          format.html { redirect_to mission_url(@mission), notice: "Mission was successfully updated." }
+          format.json { render :show, status: :ok, location: @mission }
+        else
+          format.html { render :edit, status: :unprocessable_entity }
+          format.json { render json: @mission.errors, status: :unprocessable_entity }
+        end
+      end
+    else
+      # Update only the status
+      respond_to do |format|
+        if @mission.save
+          format.html { redirect_to mission_url(@mission), notice: "Mission status was successfully updated." }
+          format.json { render :show, status: :ok, location: @mission }
+        else
+          format.html { render :edit, status: :unprocessable_entity }
+          format.json { render json: @mission.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
+
 
 
   def destroy
