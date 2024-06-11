@@ -91,13 +91,13 @@ class MissionsController < ApplicationController
 
     def the_choice
       case params[:choix]
-      when "Accepter Mission"
+      when "Accepter mission"
         @mission.status = "Acceptée"
-      when "Refuser Mission"
+      when "Refuser mission"
         @mission.status = "Refusée"
       when "Abandonner mission"
         @mission.status = "Abandonnée"
-      when "Annuler Mission"
+      when "Annuler mission"
         @mission.status = "Annulée"
       end
     end
