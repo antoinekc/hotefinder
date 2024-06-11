@@ -89,3 +89,7 @@ gem "open-uri", "~> 0.4.1"
 gem "mailjet", "~> 1.7"
 
 gem "letter_opener", "~> 1.10"
+
+gem 'carrierwave'
+
+gem 'fog-aws'

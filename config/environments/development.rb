@@ -11,6 +11,8 @@ Rails.application.configure do
   # Default_url_options appropriate for a development environment
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
+  config.action_mailer.delivery_method = :test
+
   # Do not eager load code on boot.
   config.eager_load = false
 

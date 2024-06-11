@@ -3,6 +3,19 @@ require "active_support/core_ext/integer/time"
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+  #hôte pour envoyer des mails
+  config.action_mailer.default_url_options = { host: 'https://hotefinder-3980cefcc9bb.herokuapp.com/' }
+
+  config.action_mailer.smtp_settings = {
+    address: 'in-v3.mailjet.com',
+    port: 587,
+    user_name: ENV['MAILJET_API_KEY'],
+    password: ENV['MAILJET_SECRET_KEY'],
+    authentication: 'plain',
+    enable_starttls_auto: true
+  }
+
+
   # Code is not reloaded between requests.
   config.enable_reloading = false
 
@@ -59,8 +72,7 @@ Rails.application.configure do
   # Prepend all log lines with the following tags.
   config.log_tags = [ :request_id ]
 
-  # hôte pour envoyer des mails
-  config.action_mailer.default_url_options = { host: 'https://hotefinder-3980cefcc9bb.herokuapp.com/' }
+  
 
   # "info" includes generic and useful information about system operation, but avoids logging too much
   # information to avoid inadvertent exposure of personally identifiable information (PII). If you
@@ -97,4 +109,5 @@ Rails.application.configure do
   # ]
   # Skip DNS rebinding protection for the default health check endpoint.
   # config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
+
 end
