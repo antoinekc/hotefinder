@@ -20,11 +20,7 @@
     <%= form.text_area :description, class: "mt-1 block w-full shadow-sm sm:text-sm rounded-md text-HFdark border-HFlight hoover:border-HFblue-200" %>
   </div>
 
-  <div>
-    <%= form.label :city_name, "City Name", class: "block text-sm font-medium text-gray-700" %>
-    <%= form.text_field :city_name, value: "Paris", readonly: true, class: " block w-full shadow-sm sm:text-sm border-gray-300 bg-gray-200 rounded-md" %>
-    <%= form.hidden_field :city_id, value: 1 %>
-  </div>
+
 
   <div class = 'flex items-center'>
     <%= form.label :start_date, class: "block text-sm font-medium text-HFblue-200 mr-2" %>
@@ -36,9 +32,10 @@
     <%= form.date_select :end_date, class: "mt-1 block w-full sm:text-sm rounded text-HFdark border-HFlight hoover:border-HFblue-200" %>
   </div>
 
-  <div class = 'flex items-center'>
+  <div class ='flex items-center'>
     <%= form.label :city_id,"Ville", class: "block text-sm font-medium text-HFblue-200 mr-2" %>
-    <%= form.select :city_id, [['Paris', 'Paris']], {}, class: "mt-1 block w-full shadow-sm sm:text-sm rounded-md text-HFdark border-HFlight hoover:border-HFblue-200" %>
+    <%= form.text_field :city_name, value: "Paris", readonly: true, class: "mt-1 block w-full shadow-sm sm:text-sm rounded-md text-HFdark border-HFlight hoover:border-HFblue-200 bg-gray-200" %>
+    <%= form.hidden_field :city_id, value: 1 %>
   </div>
 
   <div class = 'flex items-center'>

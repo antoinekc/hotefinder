@@ -3,8 +3,6 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
-= require missions
-
 @layer components {
 
   /* Buttons */
