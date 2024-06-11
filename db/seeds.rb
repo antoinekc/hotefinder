@@ -38,7 +38,7 @@ admin = User.create!(
   commission: 20
 )
 
-puts "Admin initialisé."
+puts "Admin seeded."
 
 # UTILISATEURS
 disponibilite = ["Disponible", "Indisponible", "Débordé"]
@@ -62,7 +62,7 @@ end
 
 puts "Hôtes initialisés."
 
-10.times do
+20.times do
   User.create!(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
@@ -81,7 +81,7 @@ end
 
 puts "Propriétaires d'hôtes initialisés."
 
-10.times do
+2.times do
   User.create!(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
