@@ -1,9 +1,8 @@
 class MissionsController < ApplicationController
   before_action :authenticate_user!, only: [:index, :show, :edit, :update, :create, :destroy]
-  before_action :set_mission, only: %i[ show edit update destroy ]
+  before_action :set_mission, only: %i[show edit update destroy]
 
   helper_method :paris_zip_codes
-
 
   def index
     if current_user.is_owner
@@ -18,18 +17,17 @@ class MissionsController < ApplicationController
     end
   end
 
-
   def show
   end
 
-
   def new
     @mission = Mission.new
-      if params[:host_id].present?
-        @user = User.find(params[:host_id])
-      else
-        @user = nil
-      end
+    if params[:host_id].present?
+      @user = User.find(params[:host_id])
+    else
+      @user = nil
+    end
+    @mission.status = ""
   end
 
   def edit
@@ -39,6 +37,7 @@ class MissionsController < ApplicationController
   def create
     @mission = Mission.new(mission_params)
     @mission.owner = current_user
+    @mission.status = "Soumise"
 
     if params[:mission][:host_id].present?
       @user = User.find(params[:mission][:host_id])
@@ -62,12 +61,18 @@ class MissionsController < ApplicationController
     end
   end
 
-
   def paris_zip_codes
     (75001..75020).map { |zip_code| [zip_code.to_i, zip_code] }
   end
 
   def update
+    case params[:choix]
+    when "Accepter Mission"
+      @mission.status = "Acceptée"
+    when "Refuser Mission"
+      @mission.status = "Refusée"
+    end
+
     respond_to do |format|
       if @mission.update(mission_params)
         format.html { redirect_to mission_url(@mission), notice: "Mission was successfully updated." }
@@ -79,7 +84,6 @@ class MissionsController < ApplicationController
     end
   end
 
-
   def destroy
     @mission.destroy!
 
@@ -90,6 +94,7 @@ class MissionsController < ApplicationController
   end
 
   private
+
     def set_mission
       @mission = Mission.find(params[:id])
     end

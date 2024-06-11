@@ -11,8 +11,8 @@
   <% end %>
 
   <div class = 'flex items-center'>
-    <%= form.label :titre, class: "block text-sm font-medium text-HFblue-200 mr-2" %>
-    <%= form.text_field :titre, class: "mt-1 block w-full shadow-sm sm:text-sm rounded-md text-HFdark border-HFlight hover:border-HFblue-200"  %>
+    <%= form.label :title, class: "block text-sm font-medium text-HFblue-200 mr-2" %>
+    <%= form.text_field :title, class: "mt-1 block w-full shadow-sm sm:text-sm rounded-md text-HFdark border-HFlight hover:border-HFblue-200"  %>
   </div>
 
   <div class = 'flex items-center'>
@@ -50,11 +50,26 @@
   <%= form.hidden_field :host_id, value: @user.id if @user.present? %>
 
   <div class = 'flex items-center'>
-  <%= form.label :postal_code,"Arrondissement", class: "block text-sm font-medium text-HFblue-200 mr-2" %>
-  <%= form.select :postal_code, options_for_select(paris_zip_codes), class: "mt-1 block w-full shadow-sm sm:text-sm rounded-md text-HFdark border-HFlight hoover:border-HFblue-200" %>  
+    <%= form.label :postal_code,"Arrondissement", class: "block text-sm font-medium text-HFblue-200 mr-2" %>
+    <%= form.select :postal_code, options_for_select(paris_zip_codes), class: "mt-1 block w-full shadow-sm sm:text-sm rounded-md text-HFdark border-HFlight hoover:border-HFblue-200" %>  
   </div>
 
   <div class="flex justify-center">
-    <%= form.submit "Save Mission", class: "btn-primary" %><br><br>
+    <% if mission.status == "" %>
+      <%= form.submit "Save Mission", class: "btn-primary" %>
+      <% puts "==" * 18 %>
+      <%= puts mission.status %>
+      <% puts "==" * 18 %>
+    <% elsif mission.status == "Soumise" %>
+      <% if mission.host_id == current_user.id %>
+      <%= form.submit "Accepter Mission", name: "choix", value: "Accepter Mission", class: "btn btn-primary" %>
+      <%= form.submit "Refuser Mission", name: "choix", value: "Refuser Mission", class: "btn btn-danger" %>
+      <% elsif mission.owner_id == current_user.id %>
+       <div class ='flex items-center'>
+         <%= form.text_field :info, value: "attente de réponse", readonly: true, class: "mt-1 block w-full shadow-sm sm:text-sm rounded-md text-HFdark border-HFlight hoover:border-HFblue-200 bg-gray-200" %>
+        <% end %>
   </div>
-  <% end %>
+    <% end %>
+  </div>
+
+<% end %>
