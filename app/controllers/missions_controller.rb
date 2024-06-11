@@ -66,16 +66,10 @@ class MissionsController < ApplicationController
   end
 
   def update
-    case params[:choix]
-      when "Accepter Mission"
-        @mission.status = "Acceptée"
-      when "Refuser Mission"
-        @mission.status = "Refusée"
-      when "Abandonner mission"
-        @mission.status = "Abandonnée"
-      when "Annuler Mission"
-        @mission.status = "Annulée"
-    end
+    Rails.logger.debug "Params reçus : #{params.inspect}"
+    the_choice
+    Rails.logger.debug "Mission status après the_choice : #{@mission.status}"
+  
 
     respond_to do |format|
       if @mission.update(mission_params)
@@ -104,6 +98,21 @@ class MissionsController < ApplicationController
     end
 
     def mission_params
-      params.require(:mission).permit(:title, :description, :start_date, :end_date, :postal_code, :city_id, :host_id)
+      params.require(:mission).permit(:title, :description, :start_date, :end_date, :postal_code, :city_id, :host_id, :status)
+    end
+
+    def the_choice
+      Rails.logger.debug "Choix reçu : #{params[:choix]}"
+      case params[:choix]
+      when "Accepter Mission"
+        @mission.status = "Acceptée"
+      when "Refuser Mission"
+        @mission.status = "Refusée"
+      when "Abandonner mission"
+        @mission.status = "Abandonnée"
+      when "Annuler Mission"
+        @mission.status = "Annulée"
+      end
+       Rails.logger.debug "Mission status dans the_choice : #{@mission.status}"
     end
 end
