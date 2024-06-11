@@ -37,7 +37,7 @@ class MissionsController < ApplicationController
   def create
     @mission = Mission.new(mission_params)
     @mission.owner = current_user
-    @mission.status = "Soumise"
+    @mission.status = "En attente"
 
     if params[:mission][:host_id].present?
       @user = User.find(params[:mission][:host_id])
@@ -67,10 +67,14 @@ class MissionsController < ApplicationController
 
   def update
     case params[:choix]
-    when "Accepter Mission"
-      @mission.status = "Acceptée"
-    when "Refuser Mission"
-      @mission.status = "Refusée"
+      when "Accepter Mission"
+        @mission.status = "Acceptée"
+      when "Refuser Mission"
+        @mission.status = "Refusée"
+      when "Abandonner mission"
+        @mission.status = "Abandonnée"
+      when "Annuler Mission"
+        @mission.status = "Annulée"
     end
 
     respond_to do |format|

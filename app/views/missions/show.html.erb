@@ -6,15 +6,15 @@
 
     <%= render @mission %>
 
-<div class="flex justify-center">
-  <div class="">
-    <%= link_to "Editer ma mission", edit_mission_path(@mission), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <%= link_to "Retour aux missions", missions_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <div class="inline-block ml-2">
-      <%= button_to "Supprimer cette mission", @mission, method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
+    <div class="flex justify-center">
+      <div class="">
+        <%= link_to "Editer ma mission", edit_mission_path(@mission), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+        <%= link_to "Retour aux missions", missions_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+        <div class="inline-block ml-2">
+          <%= button_to "Supprimer cette mission", @mission, method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
 
   </div>
 </div>

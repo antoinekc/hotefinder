@@ -8,5 +8,6 @@
   <div class="flex justify-center">
     <%= link_to "Show this mission", @mission, class: "mx-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
     <%= link_to "Back to missions", missions_path, class: "mx-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= button_to "Supprimer cette mission", @mission, method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
   </div>
 </div>

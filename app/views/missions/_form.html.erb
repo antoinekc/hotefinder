@@ -20,8 +20,6 @@
     <%= form.text_area :description, class: "mt-1 block w-full shadow-sm sm:text-sm rounded-md text-HFdark border-HFlight hoover:border-HFblue-200" %>
   </div>
 
-
-
   <div class = 'flex items-center'>
     <%= form.label :start_date, class: "block text-sm font-medium text-HFblue-200 mr-2" %>
     <%= form.date_select :start_date, class: "mt-1 block w-full shadow-sm text-sm rounded-md text-HFdark border-HFlight hoover:border-HFblue-200" %>
@@ -55,20 +53,27 @@
   </div>
 
   <div class="flex justify-center">
+    <!-- Selection du bon bouton -->
     <% if mission.status == "" %>
       <%= form.submit "Save Mission", class: "btn-primary" %>
       <% puts "==" * 18 %>
       <%= puts mission.status %>
       <% puts "==" * 18 %>
-    <% elsif mission.status == "Soumise" %>
+    <!-- Si status de mission == En attente -->
+    <% elsif mission.status == "En attente" %>
       <% if mission.host_id == current_user.id %>
-      <%= form.submit "Accepter Mission", name: "choix", value: "Accepter Mission", class: "btn btn-primary" %>
-      <%= form.submit "Refuser Mission", name: "choix", value: "Refuser Mission", class: "btn btn-danger" %>
+        <%= form.submit "Accepter Mission", name: "choix", value: "Accepter Mission", class: "btn btn-primary" %>
+        <%= form.submit "Refuser Mission", name: "choix", value: "Refuser Mission", class: "btn btn-danger" %>
       <% elsif mission.owner_id == current_user.id %>
-       <div class ='flex items-center'>
-         <%= form.text_field :info, value: "attente de réponse", readonly: true, class: "mt-1 block w-full shadow-sm sm:text-sm rounded-md text-HFdark border-HFlight hoover:border-HFblue-200 bg-gray-200" %>
-        <% end %>
-  </div>
+        <%= form.text_field :info, value: "attente de réponse", readonly: true, class: "mt-1 block w-full shadow-sm sm:text-sm rounded-md text-HFdark border-HFlight hoover:border-HFblue-200 bg-gray-200" %>
+      <% end %>
+    <!-- Si status de mission == Accepté -->
+    <% elsif mission.status == "Acceptée" %>
+      <% if mission.host_id == current_user.id %>
+        <%= form.submit "Abandonner", name: "choix", value: "Abandonner mission", class: "btn btn-danger" %>
+      <% elsif mission.owner_id == current_user.id %>
+        <%= form.submit "Annuler", name: "choix", value: "Annuler mission", class: "btn btn-danger" %>
+      <% end %>
     <% end %>
   </div>
 
