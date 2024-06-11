@@ -9,7 +9,7 @@
   <p class="font-bold text-lg text-HFblue-200 mb-2">Titre : <%= mission.title %></p>
   <p class="text-gray-700 mb-2">Description de ma mission : <br><%= mission.description %></p>
   <p><span class="font-bold text-HFblue-200">Statut :</span> <%= mission.status %></p>
-  <p><span class="font-bold text-HFblue-200">Identifiant de l'hôte :</span> <%= mission.host_id %></p>
+  <p><span class="font-bold text-HFblue-200">Identifiant de l'hôte :</span> <%= mission.host.first_name %></p>
   <p><span class="font-bold text-HFblue-200">Identifiant propriétaire :</span> <%= mission.owner_id %></p>
   <p><span class="font-bold text-HFblue-200">Date de début :</span> <%= mission.start_date %></p>
   <p><span class="font-bold text-HFblue-200">Date de fin :</span> <%= mission.end_date %></p>
