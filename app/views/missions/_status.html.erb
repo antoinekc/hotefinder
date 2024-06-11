@@ -1,0 +1,18 @@
+<div class="flex justify-center">
+  <% if mission.status.blank? %>
+    <%= button_to "Save Mission", mission_path(mission), method: :patch, params: { mission: { status: "En attente" }, choix: "Save mission" }, class: "btn-primary" %>
+  <% elsif mission.status == "En attente" %>
+    <% if mission.host_id == current_user.id %>
+      <%= button_to "Accepter Mission", mission_path(mission), method: :patch, params: { mission: { status: "Acceptée" }, choix: "Accepter Mission" }, class: "btn btn-primary" %>
+      <%= button_to "Refuser Mission", mission_path(mission), method: :patch, params: { mission: { status: "Refusée" }, choix: "Refuser mission" }, class: "btn btn-danger" %>
+    <% elsif mission.owner_id == current_user.id %>
+      <%= text_field_tag :info, "attente de réponse", readonly: true, class: "mt-1 block w-full shadow-sm sm:text-sm rounded-md text-HFdark border-HFlight hoover:border-HFblue-200 bg-gray-200" %>
+    <% end %>
+  <% elsif mission.status == "Acceptée" %>
+    <% if mission.host_id == current_user.id %>
+      <%= button_to "Abandonner", mission_path(mission), method: :patch, params: { mission: { status: "Abandonnée" }, choix: "Abandonner mission" }, class: "btn btn-danger" %>
+    <% elsif mission.owner_id == current_user.id %>
+      <%= button_to "Annuler", mission_path(mission), method: :patch, params: { mission: { status: "Annulée" }, choix: "Annuler mission" }, class: "btn btn-danger" %>
+    <% end %>
+  <% end %>
+</div>
