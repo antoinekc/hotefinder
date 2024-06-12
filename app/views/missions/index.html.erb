@@ -7,14 +7,16 @@
   <% content_for :title, "Missions" %>
 
 <div class="flex flex-col items-center mb-5 justify-center relative w-full h-120">
-  <div class="relative w-full h-full p-5 bg-HFdark opacity-70">
+  <div class="relative w-full h-full">
     <img src="https://images.pexels.com/photos/279100/pexels-photo-279100.jpeg" alt="" class="absolute inset-0 h-full w-full object-cover object-center">
+    <div class="absolute inset-0 bg-HFdark opacity-50"></div>
     <div class="relative flex flex-col items-center justify-center h-full">
       <h1 class="font-bold text-4xl text-HFblue-200 mb-10 mt-10">Missions</h1>
-      <%= link_to "Ajouter une nouvelle mission", new_mission_path, class: "btn-primary mt-5 mb-5" %>
+      <%= link_to "Ajouter une nouvelle mission", new_mission_path, class: "btn btn-primary mt-5 mb-5" %>
     </div>
   </div>
 </div>
+
 
 
 <div id="missions" class="flex justify-center flex-wrap p-2 ml-2 space-x-4 gap-10">

@@ -6,8 +6,8 @@
 
     <%= render @mission %>
 
-<div class="flex justify-center">
-  <div class="">
+<div class="flex justify-end p-5">
+  <div class="p-5">
     <%= link_to "Editer ma mission", edit_mission_path(@mission), class: "btn-primary" %>
     <%= link_to "Retour aux missions", missions_path, class: "ml-2 rounded-full py-3 px-5 bg-HFlight inline-block font-medium" %>
     <div class="inline-block ml-2">
@@ -16,4 +16,4 @@
   </div>
 </div>
 
-<%= render "status", mission: @mission %>
+<!--<%= render "status", mission: @mission %>

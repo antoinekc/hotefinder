@@ -1,4 +1,4 @@
-<div class="flex justify-center items-center h-screen">
+<div class="flex justify-center items-center">
   <div class="text-center">
     <div class='text-xl font-bold text-HFblue-200 p-5 m-5'>Votre Nouvelle Mission</div>
     <div class='text-sm mb-5'> Voici les informations principales de votre nouvelle mission. Si vous êtes satisfait, cliquez sur Liste des missions. Si vous souhaitez modifier cette dernière, rendez-vous sur "Editer ma mission". Si cette dernière ne nous convient plus, cliquez sur "Supprimer ma mission".</div>
@@ -6,11 +6,11 @@
 </div>
 
 <div id="<%= dom_id mission %>" class="bg-HFlight shadow-md rounded-lg p-4 mb-4 items-center">
-  <p class="font-bold text-lg text-HFblue-200 mb-2">Titre : <%= mission.title %></p>
-  <p class="text-gray-700 mb-2">Description de ma mission : <br><%= mission.description %></p>
-  <p><span class="font-bold text-HFblue-200">Statut :</span> <%= mission.status %></p>
-  <p><span class="font-bold text-HFblue-200">Identifiant de l'hôte :</span> <%= mission.host.first_name %></p>
-  <p><span class="font-bold text-HFblue-200">Identifiant propriétaire :</span> <%= mission.owner_id %></p>
-  <p><span class="font-bold text-HFblue-200">Date de début :</span> <%= mission.start_date %></p>
-  <p><span class="font-bold text-HFblue-200">Date de fin :</span> <%= mission.end_date %></p>
+  <p class="font-bold text-lg text-HFblue-200 mt-2">Titre : <%= mission.title %></p>
+  <p class = "mt-2"><span class="font-bold text-lg text-HFblue-200">Description de ma mission :<br></span> <%= mission.description %></p>
+  <p class = "mt-2"><span class="font-bold text-HFblue-200 my-2">Statut :</span> <%= mission.status %></p>
+  <p class = "mt-2"><span class="font-bold text-HFblue-200 my-2">Nom de l'hôte :</span> <%= mission.host.first_name%> <%=mission.host.last_name %></p>
+  <p class = "mt-2"><span class="font-bold text-HFblue-200">Identifiant propriétaire :</span> <%= mission.owner_id %></p>
+  <p class = "mt-2"><span class="font-bold text-HFblue-200">Date de début :</span> <%= mission.start_date %></p>
+  <p class = "mt-2"><span class="font-bold text-HFblue-200">Date de fin :</span> <%= mission.end_date %></p>
 </div>
