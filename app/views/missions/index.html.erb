@@ -34,14 +34,16 @@
       <p class="mb-4 text-HFblue-200">Fin: <%= mission.end_date %></p>
       <div class="flex p-5 ml-5 justify-end items-center gap-10">
         <div>
-          <%= link_to "Voir mission", mission_path(mission), class: "btn-primary" %>
+           <%= link_to "Voir mission", mission_path(mission), class: "btn-primary" %>
         </div>
+          <% if mission.status != "En cours" && mission.status != "Terminée" %>
         <div>
           <%= link_to "Modifier", edit_mission_path(mission), class: "rounded-full py-2 px-5 text-white bg-HFdark inline-block font-medium" %>
         </div>
         <div>
           <%= button_to "Supprimer", mission, method: :delete, class: "btn-secondary" %>
         </div>
+        <% end %>
       </div>
     </div>
   <% end %>
