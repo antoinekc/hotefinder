@@ -58,7 +58,7 @@ class MissionsController < ApplicationController
   end
 
   def update
-    the_choice
+    the_choice(params[:mission_params])
 
 
     if params[:mission].present?
@@ -107,8 +107,8 @@ class MissionsController < ApplicationController
       params.require(:mission).permit(:title, :description, :start_date, :end_date, :postal_code, :city_id, :host_id, :status)
     end
 
-    def the_choice
-      case params[:choix]
+    def the_choice(choix)
+      case choix
       when "Accepter mission"
         @mission.status = "Acceptée"
       when "Refuser mission"
