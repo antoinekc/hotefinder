@@ -13,7 +13,9 @@
   <% end %>
     <%= link_to "Retour aux missions", missions_path, class: "ml-2 rounded-full py-3 px-5 bg-HFlight inline-block font-medium" %>
     <div class="inline-block ml-2">
+  <% if @mission.status != "En cours" && @mission.status != "Terminée" %>
       <%= button_to "Supprimer cette mission", @mission, method: :delete, class: "btn-secondary" %>
+  <% end %>
     </div>
   </div>
 </div>
