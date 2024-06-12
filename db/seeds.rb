@@ -2,28 +2,28 @@ require "faker"
 require "open-uri"
 require "aws-sdk-s3"
 
-AWS Credentials
+# AWS Credentials
 s3_client = Aws::S3::Client.new(
-  region: ENV['AWS_REGION'],
+  region: 'eu-west-3',
   access_key_id: ENV['AWS_ACCESS_KEY_ID'],
   secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']
 )
 
 s3_resource = Aws::S3::Resource.new(client: s3_client)
-bucket = s3_resource.bucket(ENV['AWS_BUCKET'])
+bucket = s3_resource.bucket('hote-finder-media')
 
-# Définir la langue en français
+# Défini la langue en Français
 Faker::Config.locale = 'fr'
 
-# Détruire tout !!
+# Destroying everything !!
 User.destroy_all
 City.destroy_all
 Mission.destroy_all
 Category.destroy_all
 
-puts "Toutes les tables ont été initialisées."
+puts "all tables seeded"
 
-# Création de l'administrateur
+# Admin creation
 admin = User.create!(
   first_name: "admin",
   last_name: "admin",
@@ -39,13 +39,14 @@ admin = User.create!(
   commission: 20
 )
 
-puts "Admin seeded."
+puts "admin seeded"
 
-# UTILISATEURS
-disponibilite = ["Disponible", "Indisponible", "Débordé"]
+# USERS
+disponibilité = ["Disponible", "Indisponible", "Débordé"]
+
 
 10.times do
-  User.create!(
+  user = User.create!(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
     email: Faker::Internet.email,
@@ -56,7 +57,7 @@ disponibilite = ["Disponible", "Indisponible", "Débordé"]
     is_admin: Faker::Boolean.boolean,
     is_host: true,
     is_owner: false,
-    is_available: disponibilite.sample,
+    is_available: disponibilité.sample,
     description: Faker::Lorem.paragraph
   )
 
@@ -69,10 +70,10 @@ disponibilite = ["Disponible", "Indisponible", "Débordé"]
   user.avatar.attach(io: avatar_file, filename: 'avatar.jpg', content_type: 'image/jpg')
 end
 
-puts "Hôtes initialisés."
+puts "hosts seeded"
 
-20.times do
-  User.create!(
+10.times do
+  user = User.create!(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
     email: Faker::Internet.email,
@@ -83,7 +84,7 @@ puts "Hôtes initialisés."
     is_admin: Faker::Boolean.boolean,
     is_host: true,
     is_owner: true,
-    is_available: disponibilite.sample,
+    is_available: disponibilité.sample,
     description: Faker::Lorem.paragraph
   )
 
@@ -96,10 +97,10 @@ puts "Hôtes initialisés."
   user.avatar.attach(io: avatar_file, filename: 'avatar.jpg', content_type: 'image/jpg')
 end
 
-puts "Propriétaires d'hôtes initialisés."
+puts "host-owners seeded"
 
-2.times do
-  User.create!(
+10.times do
+  user = User.create!(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
     email: Faker::Internet.email,
@@ -114,7 +115,7 @@ puts "Propriétaires d'hôtes initialisés."
   )
 
   # S3 avatars
-  avatar_object = bucket.object('portrait_02.jpg')
+  avatar_object = bucket.object('portrait_03.jpg')
   avatar_url = avatar_object.presigned_url(:get, expires_in: 3600)
 
   avatar_file = URI.open(avatar_url)
@@ -122,9 +123,9 @@ puts "Propriétaires d'hôtes initialisés."
   user.avatar.attach(io: avatar_file, filename: 'avatar.jpg', content_type: 'image/jpg')
 end
 
-puts "Propriétaires initialisés."
+puts "owners seeded"
 
-# VILLES
+# CITIES
 x = 75000
 20.times do
   City.create(
@@ -133,11 +134,11 @@ x = 75000
   )
 end
 
-puts "Villes initialisées."
+puts "cities seeded"
 
 # MISSIONS
-status = ["Créée", "Acceptée", "Refusée", "En cours"]
-postal_codes = ["75001","75002","75003","75004","75005","75006","75007","75008","75009","75010","75011","75012","75013","75014","75016","75016","75017","75018","75019","75020"]
+status = ["Crée", "Acceptée", "Refusée", "En cours"]
+postal_code = ["75001","75002","75003","75004","75005","75006","75007","75008","75009","75010","75011","75012","75013","75014","75016","75016","75017","75018","75019","75020"]
 
 20.times do
   Mission.create(
@@ -149,24 +150,24 @@ postal_codes = ["75001","75002","75003","75004","75005","75006","75007","75008",
     city_id: 1,
     host_id: rand(1..20),
     owner_id: rand(11..30),
-    postal_code: postal_codes.sample
+    postal_code: postal_code.sample
   )
 end
 
-puts "Missions initialisées."
+puts "missions seeded"
 
-# CATÉGORIES
+# CATEGORIES
 Category.create(name:"Remise des clés")
 Category.create(name:"Ménage")
 Category.create(name:"Shooting photo")
 Category.create(name:"Gestion de l'annonce")
 Category.create(name:"Mise en ligne de l'annonce")
 Category.create(name:"Accueil des voyageurs")
-Category.create(name:"Boîte à clés")
+Category.create(name:"Bôite à clés")
 Category.create(name:"Départ des voyageurs")
-Category.create(name:"État des lieux")
+Category.create(name:"Etat des lieux")
 Category.create(name:"Fourniture des draps")
 
-puts "Catégories initialisées."
+puts "categories seeded"
 
-puts "Initialisation terminée ! "
+puts "Seed successful ! "
