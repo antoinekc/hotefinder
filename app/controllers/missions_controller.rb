@@ -58,8 +58,21 @@ class MissionsController < ApplicationController
   end
 
   def update
-    the_choice
 
+    case params[:choix]
+      when "Accepter mission"
+        @mission.status = "Acceptée"
+      when "Refuser mission"
+        @mission.status = "Refusée"
+      when "Abandonner mission"
+        @mission.status = "Abandonnée"
+      when "Annuler mission"
+        @mission.status = "Annulée"
+      when "Démarrer mission"
+        @mission.status = "En cours"
+      when "Terminer mission"
+        @mission.status = "Terminée"
+    end
 
     if params[:mission].present?
       # Regular update with mission parameters
@@ -107,16 +120,5 @@ class MissionsController < ApplicationController
       params.require(:mission).permit(:title, :description, :start_date, :end_date, :postal_code, :city_id, :host_id, :status)
     end
 
-    def the_choice
-      case params[:choix]
-      when "Accepter mission"
-        @mission.status = "Acceptée"
-      when "Refuser mission"
-        @mission.status = "Refusée"
-      when "Abandonner mission"
-        @mission.status = "Abandonnée"
-      when "Annuler mission"
-        @mission.status = "Annulée"
-      end
-    end
+
 end

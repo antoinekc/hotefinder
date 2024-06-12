@@ -8,6 +8,8 @@
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
+    <%# Désactiver le get hover de turbo %>
+    <meta name="turbo-prefetch" content="false">
   </head>
 
   <body class="flex flex-col min-h-screen">

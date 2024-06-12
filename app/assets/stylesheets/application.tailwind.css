@@ -4,6 +4,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 @layer components {
 
   /* Buttons */
@@ -12,26 +13,27 @@
   }
 
   .btn-primary {
-    @apply bg-HFblue-200 hover:outline-2 text-white text-sm py-2 px-5 rounded-full;
+    @apply bg-HFblue-200 hover:bg-white hover:text-HFblue-200 hover:border-HFblue-200 text-white font-bold py-2 px-5 rounded-full;
   }
 
   .btn-primary-inverted {
-    @apply bg-white hover:bg-HFblue-200 border-HFblue-200 text-HFblue-200 border-HFblue-200 hover:shadow-md py-2 px-5 rounded-full;
+    @apply bg-white hover:bg-HFblue-200 hover:text-white font-bold border-HFblue-200 text-HFblue-200 border-HFblue-200 hover:shadow-md py-2 px-5 rounded-full;
   }
   
   .btn-primary-nav {
     @apply bg-HFblue-200 hover:outline-2 text-HFlight py-2 px-5 rounded-full mx-2;
   }
+
   .btn-outline-primary {
     @apply border-HFblue-300 border-4 text-HFblue-300 hover:bg-HFblue-100 hover:text-white font-bold py-3 px-8 rounded-full;
   }
   
   .btn-secondary {
-    @apply bg-HFred-200 hover:bg-HFred-200 text-white py-2 px-5 rounded-full ;
+    @apply bg-HFred-200 hover:bg-red-300 font-bold text-white py-2 px-5 rounded-full ;
   }
 
   .btn-secondary-nav {
-    @apply bg-HFred-200 hover:bg-HFred-100 text-white py-2 px-5 rounded-full ;
+    @apply bg-HFred-200 hover:bg-HFred-300 font-bold text-white py-2 px-5 rounded-full ;
   }
 
   .btn-outline-secondary {
@@ -60,10 +62,41 @@
     background-blend-mode: darken;
   }
 
-}
+  .h1 {
+    color: 'HFblue-300';
+    font-size: 50px;
+    font-weight: bold;
+  }
 
-h1 {
-  color: #1D4ED8; /* Assuming HFblue-200 is #1D4ED8 */
-  font-size: 20px;
-  font-weight: bold;
-};
+  .h2 {
+    color: 'HFblue-300';
+    font-size: 40px;
+    font-weight: bold;
+  }
+
+  .h3 {
+    color: 'HFblue-300';
+    font-size: 30px;
+    font-weight: bold;
+  }
+
+  .h4 {
+    color: 'HFred-300';
+    font-size: 25px;
+    font-weight: bold;
+  }
+
+  .h5 {
+    color: 'HFred-200';
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  .h6 {
+    color: 'HFbleu-100';
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+
+}
