@@ -1,15 +1,16 @@
 require "faker"
+require "open-uri"
 require "aws-sdk-s3"
 
-# AWS Credentials
-# s3_client = Aws::S3::Client.new(
-#   region: ENV['AWS_REGION'],
-#   access_key_id: ENV['AWS_ACCESS_KEY_ID'],
-#   secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']
-# )
+AWS Credentials
+s3_client = Aws::S3::Client.new(
+  region: ENV['AWS_REGION'],
+  access_key_id: ENV['AWS_ACCESS_KEY_ID'],
+  secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']
+)
 
-# s3_resource = Aws::S3::Resource.new(client: s3_client)
-# bucket = s3_resource.bucket(ENV['AWS_BUCKET'])
+s3_resource = Aws::S3::Resource.new(client: s3_client)
+bucket = s3_resource.bucket(ENV['AWS_BUCKET'])
 
 # Définir la langue en français
 Faker::Config.locale = 'fr'
@@ -58,6 +59,14 @@ disponibilite = ["Disponible", "Indisponible", "Débordé"]
     is_available: disponibilite.sample,
     description: Faker::Lorem.paragraph
   )
+
+  # S3 avatars
+  avatar_object = bucket.object('portrait_01.jpg')
+  avatar_url = avatar_object.presigned_url(:get, expires_in: 3600)
+
+  avatar_file = URI.open(avatar_url)
+
+  user.avatar.attach(io: avatar_file, filename: 'avatar.jpg', content_type: 'image/jpg')
 end
 
 puts "Hôtes initialisés."
@@ -77,6 +86,14 @@ puts "Hôtes initialisés."
     is_available: disponibilite.sample,
     description: Faker::Lorem.paragraph
   )
+
+  # S3 avatars
+  avatar_object = bucket.object('portrait_02.jpg')
+  avatar_url = avatar_object.presigned_url(:get, expires_in: 3600)
+
+  avatar_file = URI.open(avatar_url)
+
+  user.avatar.attach(io: avatar_file, filename: 'avatar.jpg', content_type: 'image/jpg')
 end
 
 puts "Propriétaires d'hôtes initialisés."
@@ -95,6 +112,14 @@ puts "Propriétaires d'hôtes initialisés."
     is_owner: true,
     is_available: nil
   )
+
+  # S3 avatars
+  avatar_object = bucket.object('portrait_02.jpg')
+  avatar_url = avatar_object.presigned_url(:get, expires_in: 3600)
+
+  avatar_file = URI.open(avatar_url)
+
+  user.avatar.attach(io: avatar_file, filename: 'avatar.jpg', content_type: 'image/jpg')
 end
 
 puts "Propriétaires initialisés."
