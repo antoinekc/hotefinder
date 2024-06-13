@@ -29,10 +29,9 @@ class UsersController < ApplicationController
 
   def destroy
     @user.destroy
-    respond_to do |format|
-      flash[:notice] = 'l\'utilisateur a été supprimé'
-      redirect_to users_url
-    end
+
+    flash[:notice] = 'l\'utilisateur a été supprimé'
+    redirect_to users_url
   end
 
   private
