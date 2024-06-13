@@ -1,0 +1,8 @@
+<div class="flex-grow flex flex-col items-center justify-center max-h-12">
+<% if flash[:notice].present? %>
+  <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg fixed top-5 left-1/2 transform -translate-x-1/2 z-50" id="notice"><%= flash[:notice] %></p>
+<% end %>
+<% if flash[:alert].present? %>
+  <p class="py-2 px-3 bg-red-50 mb-5 text-red-500 font-medium rounded-lg fixed top-5 left-1/2 transform -translate-x-1/2 z-50" id="alert"><%= flash[:alert] %></p>
+<% end %>
+</div>
