@@ -55,6 +55,7 @@ class MissionsController < ApplicationController
   end
 
   def update
+    previous_status = @mission.status
 
     case params[:choix]
       when "Accepter mission"
@@ -74,6 +75,7 @@ class MissionsController < ApplicationController
     if params[:mission].present?
       # Regular update with mission parameters
       if @mission.update(mission_params)
+        MissionMailer.status_update(@mission, @mission.owner).deliver_later if @mission.status != previous_status
         redirect_to mission_url(@mission), notice: "La mission a été mise à jour."
       else
         flash[:alert] = "Une erreur est apparue lors de la création de la mission."
@@ -82,6 +84,7 @@ class MissionsController < ApplicationController
     else
       # Update only the status
       if @mission.save
+        MissionMailer.status_update(@mission, @mission.owner).deliver_later if @mission.status != previous_status
         redirect_to mission_url(@mission), notice: "Le status de la mission a été mise à jour."
       else
         flash[:alert] = "Une erreur est apparue lors de la mise à jour de la mission."

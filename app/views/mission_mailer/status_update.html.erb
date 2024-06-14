@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <h1>Mise à jour du statut de votre mission</h1>
+    <p>Bonjour <%= @user.first_name %>,</p>
+    <p>Votre mission <strong>"<%= @mission.title %>"</strong> a été <strong>"<%= @mission.status %>"</strong> par <%= @mission.host.first_name %> <%= @mission.host.last_name %>.</p>
+    <p>Merci,</p>
+    <p>L'équipe de Hotefinder</p>
+  </body>
+</html>
