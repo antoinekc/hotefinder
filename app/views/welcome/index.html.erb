@@ -38,7 +38,7 @@
     <div class="mx-auto max-w-2xl lg:text-center">
       <h2 class="text-base font-semibold leading-7 text-violet-950">Louez plus vite</h2>
       <p class="mt-2 text-3xl font-sans font-bold tracking-tight text-violet-950 sm:text-4xl">Nos engagements</p>
-      <p class="mt-6 text-lg leading-8 text-gray-800 font-serif">La gestion de votre maison par un concierge est un acte de confiance important qui s'établit par une relation durable et pérenne. Il est impératif de sélectionner la personne idéale. </p>
+      <p class="mt-6 text-lg leading-8 text-gray-800 font-serif">Remettre les clés de sa maison principale ou secondaire à concierge est une marque de confiance qui établit une relation pérenne et durable. Il est impératif de sélectionner la personne idéale. </p>
     </div>
     <div class="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-4xl">
       <dl class="grid max-w-xl grid-cols-1 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-2 lg:gap-y-16">
@@ -89,7 +89,7 @@
   </div>
 </div>
 
-<section class="py-12 h-140">
+<section class="py-12 h-140 bg-gray-50">
   <h2 class="mt-2 mb-10 text-center font-sans font-bold tracking-tight sm:text-4xl text-violet-950">Nos concierges</h2>
   <div class="mx-auto max-w-7xl relative w-full" data-carousel="slide">
     <!-- Carousel wrapper -->
@@ -98,7 +98,7 @@
         <div class="<%= index == 0 ? 'duration-700 ease-in-out' : 'hidden duration-700 ease-in-out' %>" data-carousel-item>
           <div class="flex flex-row h-full items-center">
             <!-- Photo de l'utilisateur -->
-            <div class="flex justify-center items-center w-1/2 bg-white rounded-lg transition-transform hover:scale-95 overflow-hidden">
+            <div class="flex justify-center items-center w-1/2 bg-gray-50 rounded-lg transition-transform hover:scale-95 overflow-hidden">
               <% if user.avatar.attached? %>
                 <%= image_tag user.avatar.variant(resize_to_fill: [500, 500]), class: "rounded-full w-2/3 h-2/3 object-cover" %>
               <% end %>
