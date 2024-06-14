@@ -1,3 +1,7 @@
+<head>
+<meta name="description" content="La page modification du profil utilisateur.">
+</head>
+
 <div class="w-full mt-5">
 
   <% content_for :title, "Modifier les informations de l'utilisateur" %>
@@ -49,12 +53,17 @@
           <%= f.text_field :description, class: "form-input mt-1 block w-full rounded-md border-gray-300 shadow-sm" %>
         </div>
 
+        <div class="mb-4 flex items-center">
+          <%= f.check_box :email_notifications, { class: "form-checkbox rounded-md border-gray-300 shadow-sm mr-2", checked: @user.email_notifications } %>
+          <%= f.label :email_notifications, "Recevoir les notifications par Email", class: "text-HFblue-200 font-medium" %>
+        </div>
+
         <div class="mb-4">
           <%= f.label :avatar, class: "block text-HFblue-200 font-medium mb-2" %>
           <%= f.file_field :avatar, class: "form-input mt-1 block w-full rounded-md border-gray-300 shadow-sm" %>
         </div>
 
-        <div class="actions justify center">
+        <div class="actions justify-center">
           <%= f.submit "Enregistrer", class: "btn btn-primary mt-5 mb-5" %>
         </div>
       <% end %>

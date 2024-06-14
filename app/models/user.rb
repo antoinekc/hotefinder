@@ -11,6 +11,9 @@ class User < ApplicationRecord
   # Welcome email
   after_create :send_welcome_email
 
+  # Default email_notifications to true if not set
+  after_initialize :set_default_email_notifications, if: :new_record?
+
   def send_welcome_email
     UserMailer.welcome_email(self).deliver_now
   end
@@ -29,5 +32,9 @@ class User < ApplicationRecord
     if avatar.attached? && avatar.blob.byte_size > 5.megabytes
       errors.add(:avatar, "La taille de l'image est trop grande, choisissez une image de taille inférieure à 5mo")
     end
+  end
+
+  def set_default_email_notifications
+    self.email_notifications = true
   end
 end
