@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   get 'team', to: 'pages#team'
-  
+  get 'about', to: 'pages#about'
   resources :welcome, only: [:index]
   resources :missions
 
