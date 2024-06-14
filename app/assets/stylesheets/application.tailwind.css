@@ -23,7 +23,6 @@
   .btn-primary-nav {
     @apply bg-HFblue-200 hover:outline-2 text-HFlight py-2 px-5 rounded-full mx-2;
   }
-
   .btn-outline-primary {
     @apply border-HFblue-300 border-4 text-HFblue-300 hover:bg-HFblue-100 hover:text-white font-bold py-3 px-8 rounded-full;
   }
