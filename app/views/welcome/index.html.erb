@@ -1,101 +1,134 @@
 <head>
 <meta name="description" content="Page d'accueil de Hotefinder incluant services, avantages et informations sur les concierges.">
 </head>
-<!-- Feature Presentation Section -->
-<div class="relative isolate overflow-hidden bg-gray-900 h-100 py-24 sm:py-32">
-  <img src=https://img.freepik.com/photos-gratuite/amis-voyageant-decouvrant-nouveaux-endroits_23-2149124764.jpg?w=1380&t=st=1717661167~exp=1717661767~hmac=f003cd632a22b5614e823b2bdd02bec279ccb2efe401cb588b457405327a7d58 alt="page de fond de l'indexe representant 2 homme a l'entree d'une maison" class="absolute inset-0 -z-10 h-full w-full object-cover object-center">
-  <div class="absolute inset-0 bg-black opacity-50 z-10"></div> <!-- Overlay with lower z-index -->
-  <div class="relative z-20 mx-auto max-w-[60%] px-6 lg:px-8 h-full flex flex-col justify-center"> <!-- Adjusted width to 60% -->
-    <div class="mx-auto max-w-2xl text-center lg:text-center">
-      <h2 class="text-4xl font-bold tracking-tight text-white sm:text-6xl">Hotefinder</h2>
-      <p class="mt-6 my-8 mx-0 text-lg leading-8 text-gray-300">Tous les services dont vous avez besoin pour la gestion de vos biens en location courte durée!</p>
-      <a href="#" class="btn-primary">Sign-up</a>
-    </div>
-  </div>
-</div>
 
-<div>
-<main class="container mx-auto px-5">
-<!-- Feature Presentation Section -->
-<div class="bg-white py-24 sm:py-32">
-  <div class="mx-auto max-w-7xl px-6 lg:px-8">
-    <div class="mx-auto max-w-2xl lg:text-center">
-      <p class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Hotefinder c'est quoi?</p>
-      <dd class="mt-2 text-base leading-7 text-gray-600">Spécialiste de la mise en relation entre Propriétaire et prestataire de service de proximité.</dd>
+<!-- Main Content Section -->
+<section class="bg-gray-100 box-decoration-slice">
+  <div class="container mx-20 flex flex-col lg:flex-row items-center py-12 px-10">
+    <!-- Left side: Text content -->
+    <div class="lg:w-1/2 lg:pr-12">
+      <h1 class="text-7xl font-bold mb-6 font-sans text-violet-950">Hotefinder.</h1>
+      <p class="text-xl mb-6">Non, nous ne sommes pas une conciergerie... <br>
+     Hotefinder vous aide à trouver le concierge idéal pour la gestion saisonnière de vos biens immobiliers.</p>
+      <div class="flex justify-start space-x-10">
+        <%= link_to 'Inscription', new_user_registration_path, class: 'btn-secondary text-lg w-48 hover:bg-red-400' %>
+        <%= link_to 'En savoir plus', new_user_registration_path, class: 'btn-secondary text-lg w-48  hover:bg-red-400' %>
+      </div>
     </div>
-    <div class="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
-      <dl class="grid max-w-xl grid-cols-1 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-3 lg:gap-y-16">
-        <div class="relative text-center">
-          <div class="mx-auto flex h-16 w-16 items-center justify-center rounded-lg bg-indigo-600">
-            <svg class="h-10 w-10 text-white" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M8.032 12 9.976 13.984 14.936 9.024M18.486 14.296 19.379 13.403a1.984 1.984 0 0 0 0-2.806l-.893-.893a1.984 1.984 0 0 1-.581-1.403V7.04a1.984 1.984 0 0 0-1.984-1.984h-1.262a1.983 1.983 0 0 1-1.403-.581l-.893-.893a1.984 1.984 0 0 0-2.806 0l-.893.893a1.984 1.984 0 0 1-1.403.581H7.04A1.984 1.984 0 0 0 5.055 7.04v1.262c0 .527-.209 1.031-.581 1.403l-.893.893a1.984 1.984 0 0 0 0 2.806l.893.893c.372.372.581.876.581 1.403v1.262a1.984 1.984 0 0 0 1.984 1.984h1.262c.527 0 1.031.209 1.403.581l.893.893a1.984 1.984 0 0 0 2.806 0l.893-.893a1.985 1.985 0 0 1 1.403-.581h1.262a1.984 1.984 0 0 0 1.984-1.984V15.7c0-.527.209-1.031.581-1.403Z"/>
-            </svg>
-          </div>
-          <dt class="mt-4 text-base font-semibold leading-7 text-gray-900">Mise en relation rapide</dt>
-          <dd class="mt-2 text-base leading-7 text-gray-600">Connectez facilement les propriétaires de locations courte durée avec des concierges qualifiés pour une gestion sans tracas.</dd>
-        </div>
-        <div class="relative text-center">
-          <div class="mx-auto flex h-16 w-16 items-center justify-center rounded-lg bg-indigo-600">
-            <svg class="h-10 w-10 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />
-            </svg>
-          </div>
-          <dt class="mt-4 text-base font-semibold leading-7 text-gray-900">Prestations sur mesure</dt>
-          <dd class="mt-2 text-base leading-7 text-gray-600">Sélectionnez les services nécessaires parmi une gamme complète de prestations de conciergerie personnalisables.</dd>
-        </div>
-        <div class="relative text-center">
-          <div class="mx-auto flex h-16 w-16 items-center justify-center rounded-lg bg-indigo-600">
-            <svg class="h-10 w-10 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" />
-            </svg>
-          </div>
-          <dt class="mt-4 text-base font-semibold leading-7 text-gray-900">Sécurité et confiance</dt>
-          <dd class="mt-2 text-base leading-7 text-gray-600">Consultez l'historique des prestations et les avis des clients pour garantir la qualité et la fiabilité des services.</dd>
-        </div>
-      
-      </dl>
+    <!-- Right side: Image -->
+    <div class="lg:w-1/2 mt-8 lg:mt-0">
+      <%= image_tag 'img/hero.webp', alt: 'Hero Image', class: 'w-full max-h-140 rounded-md object-contain' %>
     </div>
   </div>
-  </div>
+</section>
 
-<!-- Random User Cards display -->
-<section class="py-12 px-4">
-  <h2 class="text-3xl font-bold mb-8 text-center">Our Users</h2>
-  <div class="flex flex-wrap justify-center -mx-4">
-    <% @randusers.each do |user| %>
-      <div class="w-full md:w-1/2 lg:w-1/3 xl:w-1/4 px-4 mb-8">
-        <div class="bg-white rounded-lg shadow-md dark:bg-gray-800 transition-transform transform hover:-translate-y-2 hover:shadow-2xl hover:scale-105">
-          <a href="#">
+<!-- Présentation de nos partenaires de confiance -->
+<section>
+  <div class="bg-white w-full p-8 mt-8">
+    <div class="flex justify-evenly items-center space-x-4">
+      <%= image_tag 'img/airbnb.webp', alt: 'Airbnb_logo', class: 'w-48 h-auto' %>
+      <%= image_tag 'img/booking', alt: 'Airbnb_logo', class: 'w-48 h-auto' %>
+      <%= image_tag 'img/abritel', alt: 'Airbnb_logo', class: 'w-36 h-auto' %>
+      <%= image_tag 'img/leboncoin.svg', alt: 'Airbnb_logo', class: 'w-48 h-auto' %>
+    </div>
+  </div>
+</section>
+
+    <!-- Feature Presentation Section -->
+    <div class="bg-red-50 py-16 sm:py-16">
+      <div class="mx-auto max-w-8xl px-6 lg:px-8">
+        <div class="mx-auto max-w-6xl lg:text-center">
+          <p class="mt-2 text-3xl mb-10 font-bold tracking-tight font-serif sm:text-4xl text-violet-950">Nos services</p>
+          <dd class="mt-2 text-base leading-7 text-gray-800">Notre plateforme connecte efficacement les propriétaires et les prestataires de services. Nous facilitons cette mise en relation par une plateforme conviviale et intuitive pour que vous puissiez trouver rapidement le concierge le mieux adapté à vos besoins spécifiques. Nous garantissons des solutions sur mesure et une expérience sans tracas pour tous nos utilisateurs.</dd>
+        </div>
+        <div class="mx-auto mt-16 max-w-4xl sm:mt-20 lg:mt-24 lg:max-w-none">
+          <dl class="grid max-w-xl grid-cols-1 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-3 lg:gap-y-16">
+            <div class="relative text-center">
+              <div class="mx-auto flex h-16 w-16 items-center justify-center rounded-lg bg-indigo-600">
+                <svg class="h-10 w-10 text-white" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M8.032 12 9.976 13.984 14.936 9.024M18.486 14.296 19.379 13.403a1.984 1.984 0 0 0 0-2.806l-.893-.893a1.984 1.984 0 0 1-.581-1.403V7.04a1.984 1.984 0 0 0-1.984-1.984h-1.262a1.983 1.983 0 0 1-1.403-.581l-.893-.893a1.984 1.984 0 0 0-2.806 0l-.893.893a1.984 1.984 0 0 1-1.403.581H7.04A1.984 1.984 0 0 0 5.055 7.04v1.262c0 .527-.209 1.031-.581 1.403l-.893.893a1.984 1.984 0 0 0 0 2.806l.893.893c.372.372.581.876.581 1.403v1.262a1.984 1.984 0 0 0 1.984 1.984h1.262c.527 0 1.031.209 1.403.581l.893.893a1.984 1.984 0 0 0 2.806 0l.893-.893a1.985 1.985 0 0 1 1.403-.581h1.262a1.984 1.984 0 0 0 1.984-1.984V15.7c0-.527.209-1.031.581-1.403Z"/>
+                </svg>
+              </div>
+              <dt class="mt-4 text-base font-semibold leading-7 text-gray-900">Mise en relation rapide</dt>
+              <dd class="mt-2 text-base leading-7 text-gray-600">Connectez facilement les propriétaires de locations courte durée avec des concierges qualifiés pour une gestion sans tracas.</dd>
+            </div>
+            <div class="relative text-center">
+              <div class="mx-auto flex h-16 w-16 items-center justify-center rounded-lg bg-indigo-600">
+                <svg class="h-10 w-10 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z"/>
+                </svg>
+              </div>
+              <dt class="mt-4 text-base font-semibold leading-7 text-gray-900">Prestations sur mesure</dt>
+              <dd class="mt-2 text-base leading-7 text-gray-600">Sélectionnez les services nécessaires parmi une gamme complète de prestations de conciergerie personnalisables.</dd>
+            </div>
+            <div class="relative text-center">
+              <div class="mx-auto flex h-16 w-16 items-center justify-center rounded-lg bg-indigo-600">
+                <svg class="h-10 w-10 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99"/>
+                </svg>
+              </div>
+              <dt class="mt-4 text-base font-semibold leading-7 text-gray-900">Sécurité et confiance</dt>
+              <dd class="mt-2 text-base leading-7 text-gray-600">Consultez l'historique des prestations et les avis des clients pour garantir la qualité et la fiabilité des services.</dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+    </div>
+
+<!-- Banner Section 
+<div class="hidden lg:block relative isolate overflow-hidden w-full bg-gray-900 h-96">
+  <img src="https://img.freepik.com/photos-gratuite/amis-voyageant-decouvrant-nouveaux-endroits_23-2149124764.jpg?w=1380&t=st=1717661167~exp=1717661767~hmac=f003cd632a22b5614e823b2bdd02bec279ccb2efe401cb588b457405327a7d58" alt="Amis voyageant" class="absolute inset-0 -z-10 h-full w-full object-cover object-center">
+  <div class="absolute inset-0 bg-black opacity-50 z-10"></div>
+</div> -->
+
+<section class="py-12">
+  <h2 class="mt-2 text-3xl mb-10 text-center font-bold tracking-tight font-serif sm:text-4xl text-violet-950">Nos concierges</h2>
+  <div class="mx-auto max-w-7xl ">
+    <div class="flex justify-center space-x-20">
+      <% @randusers.first(2).each do |user| %>
+        <div class="w-full">
+          <div class="bg-white rounded-lg transition-transform hover:scale-20 flex items-center overflow-hidden">
             <% if user.avatar.attached? %>
-              <%= image_tag user.avatar.variant(resize_to_fill: [150, 150]), class: "rounded-t-lg w-full", alt: "images concierges" %>
+              <%= image_tag user.avatar.variant(resize_to_fill: [150, 150]), class: "rounded-t-lg w-full", alt: "images des concierges" %>
             <% end %>
-          </a>
-          <div class="px-5 pb-5">
-            <a href="#">
-              <h5 class="text-xl font-semibold tracking-tight text-gray-900 dark:text-white"><%= user.first_name %> <%= user.last_name %></h5>
-            </a>
-            <div class="flex items-center justify-between">
-              <span class="text-lg font-bold text-gray-900 dark:text-white">20€/h only!</span>
-              <a href="#" class="btn-primary">Hire</a>
+            <div class="p-6 w-2/3 md:w-1/2 text-gray-900 text-bo dark:text-white">
+              <a href="#">
+                <h5 class="text-xl font-semibold tracking-tight text-gray-900"><%= user.first_name %></h5>
+              </a>
+              <p class="mt-2 text-base text-gray-700 italic"><%= user.description %></p>
             </div>
           </div>
         </div>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
 </section>
 
 
 
-    <!-- Authentication Buttons Section -->
-    <section class="text-center py-12 mx-4">
-      <% if user_signed_in? %>
-        <%= button_to 'Sign Out', destroy_user_session_path, method: :delete, data: { confirm: 'Are you sure you want to sign out?' }, class: 'btn btn-primary' %>
-      <% else %>
-        <%= button_to 'Sign In', new_user_session_path, method: :post, data: { confirm: 'Are you sure you want to sign out?' }, class: 'btn btn-primary' %>
-      <% end %>
+    <!-- Testimonial Section -->
+    <section class="relative isolate overflow-hidden bg-red-50 px-6 py-20 sm:py-20 lg:px-8">
+    <h2 class="mt-2 text-3xl mb-10 text-center font-bold tracking-tight font-serif sm:text-4xl text-violet-950">Nos clients témoignent</h2>
+      <div class="absolute inset-0 -z-10 bg-[radial-gradient(45rem_50rem_at_top,theme(colors.indigo.100),white)] opacity-20"></div>
+      <div class="absolute inset-y-0 right-1/2 -z-10 mr-16 w-[200%] origin-bottom-left skew-x-[-30deg] bg-white shadow-xl shadow-indigo-600/10 ring-1 ring-indigo-50 sm:mr-28 lg:mr-0 xl:mr-16 xl:origin-center"></div>
+      <div class="mx-auto max-w-2xl lg:max-w-4xl">
+        <img class="mx-auto h-12" src="https://tailwindui.com/img/logos/workcation-logo-indigo-600.svg" alt="">
+        <figure class="mt-10">
+          <blockquote class="text-center italic text-lg font-semibold leading-8 text-gray-900 sm:text-2xl sm:leading-9">
+            <p>"Nous avons utilisé Hotefinder. pour trouver le partenaire idéal pour nos locations sur Pornic. Grâce à eux, nous avons pu simplifier la gestion de nos biens et optimiser notre temps. Je recommande chaudement cette plateforme à tous les propriétaires qui cherchent une solution efficace et professionnelle."</p>
+          </blockquote>
+          <figcaption class="mt-10">
+            <img class="mx-auto h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+            <div class="mt-4 flex items-center justify-center space-x-3 text-base">
+              <div class="font-semibold text-gray-900">Judith Black</div>
+              <svg viewBox="0 0 2 2" width="3" height="3" aria-hidden="true" class="fill-gray-900">
+                <circle cx="1" cy="1" r="1"/>
+              </svg>
+              <div class="text-gray-600">CEO of Workcation</div>
+            </div>
+          </figcaption>
+        </figure>
+      </div>
     </section>
-    
   </main>
 </div>
-

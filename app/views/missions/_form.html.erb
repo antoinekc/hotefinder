@@ -5,7 +5,7 @@
 <%= form_with(model: mission, class: "space-y-6") do |form| %>
   <% if mission.errors.any? %>
     <div id="error_explanation" class="bg-red-50 border border-red-400 text-red-700 px-4 py-3 rounded relative">
-      <h2 class="font-bold mb-2"><%= pluralize(mission.errors.count, "Erreur") %> au moins vous empêche de valider la mission:</h2>
+      <h2 class="font-bold mb-2"><%= pluralize(mission.errors.count, "Erreur") %></h2>
       <ul class="list-disc pl-5">
         <% mission.errors.full_messages.each do |message| %>
           <li><%= message %></li>
@@ -39,7 +39,7 @@
 
   <div class ='flex items-start flex-col mx-4'>
     <%= form.label :city_id,"Ville", class: "block text-sm font-medium text-HFblue-200 mr-2" %>
-    <%= form.text_field :city_name, value: "Paris", readonly: true, class: "mt-1 block w-full shadow-sm sm:text-sm rounded-md text-HFdark border-HFlight hoover:border-HFblue-200 bg-gray-200" %>
+    <%= form.text_field :city_id, value: "Paris", readonly: true, class: "mt-1 block w-full shadow-sm sm:text-sm rounded-md text-HFdark border-HFlight hoover:border-HFblue-200 bg-gray-200" %>
     <%= form.hidden_field :city_id, value: 1 %>
   </div>
 
@@ -54,13 +54,13 @@
 
   <%= form.hidden_field :host_id, value: @user.id if @user.present? %>
 
-   <div class="flex items-start flex-col mx-4">
-    <%= form.submit "Save Mission", class: "btn-primary" %><br><br>
-  </div>
-
   <div class = 'flex items-start flex-col mx-4'>
     <%= form.label :postal_code,"Arrondissement", class: "block text-sm font-medium text-HFblue-200 mr-2" %>
     <%= form.select :postal_code, options_for_select(paris_zip_codes), class: "mt-1 block w-full shadow-sm sm:text-sm rounded-md text-HFdark border-HFlight hoover:border-HFblue-200" %>  
+  </div>
+
+  <div class="mx-auto">
+    <%= form.submit "Save Mission", class: "btn-primary" %>
   </div>
 
 <% end %>

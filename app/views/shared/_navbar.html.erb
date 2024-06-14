@@ -2,45 +2,86 @@
 <meta name="description" content="Le fichier de navbar utilise sur toutes les pages">
 </head>
 
-<nav class='sticky top-0 z-10'>
-  <div class='bg-HFlight h-12 flex items-center'>
-    <ul class='w-full flex justify-between items-center px-4'>
-      <li>
-        <%= link_to root_path do %>
-          <%= image_tag 'icons/Bg_logo.svg', alt: 'Logo', class: 'size-10 stroke-white' %>
+<nav class="sticky top-0 z-10 bg-slate-100 border border-gray-50">
+  <div class="h-24 flex items-center justify-between px-8">
+    <div>
+      <%= link_to root_path do %>
+        <%= image_tag 'icons/Bg_logo.svg', alt: 'Logo', class: 'h-14 w-auto stroke-white' %>
+      <% end %>
+    </div>
+    <div class="flex flex-row pl-24 justify-center space-x-12 text-lg">
+      <%= link_to missions_path, class: 'flex items-center' do %>
+        
+        <span class="hidden md:inline text-HFblue-200 px-2 hover:text-violet-800">Missions</span>
+      <% end %>
+      <%= link_to users_path, class: 'flex items-center' do %>
+        
+        <span class="hidden md:inline text-HFblue-200 px-2 hover:text-violet-800">Annuaire</span>
+      <% end %>
+      <%= link_to users_path, class: 'flex items-center' do %>
+        <span class="hidden md:inline text-HFblue-200 px-2 hover:text-violet-800">Équipe</span>
+      <% end %>
+      <%= link_to users_path, class: 'flex items-center' do %>
+        <span class="hidden md:inline text-HFblue-200 px-2 hover:text-violet-800">À propos</span>
+      <% end %>
+    </div>
+    <div class="hidden md:flex items-center space-x-12">
+      <% if user_signed_in? %>
+        <%= link_to user_path(current_user), class: 'flex items-center' do %>
+          <%= image_tag 'icons/user.svg', alt: 'Profile', class: 'size-6' %>
+          <span class="text-HFblue-200 px-2">Profil</span>
         <% end %>
-      </li>
-      <li>
-        <%= link_to missions_path, class: 'flex items-center' do %>
-          <%= image_tag 'icons/list-check.svg', alt: 'Missions', class: 'size-6' %>
-          <span class="text-HFblue-200 px-2 hidden md:block">Missions</span>
+        <%= button_to "Me déconnecter", destroy_user_session_path, method: :delete, class: 'btn-secondary-nav' %>
+      <% else %>
+        <div class="flex space-x-4">
+          <%= link_to "Connexion", new_user_session_path, class: 'btn-primary-nav hover:text-red-100' %>
+          <%= link_to "Inscription", new_user_registration_path, class: 'btn-primary-nav hover:text-red-100' %>
+        </div>
+      <% end %>
+    </div>
+    <div class="md:hidden flex items-center">
+      <button id="burger-menu" class="flex flex-col space-y-1 p-2">
+        <span class="block w-6 h-0.5 bg-black"></span>
+        <span class="block w-6 h-0.5 bg-black"></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="hidden md:hidden bg-red-100 w-full">
+    <div class="flex flex-col items-end space-y-4 p-4">
+      <% if user_signed_in? %>
+        <%= link_to user_path(current_user), class: 'flex items-center' do %>
+          <%= image_tag 'icons/user.svg', alt: 'Profile', class: 'size-6' %>
+          <span class="text-HFblue-200 px-2">Profil</span>
         <% end %>
-      </li>
-      <li>
-        <%= link_to users_path, class: 'flex items-center' do %>
-          <%= image_tag 'icons/Home.svg', alt: 'Annuaire', class: 'size-6' %>
-          <span class="text-HFblue-200 px-2 hidden md:block">Annuaire</span>
+         <%= button_to "Me déconnecter", destroy_user_session_path, method: :delete, class: 'btn-secondary-nav ml-12' %></div>
+      <% else %>
+        <%= link_to new_user_session_path, class: 'text-right text-HFblue-200' do %>
+          Connexion
         <% end %>
-      </li>
-      <li>
-        <% if user_signed_in? %>
-          <div class='flex'>
-          <%= link_to user_path(current_user), class: 'flex items-center' do %>
-            <%= image_tag 'icons/user.svg', alt: 'Profile', class: 'size-6' %>
-            <span class='text-HFblue-200 px-2 hidden md:block'>Profil</span>
-          <% end %>
-          <%= button_to "Me deconnecter", destroy_user_session_path, method: :delete, class: 'btn-secondary-nav ml-12' %>
-          </div>
-        <% else %>
-          <div class = "flex justify-end items-right">
-          <%= link_to "Me connecter", new_user_session_path, class: 'btn-primary-nav' %>
-          <%= link_to "M'inscrire", new_user_registration_path, class: 'btn-primary-nav' %>
-          </div>
+        <%= link_to new_user_registration_path, class: 'text-right text-HFblue-200' do %>
+          Inscription
         <% end %>
-      </li>
-      <li>
-        <%= image_tag 'icons/menu-burger.svg', alt: 'Burger', class: 'size-8' %>
-      </li>
-    </ul>
+      <% end %>
+    </div>
   </div>
 </nav>
+
+<script>
+  document.getElementById('burger-menu').addEventListener('click', function() {
+    var mobileMenu = document.getElementById('mobile-menu');
+    if (mobileMenu.classList.contains('hidden')) {
+      mobileMenu.classList.remove('hidden');
+    } else {
+      mobileMenu.classList.add('hidden');
+    }
+  });
+
+  window.addEventListener('resize', function() {
+    var mobileMenu = document.getElementById('mobile-menu');
+    if (window.innerWidth >= 768 && !mobileMenu.classList.contains('hidden')) {
+      mobileMenu.classList.add('hidden');
+    }
+  });
+</script>
