@@ -1,3 +1,7 @@
+<head>
+<meta name="description" content="Le fichier de partial des formulaires.">
+</head>
+
 <%= form_with(model: mission, class: "space-y-6") do |form| %>
   <% if mission.errors.any? %>
     <div id="error_explanation" class="bg-red-50 border border-red-400 text-red-700 px-4 py-3 rounded relative">

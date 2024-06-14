@@ -1,6 +1,9 @@
+<head>
+<meta name="description" content="Page d'accueil de Hotefinder incluant services, avantages et informations sur les concierges.">
+</head>
 <!-- Feature Presentation Section -->
 <div class="relative isolate overflow-hidden bg-gray-900 h-100 py-24 sm:py-32">
-  <img src=https://img.freepik.com/photos-gratuite/amis-voyageant-decouvrant-nouveaux-endroits_23-2149124764.jpg?w=1380&t=st=1717661167~exp=1717661767~hmac=f003cd632a22b5614e823b2bdd02bec279ccb2efe401cb588b457405327a7d58 alt="" class="absolute inset-0 -z-10 h-full w-full object-cover object-center">
+  <img src=https://img.freepik.com/photos-gratuite/amis-voyageant-decouvrant-nouveaux-endroits_23-2149124764.jpg?w=1380&t=st=1717661167~exp=1717661767~hmac=f003cd632a22b5614e823b2bdd02bec279ccb2efe401cb588b457405327a7d58 alt="page de fond de l'indexe representant 2 homme a l'entree d'une maison" class="absolute inset-0 -z-10 h-full w-full object-cover object-center">
   <div class="absolute inset-0 bg-black opacity-50 z-10"></div> <!-- Overlay with lower z-index -->
   <div class="relative z-20 mx-auto max-w-[60%] px-6 lg:px-8 h-full flex flex-col justify-center"> <!-- Adjusted width to 60% -->
     <div class="mx-auto max-w-2xl text-center lg:text-center">
@@ -64,7 +67,7 @@
         <div class="bg-white rounded-lg shadow-md dark:bg-gray-800 transition-transform transform hover:-translate-y-2 hover:shadow-2xl hover:scale-105">
           <a href="#">
             <% if user.avatar.attached? %>
-              <%= image_tag user.avatar.variant(resize_to_fill: [150, 150]), class: "rounded-t-lg w-full" %>
+              <%= image_tag user.avatar.variant(resize_to_fill: [150, 150]), class: "rounded-t-lg w-full", alt: "images concierges" %>
             <% end %>
           </a>
           <div class="px-5 pb-5">
