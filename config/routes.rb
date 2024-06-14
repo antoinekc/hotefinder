@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'team', to: 'pages#team'
+  
   resources :welcome, only: [:index]
   resources :missions
 
