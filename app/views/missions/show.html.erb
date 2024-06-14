@@ -8,13 +8,12 @@
 
 <div class="flex justify-center">
   <div class="">
-    <%= link_to "Editer ma mission", edit_mission_path(@mission), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <%= link_to "Retour aux missions", missions_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to "Editer ma mission", edit_mission_path(@mission), class: "btn-primary" %>
+    <%= link_to "Retour aux missions", missions_path, class: "ml-2 rounded-full py-3 px-5 bg-HFlight inline-block font-medium" %>
     <div class="inline-block ml-2">
-      <%= button_to "Supprimer cette mission", @mission, method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
+      <%= button_to "Supprimer cette mission", @mission, method: :delete, class: "btn-secondary" %>
     </div>
   </div>
 </div>
 
-  </div>
-</div>
+<%= render "status", mission: @mission %>

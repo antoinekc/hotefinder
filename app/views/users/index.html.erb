@@ -1,29 +1,34 @@
 <section class="py-12 px-4">
-  <h2 class="text-3xl font-bold mb-8 text-center">Nos Utilisateurs</h2>
+  <div class = "flex flex-wrap justify-center gap-10">
+    <h1 class="text-3xl font-bold mb-8 text-center text-HFblue-200 mb-10">Nos Utilisateurs</h1>
+    <p class>
+    <div class = 'bg-HFlight opacity-50'>
+   </div>
+  </div>
   <div class="flex flex-wrap justify-center gap-10"> <!-- Augmentation de la marge -->
     <% @users.each do |user| %>
     <% if user.is_host %>
       <a href="<%= user_path(user) %>"> <!-- Ajout du lien vers la page de profil -->
-        <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/3 xl:w-1/4 bg-white rounded-lg shadow-md dark:bg-gray-800 transition-transform transform hover:-translate-y-2 hover:shadow-2xl hover:scale-105"> <!-- Modification des tailles des cartes -->
+        <div class="w-4/6 bg-HFlight rounded shadow-md transition-transform transform hover:-translate-y-2 hover:shadow-2xl hover:scale-101"> <!-- Modification des tailles des cartes -->
           <div class="relative">
             <% if user.avatar.attached? %>
-              <%= image_tag user.avatar.variant(resize_to_fill: [150, 150]), class: "rounded-t-lg w-full" %>
+              <%= image_tag user.avatar.variant(resize_to_fill: [300, 300]), class: "rounded-t-lg w-full" %>
             <% else %>
-              <div class="w-full h-32 bg-gray-200 rounded-t-lg"></div> <!-- Placeholder for missing photo -->
+              <div class="w-full h-20 bg-HFlight rounded-t-lg"></div> <!-- Placeholder for missing photo -->
             <% end %>
-            <div class="absolute top-0 left-0 w-full bg-gray-900 bg-opacity-75 text-white font-semibold py-1 px-3 rounded-tl-lg rounded-tr-lg">
+            <div class="absolute top-0 left-0 w-full bg-HFlight bg-opacity-75 text-white font-semibold py-1 px-3 rounded-tl-lg rounded-tr-lg">
               <% if user.is_available %>
                 <span class="text-green-600">Disponible</span>
               <% else %>
-                <span class="text-red-600">Indisponible</span>
+                <span class="text-HFred-200">Indisponible</span>
               <% end %>
             </div> <!-- Affichage du statut en incrusté -->
           </div>
           <div class="px-5 pb-5">
-            <h5 class="text-lg font-semibold tracking-tight text-gray-900 dark:text-white mt-4"><%= user.first_name %> <%= user.last_name %></h5>
+            <h5 class="text-lg font-bold tracking-tight text-HFdark mt-4"><%= user.first_name %> <%= user.last_name %></h5>
             <ul class="mt-2">
-              <li>Email:<a href="<%= user_path(user) %>" class= "text-green-600 bold"> **voir l'email**</a></li> 
-              <li>Téléphone: <a href="<%= user_path(user) %>" class= "text-green-600 bold"> **voir le N° de téléphone**</a></li>
+              <li>Email:<a href="<%= user_path(user) %>" class= "text-HFblue-200"> **voir l'email**</a></li> 
+              <li>Téléphone: <a href="<%= user_path(user) %>" class= "text-HFblue-200"> **voir le N° de téléphone**</a></li>
               <li>Commission: <%= user.commission %></li>
               <!-- Ne pas afficher le statut ici, car il est déjà visible sur la photo -->
             </ul>
