@@ -10,7 +10,7 @@ class MissionsController < ApplicationController
     elsif current_user.is_host
       @missions = current_user.received_missions
     else
-      redirect_to root_path, alert: "You are not authorized to view this page."
+      redirect_to root_path, alert: "Vous devez vous inscrire pour voir cette page."
     end
   end
 
@@ -37,19 +37,16 @@ class MissionsController < ApplicationController
       if @user
         @mission.host = @user
       else
-        redirect_to root_path, alert: "Host not found"
+        redirect_to root_path, alert: "Veuillez indiquer un concierge."
         return
       end
     end
 
-    respond_to do |format|
-      if @mission.save
-        format.html { redirect_to mission_url(@mission), notice: "Mission was successfully created." }
-        format.json { render :show, status: :created, location: @mission }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @mission.errors, status: :unprocessable_entity }
-      end
+    if @mission.save
+      redirect_to mission_url(@mission), notice: "La mission a été créée avec succès."
+    else
+      flash[:alert] = "Une erreur est apparue lors de la création de mission."
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -76,49 +73,35 @@ class MissionsController < ApplicationController
 
     if params[:mission].present?
       # Regular update with mission parameters
-      respond_to do |format|
-        if @mission.update(mission_params)
-          format.html { redirect_to mission_url(@mission), notice: "Mission was successfully updated." }
-          format.json { render :show, status: :ok, location: @mission }
-        else
-          format.html { render :edit, status: :unprocessable_entity }
-          format.json { render json: @mission.errors, status: :unprocessable_entity }
-        end
+      if @mission.update(mission_params)
+        redirect_to mission_url(@mission), notice: "La mission a été mise à jour."
+      else
+        flash[:alert] = "Une erreur est apparue lors de la création de la mission."
+        render :edit, status: :unprocessable_entity
       end
     else
       # Update only the status
-      respond_to do |format|
-        if @mission.save
-          format.html { redirect_to mission_url(@mission), notice: "Mission status was successfully updated." }
-          format.json { render :show, status: :ok, location: @mission }
-        else
-          format.html { render :edit, status: :unprocessable_entity }
-          format.json { render json: @mission.errors, status: :unprocessable_entity }
-        end
+      if @mission.save
+        redirect_to mission_url(@mission), notice: "Le status de la mission a été mise à jour."
+      else
+        flash[:alert] = "Une erreur est apparue lors de la mise à jour de la mission."
+        render :edit, status: :unprocessable_entity
       end
     end
   end
 
-
-
   def destroy
-    @mission.destroy!
-
-    respond_to do |format|
-      format.html { redirect_to missions_url, notice: "Mission was successfully destroyed." }
-      format.json { head :no_content }
-    end
+    @mission.destroy
+    redirect_to missions_url, notice: "La mission a été détruite avec succès."
   end
 
   private
 
-    def set_mission
-      @mission = Mission.find(params[:id])
-    end
+  def set_mission
+    @mission = Mission.find(params[:id])
+  end
 
-    def mission_params
-      params.require(:mission).permit(:title, :description, :start_date, :end_date, :postal_code, :city_id, :host_id, :status)
-    end
-
-
+  def mission_params
+    params.require(:mission).permit(:title, :description, :start_date, :end_date, :postal_code, :city_id, :host_id, :status)
+  end
 end
