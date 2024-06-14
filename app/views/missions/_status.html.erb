@@ -1,3 +1,7 @@
+<head>
+<meta name="description" content="Le fichier partial des status">
+</head>
+
 <div class="flex justify-center">
   <% if mission.status.blank? %>
     <%= button_to "Save Mission", mission_path(mission), method: :patch, params: { choix: "Save mission" }, class: "btn-primary" %>
