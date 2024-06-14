@@ -1,51 +1,68 @@
-<div class="container mx-auto px-4 py-8">
-  <div class="flex flex-wrap items-top justify-center">
-    <!-- Photo agrandie -->
-    <div class="w-full md:w-1/2 lg:w-1/3 xl:w-1/4 mb-4">
-      <% if @user.avatar.attached? %>
-        <%= image_tag @user.avatar.variant(resize_to_fill: [450, 450]), class: "rounded-lg shadow-xl" %>
-      <% end %>
-      <% if current_user != @user %>
-        <%= link_to 'Proposer une mission', new_mission_path(host_id: @user.id), class: "flex items-center mt-4 btn-primary mb-2" %>
-      <% end %>
+<div class="w-full mt-5">
+
+  <% content_for :title, "Informations de l'utilisateur" %>
+
+  <div class="flex flex-col items-center mb-5 justify-center relative w-full h-120">
+    <div class="relative w-full h-full">
+      <div class="absolute inset-0 bg-HFlight opacity-50"></div>
+      <div class="relative flex flex-col items-center justify-center h-full">
+        <h1 class="font-bold text-4xl text-HFblue-200 mb-10 mt-10">Informations de l'utilisateur</h1>
+      </div>
+    </div>
+  </div>
+
+  <div class="container mx-auto px-4 py-8">
+    <div class="flex flex-wrap items-top justify-center">
+      <!-- Photo agrandie -->
+      <div class="w-full md:w-1/2 lg:w-1/3 xl:w-1/4 mb-4">
+        <% if @user.avatar.attached? %>
+          <%= image_tag @user.avatar.variant(resize_to_fill: [450, 450]), class: "rounded-lg shadow-xl outline outline-HFblue-200" %>
+        <% end %>
+        <% if current_user != @user %>
+          <%= link_to 'Proposer une mission', new_mission_path(host_id: @user.id), class: "flex items-center mt-4 btn btn-primary mb-2" %>
+        <% end %>
+      </div>
+
+      <!-- Informations -->
+      <div class="w-full md:w-1/2 lg:w-2/3 xl:w-3/4 md:pl-8 lg:pl-12 mb-8 md:mb-0">
+        <h1 class="text-3xl font-bold mb-4 text-HFblue-200"><%= "Informations de #{@user.first_name}" %></h1>
+        <!-- Affichage de la disponibilité -->
+        <div class="my-4 text-left">
+          <span class="<%= @user.is_available ? 'text-green-600' : 'text-red-600' %> text-2xl my-6 font-bold">
+            <%= @user.is_available ? 'Disponible' : 'Indisponible' %>
+          </span>
+        </div>
+        <ul class="mb-4">
+          <li class ="mt-2"><span class="font-bold text-HFblue-200">Email:</span> <%= @user.email %></li>
+          <li class ="mt-2"><span class="font-bold text-HFblue-200">Prénom:</span> <%= @user.first_name %></li>
+          <li class ="mt-2"><span class="font-bold text-HFblue-200">Nom:</span> <%= @user.last_name %></li>
+          <li class ="mt-2"><span class="font-bold text-HFblue-200">Téléphone:</span> <%= @user.phone_number %></li>
+          <li class ="mt-2"><span class="font-bold text-HFblue-200">Date de naissance:</span> <%= @user.birthdate %></li>
+          <li class ="mt-2"><span class="font-bold text-HFblue-200">Commission:</span> <%= @user.commission %></li>
+        </ul>
+      </div>
     </div>
 
-    <!-- Informations -->
-    <div class="w-full md:w-1/2 lg:w-2/3 xl:w-3/4 md:pl-8 lg:pl-12 mb-8 md:mb-0">
-      <h1 class="text-3xl font-bold mb-4"><%= "Informations de #{@user.first_name}" %></h1>
-            <!-- Affichage de la disponibilité -->
-      <div class="my-4 text-left">
-        <span class="<%= @user.is_available ? 'text-green-600 text-2xl my-6' : 'text-red-600 text-2xl my-6' %> font-bold">
-          <%= @user.is_available ? 'Disponible' : 'Indisponible' %>
-        </span>
-      </div>
-      <ul class="mb-4">
-        <li><span class="font-bold">Email:</span> <%= @user.email %></li>
-        <li><span class="font-bold">Prénom:</span> <%= @user.first_name %></li>
-        <li><span class="font-bold">Nom:</span> <%= @user.last_name %></li>
-        <li><span class="font-bold">Téléphone:</span> <%= @user.phone_number %></li>
-        <li><span class="font-bold">Date de naissance:</span> <%= @user.birthdate %></li>
-        <li><span class="font-bold">Commission:</span> <%= @user.commission %></li>
-        <!-- Ne pas afficher la disponibilité ici, car elle est déjà visible sur la photo -->
-      </ul>
+    <!-- Description -->
+    <div class="mt-8 justify-start">
+      <div class="bg-white w-5/6 p-5 outline outline-HFlight rounded">
+      <h2 class="text-2xl font-bold mb-4 text-HFblue-200">Description</h2>
+      <p class="text-gray-700"><%= @user.description %></p>
+    </div>
+
+    <!-- Décoration -->
+    <div class="flex justify-center mt-8">
+      <div class="h-1 w-32 bg-HFblue-200 rounded-full mb-4"></div>
+    </div>
+
+    <!-- Boutons d'action -->
+    <div class="flex flex-wrap items-center justify-center mt-8 gap-4">
+      <% if current_user == @user || current_user.is_admin %>
+        <%= link_to 'Modifier', edit_user_path(@user), class: "btn btn-primary-inverted mb-2" %>
+      <% end %>
+      <% if current_user == @user || current_user.is_admin %>
+        <%= button_to 'Supprimer le compte', @user, method: :delete, data: { confirm: "Are you sure you want to delete your account?" }, class: "btn btn-danger mb-2" %>
+      <% end %>
     </div>
   </div>
-  <!-- Description -->
-  <div class="mt-8 text-center">
-    <h2 class="text-2xl font-bold mb-4">Description</h2>
-    <%= @user.description %>
-  </div>
-  <!-- Décoration -->
-  <div class="flex justify-center mt-8">
-    <div class="h-1 w-32 bg-blue-500 rounded-full mb-4"></div>
-  </div>
-</div>
-<!-- Boutons d'action -->
-<div class="flex flex-wrap items-center justify-center">
-  <% if current_user == @user || current_user.is_admin %>
-    <%= link_to 'Modifier', edit_user_path(@user), class: "text-gray-600 underline mr-4 mb-2" %>
-  <% end %>
-  <% if current_user == @user || current_user.is_admin %>
-    <%= button_to 'Supprimer le compte', @user, method: :delete, data: { confirm: "Are you sure you want to delete your account?" }, class: "text-gray-600 underline mb-2" %>
-  <% end %>
 </div>

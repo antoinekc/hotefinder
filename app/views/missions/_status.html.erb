@@ -1,18 +1,38 @@
 <div class="flex justify-center">
   <% if mission.status.blank? %>
-    <%= button_to "Save Mission", mission_path(mission), method: :patch, params: { mission: { status: "En attente" }, choix: "Save mission" }, class: "btn-primary" %>
+    <%= button_to "Save Mission", mission_path(mission), method: :patch, params: { choix: "Save mission" }, class: "btn-primary" %>
+
   <% elsif mission.status == "En attente" %>
     <% if mission.host_id == current_user.id %>
-      <%= button_to "Accepter Mission", mission_path(mission), method: :patch, params: { mission: { status: "Acceptée" }, choix: "Accepter Mission" }, class: "btn btn-primary" %>
-      <%= button_to "Refuser Mission", mission_path(mission), method: :patch, params: { mission: { status: "Refusée" }, choix: "Refuser mission" }, class: "btn btn-danger" %>
+      <%= button_to "Accepter Mission", mission_path(mission), method: :patch, params: { choix: "Accepter mission" }, class: "btn btn-primary" %>
+      <%= button_to "Refuser Mission", mission_path(mission), method: :patch, params: { choix: "Refuser mission" }, class: "btn btn-danger" %>
     <% elsif mission.owner_id == current_user.id %>
-      <%= text_field_tag :info, "attente de réponse", readonly: true, class: "mt-1 block w-full shadow-sm sm:text-sm rounded-md text-HFdark border-HFlight hoover:border-HFblue-200 bg-gray-200" %>
+      <%= text_field_tag :info, "Attente de réponse", readonly: true, class: "mt-1 block w-full shadow-sm sm:text-sm rounded-md text-HFdark border-HFlight hover:border-HFblue-200 bg-gray-200" %>
     <% end %>
+
   <% elsif mission.status == "Acceptée" %>
     <% if mission.host_id == current_user.id %>
-      <%= button_to "Abandonner", mission_path(mission), method: :patch, params: { mission: { status: "Abandonnée" }, choix: "Abandonner mission" }, class: "btn btn-danger" %>
+      <%= button_to "Abandonner", mission_path(mission), method: :patch, params: { choix: "Abandonner mission" }, class: "btn btn-secondary" %>
+      <% today = Date.today %>
+      <% if today < mission.start_date || today > mission.end_date %>
+        <div class="relative group">
+          <%= button_to "Démarrer", mission_path(mission), method: :patch, params: { choix: "Démarrer mission" }, class: "btn btn-secondary", disabled: true %>
+          <div class="absolute bg-gray-800 bottom-full left-1/2 transform -translate-x-1/2 mb-2 hidden group-hover:block bg-gray-800 text-white text-sm rounded py-1 px-2">
+            La mission n'a pas commencée
+          </div>
+        </div>
+      <% else %>
+        <%= button_to "Démarrer", mission_path(mission), method: :patch, params: { choix: "Démarrer mission" }, class: "btn btn-primary" %>
+      <% end %>
     <% elsif mission.owner_id == current_user.id %>
-      <%= button_to "Annuler", mission_path(mission), method: :patch, params: { mission: { status: "Annulée" }, choix: "Annuler mission" }, class: "btn btn-danger" %>
+      <%= button_to "Annuler", mission_path(mission), method: :patch, params: { choix: "Annuler mission" }, class: "btn btn-danger" %>
+    <% end %>
+
+  <% elsif mission.status == "En cours" %>
+    <% if mission.host_id == current_user.id %>
+      <%= button_to "Terminer mission", mission_path(mission), method: :patch, params: { choix: "Terminer mission" }, class: "btn btn-primary" %>
+    <% elsif mission.owner_id == current_user.id %>
+      <%= text_field_tag :info, "Mission en cours de réalisation :)", readonly: true, class: "mt-1 block w-full shadow-sm sm:text-sm rounded-md text-HFdark border-HFlight hover:border-HFblue-200 bg-gray-200" %>
     <% end %>
   <% end %>
 </div>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <h1>Mise à jour du statut de votre mission</h1>
+    <p>Bonjour <%= @user.first_name %>,</p>
+    <p>Votre mission <strong>"<%= @mission.title %>"</strong> est <strong>"<%= @mission.status %>".</strong></p>
+
+    <h2><%= @mission.title %></h2>
+    <p><strong>Description :</strong><br><%= @mission.description %></p>
+    <p><strong>Nom de l'hôte :</strong> <%= @mission.host.first_name %> <%= @mission.host.last_name %></p>
+    <p><strong>Nom du propriétaire :</strong> <%= @mission.owner.first_name %> <%= @mission.owner.last_name %></p>
+    <p><strong>Ville :</strong> <%= @mission.city.name %> <%= @mission.city.postal_code %></p>
+    <p><strong>Dates :</strong> <%= @mission.start_date %> au <%= @mission.end_date %></p>
+
+    <br>
+    <p>Rendez vous sur <%= link_to 'votre espace', mission_url(@mission) %> pour plus d'informations.</p>
+    <br>
+    <p>Merci,</p>
+    <p>L'équipe de Hotefinder</p>
+  </body>
+</html>

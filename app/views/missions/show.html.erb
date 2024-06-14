@@ -1,19 +1,23 @@
 <div class="mx-auto md:w-2/3 w-full flex">
-  <div class="mx-auto">
-    <% if notice.present? %>
-      <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
-    <% end %>
-
+  <div class="mx-auto min-w-full">
     <%= render @mission %>
-
-<div class="flex justify-center">
-  <div class="">
-    <%= link_to "Editer ma mission", edit_mission_path(@mission), class: "btn-primary" %>
-    <%= link_to "Retour aux missions", missions_path, class: "ml-2 rounded-full py-3 px-5 bg-HFlight inline-block font-medium" %>
-    <div class="inline-block ml-2">
-      <%= button_to "Supprimer cette mission", @mission, method: :delete, class: "btn-secondary" %>
+    <div class="my-8">
+      <%= render "status", mission: @mission %>
+    </div>
+    <div class="flex justify-center">
+      <div class="">
+        <%= link_to "Retour aux missions", missions_path, class: "btn-primary" %>
+        <% if @mission.owner_id == current_user.id %>
+          <% if @mission.status != "En cours" && @mission.status != "Terminée" %>
+            <%= link_to "Editer", edit_mission_path(@mission), class: "rounded-full py-2 px-5 text-white bg-HFdark inline-block font-medium" %>
+          <% end %>
+          <div class="inline-block ml-2">
+            <% if @mission.status != "En cours" && @mission.status != "Terminée" %>
+              <%= button_to "Supprimer", @mission, method: :delete, class: "btn-danger" %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
-
-<%= render "status", mission: @mission %>
