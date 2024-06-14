@@ -13,6 +13,18 @@ module.exports = {
         sans: ['Poppins', 'Rubik', ...defaultTheme.fontFamily.sans],
         serif: ['Lora', ...defaultTheme.fontFamily.serif]
       },
+      maxHeight: { // Correction ici
+        '108': '27rem',
+        '116': '29rem',
+        '124': '31rem',
+        '126': '31.5rem',
+        '127': '31.75rem',
+        '128': '32rem',
+        '130': '32.5rem', 
+        '132': '33rem',
+        '136': '34rem',  
+        '140': '35rem',     
+      },
       colors: { 
         test: '#6e61fe',
         HFblue: {
