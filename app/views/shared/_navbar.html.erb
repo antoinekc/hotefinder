@@ -8,17 +8,18 @@
     <div class="flex flex-row pl-24 justify-center space-x-28 text-lg">
       <%= link_to missions_path, class: 'flex items-center' do %>
         
+        <span class="hidden md:inline text-HFblue-200 px-2 hover:text-violet-800">Concierges</span>
+      <% end %>
+      <%= link_to users_path, class: 'flex items-center' do %>
+
         <span class="hidden md:inline text-HFblue-200 px-2 hover:text-violet-800">Missions</span>
       <% end %>
       <%= link_to users_path, class: 'flex items-center' do %>
-        
-        <span class="hidden md:inline text-HFblue-200 px-2 hover:text-violet-800">Annuaire</span>
+    
+        <span class="hidden md:inline text-violet-900 px-2 hover:text-violet-800">Équipe</span>
       <% end %>
       <%= link_to users_path, class: 'flex items-center' do %>
-        <span class="hidden md:inline text-HFblue-200 px-2 hover:text-violet-800">Équipe</span>
-      <% end %>
-      <%= link_to users_path, class: 'flex items-center' do %>
-        <span class="hidden md:inline text-HFblue-200 px-2 hover:text-violet-800">À propos</span>
+        <span class="hidden md:inline text-violet-900  px-2 hover:text-violet-800">À propos</span>
       <% end %>
     </div>
     <div class="hidden md:flex items-center space-x-12">
