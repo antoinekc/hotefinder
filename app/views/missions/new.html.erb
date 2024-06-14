@@ -1,9 +1,10 @@
 <div class="p-2 m-2 mx-auto w-5/6 md:w-2/3 bg-HFlight bg-opacity-50">
   <h1 class='text-center size-18 font-bold text-HFblue-200'>New Mission</h1>
 
-
-  <%= render "form", mission: @mission %>
-
+  <div class='my-8'>
+    <%= render "form", mission: @mission %>
+  </div>
+  
   <div class='flex justify-center'>
   <%= link_to "Back to missions", missions_path, class: 'btn-secondary'%><br><br>
   </div>

@@ -21,6 +21,7 @@ class MissionsController < ApplicationController
     @mission = Mission.new
     @user = params[:host_id].present? ? User.find(params[:host_id]) : nil
     @mission.status = ""
+    @mission.city_id = 1
   end
 
   def edit
@@ -34,6 +35,8 @@ class MissionsController < ApplicationController
 
     if params[:mission][:host_id].present?
       @user = User.find(params[:mission][:host_id])
+
+
       if @user
         @mission.host = @user
       else
@@ -43,6 +46,7 @@ class MissionsController < ApplicationController
     end
 
     if @mission.save
+      MissionMailer.new_mission(@mission, @mission.host).deliver_later
       redirect_to mission_url(@mission), notice: "La mission a été créée avec succès."
     else
       flash[:alert] = "Une erreur est apparue lors de la création de mission."
@@ -76,6 +80,7 @@ class MissionsController < ApplicationController
       # Regular update with mission parameters
       if @mission.update(mission_params)
         MissionMailer.status_update(@mission, @mission.owner).deliver_later if @mission.status != previous_status
+        MissionMailer.status_update(@mission, @mission.host).deliver_later if @mission.status != previous_status
         redirect_to mission_url(@mission), notice: "La mission a été mise à jour."
       else
         flash[:alert] = "Une erreur est apparue lors de la création de la mission."
@@ -85,6 +90,7 @@ class MissionsController < ApplicationController
       # Update only the status
       if @mission.save
         MissionMailer.status_update(@mission, @mission.owner).deliver_later if @mission.status != previous_status
+        MissionMailer.status_update(@mission, @mission.host).deliver_later if @mission.status != previous_status
         redirect_to mission_url(@mission), notice: "Le status de la mission a été mise à jour."
       else
         flash[:alert] = "Une erreur est apparue lors de la mise à jour de la mission."
@@ -102,6 +108,7 @@ class MissionsController < ApplicationController
 
   def set_mission
     @mission = Mission.find(params[:id])
+    @city = @mission.city
   end
 
   def mission_params
