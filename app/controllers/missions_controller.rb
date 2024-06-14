@@ -46,7 +46,7 @@ class MissionsController < ApplicationController
     end
 
     if @mission.save
-      MissionMailer.new_mission(@mission, @mission.host).deliver_later
+      MissionMailer.new_mission(@mission, @mission.host).deliver_later if @mission.host.email_notifications
       redirect_to mission_url(@mission), notice: "La mission a été créée avec succès."
     else
       flash[:alert] = "Une erreur est apparue lors de la création de mission."
@@ -62,36 +62,34 @@ class MissionsController < ApplicationController
     previous_status = @mission.status
 
     case params[:choix]
-      when "Accepter mission"
-        @mission.status = "Acceptée"
-      when "Refuser mission"
-        @mission.status = "Refusée"
-      when "Abandonner mission"
-        @mission.status = "Abandonnée"
-      when "Annuler mission"
-        @mission.status = "Annulée"
-      when "Démarrer mission"
-        @mission.status = "En cours"
-      when "Terminer mission"
-        @mission.status = "Terminée"
+    when "Accepter mission"
+      @mission.status = "Acceptée"
+    when "Refuser mission"
+      @mission.status = "Refusée"
+    when "Abandonner mission"
+      @mission.status = "Abandonnée"
+    when "Annuler mission"
+      @mission.status = "Annulée"
+    when "Démarrer mission"
+      @mission.status = "En cours"
+    when "Terminer mission"
+      @mission.status = "Terminée"
     end
 
     if params[:mission].present?
       # Regular update with mission parameters
       if @mission.update(mission_params)
-        MissionMailer.status_update(@mission, @mission.owner).deliver_later if @mission.status != previous_status
-        MissionMailer.status_update(@mission, @mission.host).deliver_later if @mission.status != previous_status
+        send_status_update_emails if @mission.status != previous_status
         redirect_to mission_url(@mission), notice: "La mission a été mise à jour."
       else
-        flash[:alert] = "Une erreur est apparue lors de la création de la mission."
+        flash[:alert] = "Une erreur est apparue lors de la mise à jour de la mission."
         render :edit, status: :unprocessable_entity
       end
     else
       # Update only the status
       if @mission.save
-        MissionMailer.status_update(@mission, @mission.owner).deliver_later if @mission.status != previous_status
-        MissionMailer.status_update(@mission, @mission.host).deliver_later if @mission.status != previous_status
-        redirect_to mission_url(@mission), notice: "Le status de la mission a été mise à jour."
+        send_status_update_emails if @mission.status != previous_status
+        redirect_to mission_url(@mission), notice: "Le statut de la mission a été mis à jour."
       else
         flash[:alert] = "Une erreur est apparue lors de la mise à jour de la mission."
         render :edit, status: :unprocessable_entity
@@ -113,5 +111,10 @@ class MissionsController < ApplicationController
 
   def mission_params
     params.require(:mission).permit(:title, :description, :start_date, :end_date, :postal_code, :city_id, :host_id, :status)
+  end
+
+  def send_status_update_emails
+    MissionMailer.status_update(@mission, @mission.owner).deliver_later if @mission.owner.email_notifications
+    MissionMailer.status_update(@mission, @mission.host).deliver_later if @mission.host.email_notifications
   end
 end
