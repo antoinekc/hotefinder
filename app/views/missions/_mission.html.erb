@@ -4,9 +4,9 @@
 </div>
 
 <div id="<%= dom_id mission %>" class="bg-HFlight shadow-md rounded-lg p-4 mb-4 items-center">
-  <p class="my-4"><span class="font-bold text-HFblue-200">Description de ma mission :</span><br><%= mission.description %></p>
-  <p><span class="font-bold text-HFblue-200">Nom de l'hôte :</span> <%= mission.host.first_name %></p>
-  <p><span class="font-bold text-HFblue-200">Identifiant propriétaire :</span> <%= mission.owner_id %></p>
-  <p><span class="font-bold text-HFblue-200">Date de début :</span> <%= mission.start_date %></p>
-  <p><span class="font-bold text-HFblue-200">Date de fin :</span> <%= mission.end_date %></p>
+  <p class="my-4"><span class="font-bold text-HFblue-200">Description :</span><br><%= mission.description %></p>
+  <p><span class="font-bold text-HFblue-200">Nom de l'hôte :</span> <%= mission.host.first_name %> <%= mission.host.last_name %></p>
+  <p><span class="font-bold text-HFblue-200">Nom du propriétaire :</span> <%= mission.owner.first_name %> <%= mission.owner.last_name %></p>
+  <p><span class="font-bold text-HFblue-200">Dates :</span> <%= mission.start_date %> au <%= mission.end_date %></p>
+  <p><span class="font-bold text-HFblue-200">Ville :</span> <%= mission.city.name %> <%= mission.city.postal_code %></p>
 </div>
