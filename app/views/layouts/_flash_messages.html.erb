@@ -1,8 +1,8 @@
 <div class="flex-grow flex flex-col justify-left max-h-12">
   <% if flash[:notice].present? %>
-    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium fixed top-10 left-4 px-5 z-50" id="notice"><%= flash[:notice] %></p>
+    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium fixed top-15 left-1 px-5 z-50" id="notice"><%= flash[:notice] %></p>
   <% end %>
   <% if flash[:alert].present? %>
-    <p class="py-2 px-3 bg-red-50 mb-5 text-red-500 font-medium fixed top-10 left-5 px-5 z-50" id="alert"><%= flash[:alert] %></p>
+    <p class="py-2 px-3 bg-red-50 mb-5 text-red-500 font-medium fixed top-15 left-1 px-5 z-50" id="alert"><%= flash[:alert] %></p>
   <% end %>
 </div>
