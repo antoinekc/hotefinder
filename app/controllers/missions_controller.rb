@@ -15,6 +15,8 @@ class MissionsController < ApplicationController
   end
 
   def show
+    @mission = Mission.find(params[:id])
+    @categories = @mission.categories
   end
 
   def new
@@ -26,6 +28,7 @@ class MissionsController < ApplicationController
 
   def edit
     @mission = Mission.find(params[:id])
+    @categories = @mission.categories
   end
 
   def create
@@ -110,7 +113,7 @@ class MissionsController < ApplicationController
   end
 
   def mission_params
-    params.require(:mission).permit(:title, :description, :start_date, :end_date, :postal_code, :city_id, :host_id, :status)
+    params.require(:mission).permit(:title, :description, :start_date, :end_date, :postal_code, :city_id, :host_id, :status, category_ids: [])
   end
 
   def send_status_update_emails
