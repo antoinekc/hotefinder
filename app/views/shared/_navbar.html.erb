@@ -10,23 +10,28 @@
       <% end %>
     </div>
 
-    <div class="flex flex-row pl-24 justify-center space-x-28 text-lg">
+    <div class="flex flex-row pl-24 justify-center space-x-28 text-lg hidden md:flex">
       <%= link_to users_path, class: 'flex items-center' do %>
+        <%= image_tag 'icons/user.svg', alt: 'Concierges', class: 'h-6 w-6 md:hidden' %>
         <span class="hidden md:inline text-HFblue-200 px-2 hover:text-violet-800">Concierges</span>
       <% end %>
 
       <%= link_to missions_path, class: 'flex items-center' do %>
+        <%= image_tag 'icons/user.svg', alt: 'Missions', class: 'h-6 w-6 md:hidden' %>
         <span class="hidden md:inline text-HFblue-200 px-2 hover:text-violet-800">Missions</span>
       <% end %>
 
       <%= link_to team_path, class: 'flex items-center' do %>
+        <%= image_tag 'icons/user.svg', alt: 'Équipe', class: 'h-6 w-6 md:hidden' %>
         <span class="hidden md:inline text-HFblue-200 px-2 hover:text-violet-800">Équipe</span>
       <% end %>
-      
+
       <%= link_to about_path, class: 'flex items-center' do %>
-        <span class="hidden md:inline text-HFblue-200  px-2 hover:text-violet-800">À propos</span>
+        <%= image_tag 'icons/user.svg', alt: 'À propos', class: 'h-6 w-6 md:hidden' %>
+        <span class="hidden md:inline text-HFblue-200 px-2 hover:text-violet-800">À propos</span>
       <% end %>
     </div>
+
     <div class="hidden md:flex items-center space-x-12">
       <% if user_signed_in? %>
         <%= link_to user_path(current_user), class: 'flex items-center' do %>
@@ -41,6 +46,7 @@
         </div>
       <% end %>
     </div>
+
     <div class="md:hidden flex items-center">
       <button id="burger-menu" class="flex flex-col space-y-1 p-2">
         <span class="block w-6 h-0.5 bg-black"></span>
@@ -50,14 +56,34 @@
   </div>
 
   <!-- Mobile Menu -->
-  <div id="mobile-menu" class="hidden md:hidden bg-red-100 w-full">
+  <div id="mobile-menu" class="hidden md:hidden bg-slate-100 w-full">
     <div class="flex flex-col items-end space-y-4 p-4">
+      <%= link_to users_path, class: 'flex items-center' do %>
+        <%= image_tag 'icons/user.svg', alt: 'Concierges', class: 'h-6 w-6' %>
+        <span class="text-HFblue-200 px-2">Concierges</span>
+      <% end %>
+
+      <%= link_to missions_path, class: 'flex items-center' do %>
+        <%= image_tag 'icons/user.svg', alt: 'Missions', class: 'h-6 w-6' %>
+        <span class="text-HFblue-200 px-2">Missions</span>
+      <% end %>
+
+      <%= link_to team_path, class: 'flex items-center' do %>
+        <%= image_tag 'icons/user.svg', alt: 'Équipe', class: 'h-6 w-6' %>
+        <span class="text-HFblue-200 px-2">Équipe</span>
+      <% end %>
+
+      <%= link_to about_path, class: 'flex items-center' do %>
+        <%= image_tag 'icons/user.svg', alt: 'À propos', class: 'h-6 w-6' %>
+        <span class="text-HFblue-200 px-2">À propos</span>
+      <% end %>
+
       <% if user_signed_in? %>
         <%= link_to user_path(current_user), class: 'flex items-center' do %>
-          <%= image_tag 'icons/user.svg', alt: 'Profile', class: 'size-6' %>
+          <%= image_tag 'icons/user.svg', alt: 'Profile', class: 'h-6 w-6' %>
           <span class="text-HFblue-200 px-2">Profil</span>
         <% end %>
-         <%= button_to "Me déconnecter", destroy_user_session_path, method: :delete, class: 'btn-secondary-nav ml-12' %></div>
+        <%= button_to "Me déconnecter", destroy_user_session_path, method: :delete, class: 'btn-secondary-nav' %>
       <% else %>
         <%= link_to new_user_session_path, class: 'text-right text-HFblue-200' do %>
           Connexion
@@ -70,20 +96,4 @@
   </div>
 </nav>
 
-<script>
-  document.getElementById('burger-menu').addEventListener('click', function() {
-    var mobileMenu = document.getElementById('mobile-menu');
-    if (mobileMenu.classList.contains('hidden')) {
-      mobileMenu.classList.remove('hidden');
-    } else {
-      mobileMenu.classList.add('hidden');
-    }
-  });
-
-  window.addEventListener('resize', function() {
-    var mobileMenu = document.getElementById('mobile-menu');
-    if (window.innerWidth >= 768 && !mobileMenu.classList.contains('hidden')) {
-      mobileMenu.classList.add('hidden');
-    }
-  });
-</script>
+<script src="app/javascript/burger_menu.js"> </script>
