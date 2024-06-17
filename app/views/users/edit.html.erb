@@ -7,12 +7,7 @@
   <% content_for :title, "Modifier les informations de l'utilisateur" %>
 
   <div class="flex flex-col items-center mb-5 justify-center relative w-full h-120">
-    <div class="relative w-full h-full">
-      <div class="absolute inset-0 bg-HFlight opacity-50"></div>
-      <div class="relative flex flex-col items-center justify-center h-full">
-        <h1 class="font-bold text-4xl text-HFblue-200 mb-10 mt-10">Modifier les informations de l'utilisateur</h1>
-      </div>
-    </div>
+    <h1 class="font-bold text-4xl text-HFblue-200 mb-10 mt-10">Modifier les informations de l'utilisateur</h1>
   </div>
 
   <div class="flex justify-center">
@@ -24,22 +19,22 @@
         </div>
 
         <div class="mb-4">
-          <%= f.label :first_name, class: "block text-HFblue-200 font-medium mb-2" %>
+          <%= f.label :first_name, "Prénom", class: "block text-HFblue-200 font-medium mb-2" %>
           <%= f.text_field :first_name, class: "form-input mt-1 block w-full rounded-md border-gray-300 shadow-sm" %>
         </div>
 
         <div class="mb-4">
-          <%= f.label :last_name, class: "block text-HFblue-200 font-medium mb-2" %>
+          <%= f.label :last_name, "Nom", class: "block text-HFblue-200 font-medium mb-2" %>
           <%= f.text_field :last_name, class: "form-input mt-1 block w-full rounded-md border-gray-300 shadow-sm" %>
         </div>
 
         <div class="mb-4">
-          <%= f.label :phone_number, class: "block text-HFblue-200 font-medium mb-2" %>
+          <%= f.label :phone_number, "Téléphone", class: "block text-HFblue-200 font-medium mb-2" %>
           <%= f.text_field :phone_number, class: "form-input mt-1 block w-full rounded-md border-gray-300 shadow-sm" %>
         </div>
 
         <div class="mb-4">
-          <%= f.label :birthdate, class: "block text-HFblue-200 font-medium mb-2" %>
+          <%= f.label :birthdate, "Date de Naissance",class: "block text-HFblue-200 font-medium mb-2" %>
           <%= f.date_select :birthdate, class: "form-select mt-1 block w-full rounded-md border-gray-300 shadow-sm" %>
         </div>
 
@@ -53,14 +48,30 @@
           <%= f.text_field :description, class: "form-input mt-1 block w-full rounded-md border-gray-300 shadow-sm" %>
         </div>
 
-        <div class="mb-4 flex items-center">
-          <%= f.check_box :email_notifications, { class: "form-checkbox rounded-md border-gray-300 shadow-sm mr-2", checked: @user.email_notifications } %>
-          <%= f.label :email_notifications, "Recevoir les notifications par Email", class: "text-HFblue-200 font-medium" %>
+        <div class="mb-4">
+          <%= f.label :avatar, "Image de profil", class: "block text-HFblue-200 font-medium mb-2" %>
+          <%= f.file_field :avatar, class: "form-input mt-1 block w-full rounded-md border-gray-300 shadow-sm" %>
         </div>
 
-        <div class="mb-4">
-          <%= f.label :avatar, class: "block text-HFblue-200 font-medium mb-2" %>
-          <%= f.file_field :avatar, class: "form-input mt-1 block w-full rounded-md border-gray-300 shadow-sm" %>
+
+
+        <div class="bg-white p-4">
+          <h2 class=" text-HFred-300 text-xl">Mon rôle</h2>
+          <div class="mt-4">
+            <div class="mb-4 mx-4">
+              <%= f.check_box :is_owner, { class: "form-checkbox rounded-md border-gray-300 shadow-sm mr-2"} %>
+              <%= f.label :is_owner, "Propriétaire", class: "text-HFblue-200 font-medium" %>
+            </div>
+            <div class="mb-4 mx-4">
+              <%= f.check_box :is_host, { class: "form-checkbox rounded-md border-gray-300 shadow-sm mr-2"} %>
+              <%= f.label :is_host, "Concierge", class: "text-HFblue-200 font-medium" %>
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-4 flex items-center p-2">
+          <%= f.check_box :email_notifications, { class: "form-checkbox rounded-md border-gray-300 shadow-sm mr-2", checked: @user.email_notifications } %>
+          <%= f.label :email_notifications, "Recevoir les notifications par Email", class: "text-gray-600 font-medium" %>
         </div>
 
         <div class="actions justify-center">
