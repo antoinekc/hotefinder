@@ -1,50 +1,39 @@
-<head>
-<meta name="description" content="La page de profil des concierges permettant de visualiser les concierges disponibles sur la plateforme.">
-</head>
-
 <section class="py-12 px-4">
-  <div class = "flex flex-wrap justify-center gap-10">
-    <h1 class="text-3xl font-bold mb-8 text-center text-HFblue-200 mb-10">Nos Utilisateurs</h1>
-    <p class>
-    <div class = 'bg-HFlight opacity-50'>
-   </div>
+  <div class="text-center mb-10">
+    <h1 class="text-3xl font-bold text-violet-950 m-10">Nos Concierges</h1>
+    <p class="text-HFdark">Découvrez nos les personnes disponibles pour des collaborations fructueuses.</p>
   </div>
-  <div class="flex flex-wrap justify-center gap-10"> <!-- Augmentation de la marge -->
+  <ul role="list" class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 mx-auto max-w-7xl">
     <% @users.each do |user| %>
-    <% if user.is_host %>
-      <a href="<%= user_path(user) %>"> <!-- Ajout du lien vers la page de profil -->
-        <div class="w-4/6 bg-HFlight rounded shadow-md transition-transform transform hover:-translate-y-2 hover:shadow-2xl hover:scale-101"> <!-- Modification des tailles des cartes -->
-          <div class="relative">
-            <% if user.avatar.attached? %>
-              <%= image_tag user.avatar.variant(resize_to_fill: [300, 300]), class: "rounded-t-lg w-full" %>
-            <% else %>
-              <div class="w-full h-20 bg-HFlight rounded-t-lg"></div> <!-- Placeholder for missing photo -->
-            <% end %>
-            <div class="absolute top-0 left-0 w-full bg-HFlight bg-opacity-75 text-white font-semibold py-1 px-3 rounded-tl-lg rounded-tr-lg">
-              <% if user.is_available %>
-                <span class="text-green-600">Disponible</span>
+      <% if user.is_host %>
+        <li class="col-span-1 divide-y divide-gray-200 rounded-lg bg-white shadow-lg min-h-[400px]"> <!-- Augmenté la hauteur minimale -->
+          <a href="<%= user_path(user) %>">
+            <div class="flex w-full items-center justify-between space-x-6 p-6">
+              <div class="flex-1 truncate">
+                <div class="flex items-center space-x-3">
+                  <h3 class="truncate text-lg font-medium text-gray-900"><%= user.first_name %></h3>
+                  <% if user.is_available == "Disponible" %>
+                    <span class="inline-flex flex-shrink-0 items-center rounded-full bg-green-50 px-1.5 py-0.5 text-xs font-medium text-green-600 ring-1 ring-inset ring-green-500">Disponible</span>
+                  <% else %>
+                    <span class="inline-flex flex-shrink-0 items-center rounded-full bg-red-50 px-1.5 py-0.5 text-xs font-medium text-red-600 ring-1 ring-inset ring-red-500">Indisponible</span>
+                  <% end %>
+                </div>
+                <p class="mt-1 truncate text-sm text-gray-500"><%= user.commission %>%</p>
+                
+              </div>
+              <% if user.avatar.attached? %>
+                <%= image_tag user.avatar.variant(resize_to_fill: [150, 150]), class: "h-20 w-20 flex-shrink-0 rounded-full bg-gray-300" %> <!-- Augmenté la taille des images -->
               <% else %>
-                <span class="text-HFred-200">Indisponible</span>
+                <div class="h-20 w-20 flex-shrink-0 rounded-full bg-gray-300"></div> <!-- Placeholder for missing photo -->
               <% end %>
-            </div> <!-- Affichage du statut en incrusté -->
-          </div>
-          <div class="px-5 pb-5">
-            <h5 class="text-lg font-bold tracking-tight text-HFdark mt-4"><%= user.first_name %> <%= user.last_name %></h5>
-            <ul class="mt-2">
-              <li>Email:<a href="<%= user_path(user) %>" class= "text-HFblue-200"> **voir l'email**</a></li> 
-              <li>Téléphone: <a href="<%= user_path(user) %>" class= "text-HFblue-200"> **voir le N° de téléphone**</a></li>
-              <li>Commission: <%= user.commission %></li>
-              <!-- Ne pas afficher le statut ici, car il est déjà visible sur la photo -->
-            </ul>
-            <div class="flex items-center justify-between mt-4">
-              <span class="text-base font-bold text-gray-900 dark:text-white"><%= user.commission %></li></span>
-              <!-- Ne pas afficher le statut ici, car il est déjà visible sur la photo -->
-              <a href="#" class="btn btn-primary">Embaucher</a>
             </div>
-          </div>
-        </div>
-      </a>
+            
+            <div>
+              <p class="p-6 mt-1 text-sm text-gray-500"><%= user.description %></p>
+            </div>
+          </a>
+        </li>
+      <% end %>
     <% end %>
-    <% end %>
-  </div>
+  </ul>
 </section>

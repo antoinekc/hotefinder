@@ -7,17 +7,17 @@
   <div class="container mx-auto flex flex-col lg:flex-row items-center py-12 px-4 lg:px-10">
     <!-- Left side: Text content -->
     <div class="lg:w-1/2 lg:pr-12">
-      <h1 class="text-4xl lg:text-7xl font-bold mb-6 font-sans text-violet-950">Hotefinder.</h1>
-      <p class="text-lg lg:text-xl mb-6">Non, nous ne sommes pas une conciergerie... <br>
+      <h1 class="text-4xl lg:text-8xl font-bold mb-6 font-sans text-violet-950">Hotefinder.</h1>
+      <p class="text-lg lg:text-xl mb-6">
         Hotefinder vous aide à trouver le concierge idéal pour la gestion saisonnière de vos biens immobiliers.</p>
       <div class="flex justify-start space-x-4 lg:space-x-10">
-        <%= link_to 'Inscription', new_user_registration_path, class: 'btn-secondary bg-red-400 text-lg w-32 lg:w-48 hover:bg-red-500 font-light' %>
-        <%= link_to 'En savoir plus', new_user_registration_path, class: 'btn-secondary bg-red-400 text-lg w-32 lg:w-48 hover:bg-red-500 font-light' %>
+        <%= link_to 'Inscription', new_user_registration_path, class: 'btn-secondary bg-red-400 text-lg w-32 lg:w-48 hover:bg-red-500 font-light hidden md:inline-block flex items-center justify-center' %>
+        <%= link_to 'En savoir plus', about_path, class: 'btn-secondary bg-red-400 text-lg w-32 lg:w-48 hover:bg-red-500 font-light hidden md:inline-block flex items-center justify-center' %>
       </div>
     </div>
     <!-- Right side: Image -->
     <div class="lg:w-1/2 mt-8 lg:mt-0 hidden sm:block md:w-1/2">
-      <%= image_tag '/icons/hero.webp', alt: 'Hero Image', class: 'w-full md:w-3/4 lg:w-full max-h-140 rounded-md object-contain' %>
+      <%= image_tag 'icons/hero.webp', alt: 'femme travaillant sur son ordinateur', class: 'w-full md:w-3/4 lg:w-full max-h-140 rounded-md object-contain' %>
     </div>
   </div>
 </section>
@@ -48,43 +48,53 @@
     </div>
     <div class="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-4xl">
       <dl class="grid max-w-xl grid-cols-1 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-2 lg:gap-y-16">
+        
+        <!-- Mise en relation rapide-->
         <div class="relative pl-16">
           <dt class="text-base font-semibold leading-7 text-gray-900">
             <div class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-600">
-              <svg class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M12 16.5V9.75m0 0l3 3m-3-3l-3 3M6.75 19.5a4.5 4.5 0 01-1.41-8.775 5.25 5.25 0 0110.233-2.33 3 3 0 013.758 3.848A3.752 3.752 0 0118 19.5H6.75z" />
-              </svg>
+              <svg class="w-[21px] h-[21px] text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.9" d="M16.872 9.687 20 6.56 17.44 4 4 17.44 6.56 20 16.873 9.687Zm0 0-2.56-2.56M6 7v2m0 0v2m0-2H4m2 0h2m7 7v2m0 0v2m0-2h-2m2 0h2M8 4h.01v.01H8V4Zm2 2h.01v.01H10V6Zm2-2h.01v.01H12V4Zm8 8h.01v.01H20V12Zm-2 2h.01v.01H18V14Zm2 2h.01v.01H20V16Z"/>
+            </svg>
             </div>
             Mise en relation rapide
           </dt>
           <dd class="mt-2 text-base leading-7 text-gray-600 font-serif">Accédez très rapidement à un large choix de concierge dans votre ville. Notre plateforme vous permet une sélection minutieuse grâce aux avis clients, vous garantissant de trouver des professionnels de confiance et compétents pour la gestion de vos biens.</dd>
         </div>
+
+        <!-- Gestion simplifiée et efficace -->
         <div class="relative pl-16">
           <dt class="text-base font-semibold leading-7 text-gray-900">
             <div class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-600">
-              <svg class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />
+              <svg class="w-[21px] h-[21px] text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.9" d="M7 8v8a5 5 0 1 0 10 0V6.5a3.5 3.5 0 1 0-7 0V15a2 2 0 0 0 4 0V8"/>
               </svg>
             </div>
             Gestion simplifié et efficace
           </dt>
-          <dd class="mt-2 text-base leading-7 text-gray-600 font-serif">En utilisant notre plateforme, les propriétaires peuvent utiliser nos outils intuitifs à disposition pour gérer faciliter la relation avec les concierges.</dd>
+          <dd class="mt-2 text-base leading-7 text-gray-600 font-serif">En utilisant notre plateforme, les propriétaires peuvent utiliser les outils intuitifs à disposition pour gérer faciliter la relation avec les concierges.</dd>
         </div>
+
+        <!-- Service client -->
         <div class="relative pl-16">
           <dt class="text-base font-semibold leading-7 text-gray-900">
             <div class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-600">
-              <svg class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" />
+                <svg class="w-[21px] h-[21px] text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.9" d="M14.079 6.839a3 3 0 0 0-4.255.1M13 20h1.083A3.916 3.916 0 0 0 18 16.083V9A6 6 0 1 0 6 9v7m7 4v-1a1 1 0 0 0-1-1h-1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1Zm-7-4v-6H5a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h1Zm12-6h1a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2h-1v-6Z"/>
               </svg>
             </div>
             Service Client
           </dt>
           <dd class="mt-2 text-base leading-7 text-gray-600 font-serif">Notre équipe est disponible pour assister à la fois les propriétaires et les concierges, assurant une communication fluide et une résolution rapide des problèmes, pour une expérience sans souci.</dd>
         </div>
+
+        <!-- Transparence Tarifaire -->
         <div class="relative pl-16">
           <dt class="text-base font-semibold leading-7 text-gray-900">
             <div class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-600">
-              <i class="fa-sharp fa-solid fa-euro-sign"></i>
+              <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.9" d="M6 10h9.231M6 14h9.231M18 5.086A5.95 5.95 0 0 0 14.615 4c-3.738 0-6.769 3.582-6.769 8s3.031 8 6.769 8A5.94 5.94 0 0 0 18 18.916"/>
+            </svg>
             </div>
             Transparence tarifaire
           </dt>
@@ -174,5 +184,5 @@
   </main>
 
  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-  <script src="app/javascript/swipper.js"></script>
+  <script src="app/javascript/swiper.js"></script>
 </div>

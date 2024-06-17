@@ -11,16 +11,13 @@
             </a>
             <ul class="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-300 sm:mb-0 ">
                 <li>
-                    <a href="#" class="hover:underline me-4 md:me-6">A propos</a>
+                    <%= link_to 'A propos', about_path, class: 'hover:underline me-4 md:me-6' %>
                 </li>
                 <li>
-                    <a href="#" class="hover:underline me-4 md:me-6">GCV</a>
+                    <%= link_to 'GCU', cgu_path, class: 'hover:underline me-4 md:me-6' %>
                 </li>
                 <li>
-                    <a href="#" class="hover:underline me-4 md:me-6">Licensing</a>
-                </li>
-                <li>
-                    <a href="#" class="hover:underline">Contact</a>
+                    <%= link_to 'Contact', contact_path, class: 'hover:underline me-4 md:me-6' %>
                 </li>
             </ul>
         </div>
@@ -28,4 +25,3 @@
         <span class="block text-sm text-gray-500 sm:text-center ">© 2023 <a href="https://hotefinder.com/" class="hover:underline">Hotefinder</a></span>
     </div>
 </footer>
-

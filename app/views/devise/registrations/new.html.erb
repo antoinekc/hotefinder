@@ -3,9 +3,9 @@
 </head>
 
 <body class="mx-auto">
-  <img src="https://images.pexels.com/photos/1115804/pexels-photo-1115804.jpeg" alt="image de fond representant une maison de location" class="absolute inset-0 -z-10 h-full w-full object-cover object-center flex items-center">
+  <img src="https://images.pexels.com/photos/1115804/pexels-photo-1115804.jpeg" alt="image de fond representant une maison de location" class="opacity-50 absolute inset-0 -z-10 h-full w-full object-cover object-center flex items-center">
   <div class="flex items-center justify-center">
-  <div class="bg-HFdark bg-opacity-50 rounded-xl p-8 flex flex-col space-y-4 w-full max-w-sm items-center justify-center">
+  <div class="bg-HFdark bg-opacity-50 my-8 rounded-xl p-8 flex flex-col space-y-4 w-full max-w-sm items-center justify-center">
     <%= image_tag 'icons/Bg_logo.svg', alt: 'Logo', class: 'size-14 stroke-white' %>
     <h2 class="text-white text-2xl font-semibold">M'inscrire</h2>
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
@@ -13,7 +13,7 @@
 
       <div class="field mt-3">
         <%= f.label :Email, class: "text-HFlight flex items-center text-sm" %>
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "bg-opacity-50 p-2 rounded-full shadow-md bg-HFlight text-HFdark placeholder-HFlight-100 focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-HFlight text-sm", placeholder:"hello@hotefinder.com" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "bg-opacity-50 p-2 rounded-full shadow-md bg-HFlight text-HFdark placeholder-HFlight-100 focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-HFlight text-sm w-80", placeholder:"hello@hotefinder.com" %>
       </div>
 
       <div class="field text-HFlight mt-3 text-sm">
@@ -21,12 +21,12 @@
         <% if @minimum_password_length%>
           <em>(<%= @minimum_password_length%> caractères minimum)</em>
         <% end %><br />
-        <%= f.password_field :password, autocomplete: "new-password", class: "bg-opacity-50 rounded-full shadow-md bg-HFlight text-HFdark placeholder-HFlight focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-HFlight text-sm", placeholder:"Pas '123admin' stp" %>
+        <%= f.password_field :password, autocomplete: "new-password", class: "bg-opacity-50 rounded-full shadow-md bg-HFlight text-HFdark placeholder-HFlight focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-HFlight text-sm w-80", placeholder:"Pas '123admin' stp" %>
       </div>
 
       <div class="field mt-3 items-center">
         <%= f.label :Le_meme_mot_de_passe, class: "text-HFlight flex items-center" %>
-        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "bg-opacity-50 rounded-full shadow-md bg-HFlight text-HFdark placeholder-HFlight focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-HFlight text-sm", placeholder:"ni 'pwd123' non plus" %>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "bg-opacity-50 rounded-full shadow-md bg-HFlight text-HFdark placeholder-HFlight focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-HFlight text-sm w-80", placeholder:"ni 'pwd123' non plus" %>
       </div>
 
       <div class="p-4 mt-4 mx-auto rounded-lg flex flex-col items-center">
