@@ -5,8 +5,6 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
-    # @users = User.includes(:cities).all
-    # @locations = City.all
   end
 
   def show
