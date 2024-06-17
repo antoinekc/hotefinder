@@ -53,20 +53,14 @@
           <%= f.file_field :avatar, class: "form-input mt-1 block w-full rounded-md border-gray-300 shadow-sm" %>
         </div>
 
-
-
-        <div class="bg-white p-4">
-          <h2 class=" text-HFred-300 text-xl">Mon rôle</h2>
-          <div class="mt-4">
-            <div class="mb-4 mx-4">
-              <%= f.check_box :is_owner, { class: "form-checkbox rounded-md border-gray-300 shadow-sm mr-2"} %>
-              <%= f.label :is_owner, "Propriétaire", class: "text-HFblue-200 font-medium" %>
+        <div class="mb-4">
+          <%= f.label :categories, "Catégories", class: "block text-HFblue-200 font-medium mb-2" %>
+          <% Category.all.each do |category| %>
+            <div class="flex mb-2">
+              <%= check_box_tag "user[category_ids][]", category.id, @user.categories.include?(category), class: "form-checkbox rounded-md border-gray-300 shadow-sm mr-2" %>
+              <%= label_tag "user_category_ids_#{category.id}", category.name, class: "text-HFred-200 font-medium" %>
             </div>
-            <div class="mb-4 mx-4">
-              <%= f.check_box :is_host, { class: "form-checkbox rounded-md border-gray-300 shadow-sm mr-2"} %>
-              <%= f.label :is_host, "Concierge", class: "text-HFblue-200 font-medium" %>
-            </div>
-          </div>
+          <% end %>
         </div>
 
         <div class="mb-4 flex items-center p-2">

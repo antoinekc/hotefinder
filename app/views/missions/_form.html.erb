@@ -54,6 +54,16 @@
 
   <%= form.hidden_field :host_id, value: @user.id if @user.present? %>
 
+  <div class="mb-4">
+    <%= form.label :categories, "Catégories", class: "block text-HFblue-200 font-medium mb-2" %>
+    <% Category.all.each do |category| %>
+      <div class="flex mb-2">
+        <%= check_box_tag "mission[category_ids][]", category.id, @mission.categories.include?(category), class: "form-checkbox rounded-md border-gray-300 shadow-sm mr-2" %>
+        <%= label_tag "mission_category_ids_#{category.id}", category.name, class: "text-HFred-200 font-medium" %>
+      </div>
+    <% end %>
+  </div>
+
   <div class = 'flex items-start flex-col mx-4'>
     <%= form.label :postal_code,"Arrondissement", class: "block text-sm font-medium text-HFblue-200 mr-2" %>
     <%= form.select :postal_code, options_for_select(paris_zip_codes), class: "mt-1 block w-full shadow-sm sm:text-sm rounded-md text-HFdark border-HFlight hoover:border-HFblue-200" %>  

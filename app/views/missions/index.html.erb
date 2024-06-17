@@ -6,17 +6,16 @@
   <div class="w-full mt-5">
     <% content_for :title, "Missions" %>
 
-<div class="flex flex-col items-center mb-5 justify-center relative w-full h-120">
-  <div class="relative w-full h-full">
-    <img src="https://images.pexels.com/photos/279100/pexels-photo-279100.jpeg" alt="images de fond representant une rangee de maisons colorees" class="absolute inset-0 h-full w-full object-cover object-center">
-    <div class="absolute inset-0 bg-HFdark opacity-50"></div>
-    <div class="relative flex flex-col items-center justify-center h-full">
-      <h1 class="font-bold text-4xl text-HFblue-200 mb-10 mt-10">Missions</h1>
-      <%= link_to "Ajouter une nouvelle mission", new_mission_path, class: "btn btn-primary mt-5 mb-5" %>
+    <div class="flex flex-col items-center mb-5 justify-center relative w-full h-120">
+      <div class="relative w-full h-full">
+        <img src="https://images.pexels.com/photos/279100/pexels-photo-279100.jpeg" alt="images de fond representant une rangee de maisons colorees" class="absolute inset-0 h-full w-full object-cover object-center">
+        <div class="absolute inset-0 bg-HFdark opacity-50"></div>
+        <div class="relative flex flex-col items-center justify-center h-full">
+          <h1 class="font-bold text-4xl text-HFblue-200 mb-10 mt-10">Missions</h1>
+          <%= link_to "Ajouter une nouvelle mission", new_mission_path, class: "btn btn-primary mt-5 mb-5" %>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
-
 
     <div id="missions" class="flex flex-wrap justify-center p-2 gap-4">
       <% @missions.each do |mission| %>
