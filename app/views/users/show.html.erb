@@ -61,8 +61,21 @@
     <!-- Description -->
     <div class="mt-8 justify-start">
       <div class="bg-white w-5/6 p-5 outline outline-HFlight rounded">
-      <h2 class="text-2xl font-bold mb-4 text-HFblue-200">Description</h2>
-      <p class="text-gray-700"><%= @user.description %></p>
+        <h2 class="text-2xl font-bold mb-4 text-HFblue-200">Description</h2>
+        <p class="text-gray-700"><%= @user.description %></p>
+      </div>
+    </div>
+
+    <!-- Category Tags -->
+    <div class="flex flex-col justify-center mt-8">
+      <h2 class="text-2xl font-bold mb-4 text-HFblue-200">Catégories</h2>
+      <div>
+        <% @categories.each do |category| %>
+          <span class="inline-block bg-slate-200 text-HFred-200 font-semibold py-1 px-3 border rounded-full text-sm mr-2 mb-2">
+            <%= category.name %>
+          </span>
+        <% end %>
+      </div>
     </div>
 
     <!-- Décoration -->

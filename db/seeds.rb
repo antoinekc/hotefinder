@@ -41,9 +41,24 @@ admin = User.create!(
 
 puts "admin seeded"
 
+# Create Categories
+categories = %w[
+  Remise\ des\ clés
+  Ménage
+  Shooting\ photo
+  Gestion\ de\ l'annonce
+  Mise\ en\ ligne\ de\ l'annonce
+  Accueil\ des\ voyageurs
+  Bôite\ à\ clés
+  Départ\ des\ voyageurs
+  Etat\ des\ lieux
+  Fourniture\ des\ draps
+].map { |name| Category.create(name: name) }
+
+puts "categories seeded"
+
 # USERS
 disponibilité = ["Disponible", "Indisponible", "Débordé"]
-
 
 10.times do
   user = User.create!(
@@ -64,10 +79,11 @@ disponibilité = ["Disponible", "Indisponible", "Débordé"]
   # S3 avatars
   avatar_object = bucket.object('portrait_01.jpg')
   avatar_url = avatar_object.presigned_url(:get, expires_in: 3600)
-
   avatar_file = URI.open(avatar_url)
-
   user.avatar.attach(io: avatar_file, filename: 'avatar.jpg', content_type: 'image/jpg')
+
+  # Assign random categories to the user
+  user.categories << categories.sample(rand(1..3))
 end
 
 puts "hosts seeded"
@@ -91,10 +107,11 @@ puts "hosts seeded"
   # S3 avatars
   avatar_object = bucket.object('portrait_02.jpg')
   avatar_url = avatar_object.presigned_url(:get, expires_in: 3600)
-
   avatar_file = URI.open(avatar_url)
-
   user.avatar.attach(io: avatar_file, filename: 'avatar.jpg', content_type: 'image/jpg')
+
+  # Assign random categories to the user
+  user.categories << categories.sample(rand(1..3))
 end
 
 puts "host-owners seeded"
@@ -117,10 +134,11 @@ puts "host-owners seeded"
   # S3 avatars
   avatar_object = bucket.object('portrait_03.jpg')
   avatar_url = avatar_object.presigned_url(:get, expires_in: 3600)
-
   avatar_file = URI.open(avatar_url)
-
   user.avatar.attach(io: avatar_file, filename: 'avatar.jpg', content_type: 'image/jpg')
+
+  # Assign random categories to the user
+  user.categories << categories.sample(rand(1..3))
 end
 
 puts "owners seeded"
@@ -156,18 +174,4 @@ end
 
 puts "missions seeded"
 
-# CATEGORIES
-Category.create(name:"Remise des clés")
-Category.create(name:"Ménage")
-Category.create(name:"Shooting photo")
-Category.create(name:"Gestion de l'annonce")
-Category.create(name:"Mise en ligne de l'annonce")
-Category.create(name:"Accueil des voyageurs")
-Category.create(name:"Bôite à clés")
-Category.create(name:"Départ des voyageurs")
-Category.create(name:"Etat des lieux")
-Category.create(name:"Fourniture des draps")
-
-puts "categories seeded"
-
-puts "Seed successful ! "
+puts "Seed successful!"
