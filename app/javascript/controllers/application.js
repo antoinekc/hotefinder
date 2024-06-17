@@ -8,4 +8,4 @@ window.Stimulus   = application
 
 export { application }
 
-import {  } from "swipper.js";
+import { Swiper, SwiperSlide } from 'swiper';

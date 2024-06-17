@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   get 'team', to: 'pages#team'
   get 'about', to: 'pages#about'
+  get 'cgu', to: 'pages#cgu'
+  get 'contact', to: 'pages#contact'
+
   resources :welcome, only: [:index]
   resources :missions
 
