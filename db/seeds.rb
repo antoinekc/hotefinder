@@ -73,7 +73,8 @@ disponibilité = ["Disponible", "Indisponible", "Débordé"]
     is_host: true,
     is_owner: false,
     is_available: disponibilité.sample,
-    description: Faker::Lorem.paragraph
+    description: Faker::Lorem.paragraph,
+    commission: rand(15..30)
   )
 
   # S3 avatars
@@ -101,7 +102,8 @@ puts "hosts seeded"
     is_host: true,
     is_owner: true,
     is_available: disponibilité.sample,
-    description: Faker::Lorem.paragraph
+    description: Faker::Lorem.paragraph,
+    commission: rand(15..30)
   )
 
   # S3 avatars
@@ -128,7 +130,8 @@ puts "host-owners seeded"
     is_admin: Faker::Boolean.boolean,
     is_host: false,
     is_owner: true,
-    is_available: nil
+    is_available: nil,
+    commission: rand(15..30)
   )
 
   # S3 avatars
@@ -159,7 +162,7 @@ status = ["Crée", "Acceptée", "Refusée", "En cours"]
 postal_code = ["75001","75002","75003","75004","75005","75006","75007","75008","75009","75010","75011","75012","75013","75014","75016","75016","75017","75018","75019","75020"]
 
 20.times do
-  Mission.create(
+  mission = Mission.create(
     title: "Mission #{rand(1..40)}",
     description:  Faker::Lorem.paragraph,
     start_date: Faker::Date.between(from: 2.days.ago, to: 15.days.from_now),
@@ -170,6 +173,8 @@ postal_code = ["75001","75002","75003","75004","75005","75006","75007","75008","
     owner_id: rand(11..30),
     postal_code: postal_code.sample
   )
+
+  mission.categories << categories.sample(rand(1..3))
 end
 
 puts "missions seeded"

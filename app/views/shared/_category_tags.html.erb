@@ -1,0 +1,10 @@
+<div class="flex flex-col justify-center mt-8">
+  <h2 class="text-2xl font-bold mb-4 text-HFblue-200">Catégories</h2>
+  <div>
+    <% @categories.each do |category| %>
+      <span class="inline-block bg-slate-200 text-HFred-200 font-semibold py-1 px-3 border rounded-full text-sm mr-2 mb-2">
+        <%= category.name %>
+      </span>
+    <% end %>
+  </div>
+</div>

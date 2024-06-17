@@ -42,7 +42,7 @@
           <li class ="mt-2"><span class="font-bold text-HFblue-200">Nom:</span> <%= @user.last_name %></li>
           <li class ="mt-2"><span class="font-bold text-HFblue-200">Téléphone:</span> <%= @user.phone_number %></li>
           <li class ="mt-2"><span class="font-bold text-HFblue-200">Date de naissance:</span> <%= @user.birthdate %></li>
-          <li class ="mt-2"><span class="font-bold text-HFblue-200">Commission:</span> <%= @user.commission %></li>
+          <li class ="mt-2"><span class="font-bold text-HFblue-200">Commission:</span> <%= "#{@user.commission.truncate}%" %></li>
           
           <% if current_user == @user %>
             <li class="mt-2">
@@ -67,16 +67,7 @@
     </div>
 
     <!-- Category Tags -->
-    <div class="flex flex-col justify-center mt-8">
-      <h2 class="text-2xl font-bold mb-4 text-HFblue-200">Catégories</h2>
-      <div>
-        <% @categories.each do |category| %>
-          <span class="inline-block bg-slate-200 text-HFred-200 font-semibold py-1 px-3 border rounded-full text-sm mr-2 mb-2">
-            <%= category.name %>
-          </span>
-        <% end %>
-      </div>
-    </div>
+    <%= render partial: 'shared/category_tags', locals: { categories: @user.categories } %>
 
     <!-- Décoration -->
     <div class="flex justify-center mt-8">
