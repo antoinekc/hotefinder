@@ -10,7 +10,7 @@
     <div class="relative w-full h-full">
       <div class="absolute inset-0 bg-HFlight opacity-50"></div>
       <div class="relative flex flex-col items-center justify-center h-full">
-        <h1 class="font-bold text-4xl text-HFblue-200 mb-10 mt-10">Informations de l'utilisateur</h1>
+        <!--<h1 class="font-bold text-4xl text-HFblue-200 mb-10 mt-10">Informations de l'utilisateur</h1>-->
       </div>
     </div>
   </div>
@@ -29,7 +29,7 @@
 
       <!-- Informations -->
       <div class="w-full md:w-1/2 lg:w-2/3 xl:w-3/4 md:pl-8 lg:pl-12 mb-8 md:mb-0">
-        <h1 class="text-3xl font-bold mb-4 text-HFblue-200"><%= "Informations de #{@user.first_name}" %></h1>
+        <h1 class="text-3xl font-bold mb-4 text-HFblue-200"><%= @user.first_name %> <%= @user.last_name %></h1>
         <!-- Affichage de la disponibilité -->
         <div class="my-4 text-left">
           <span class="<%= @user.is_available ? 'text-green-600' : 'text-red-600' %> text-2xl my-6 font-bold">
@@ -43,6 +43,17 @@
           <li class ="mt-2"><span class="font-bold text-HFblue-200">Téléphone:</span> <%= @user.phone_number %></li>
           <li class ="mt-2"><span class="font-bold text-HFblue-200">Date de naissance:</span> <%= @user.birthdate %></li>
           <li class ="mt-2"><span class="font-bold text-HFblue-200">Commission:</span> <%= @user.commission %></li>
+          
+          <% if current_user == @user %>
+            <li class="mt-2">
+              <span class="font-bold text-HFblue-200">Rôle:</span>
+              <% if @user.is_host %>
+                Concierge
+              <% else %>
+                Propriétaire
+              <% end %>
+            </li>
+          <% end %>
         </ul>
       </div>
     </div>
