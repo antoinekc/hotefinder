@@ -6,7 +6,7 @@
   <ul role="list" class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 mx-auto max-w-7xl">
     <% @users.each do |user| %>
       <% if user.is_host %>
-        <li class="col-span-1 divide-y divide-gray-200 rounded-lg bg-white shadow-lg min-h-[400px]"> <!-- Augmenté la hauteur minimale -->
+        <li class="col-span-1 divide-y divide-gray-200 rounded-lg bg-white shadow-lg min-h-[300px]"> <!-- Augmenté la hauteur minimale -->
           <a href="<%= user_path(user) %>">
             <div class="flex w-full items-center justify-between space-x-6 p-6">
               <div class="flex-1 truncate">
@@ -22,14 +22,13 @@
                 
               </div>
               <% if user.avatar.attached? %>
-                <%= image_tag user.avatar.variant(resize_to_fill: [150, 150]), class: "h-20 w-20 flex-shrink-0 rounded-full bg-gray-300" %> <!-- Augmenté la taille des images -->
+                <%= image_tag user.avatar.variant(resize_to_fill: [300, 300]), class: "h-20 w-20 flex-shrink-0 rounded-full bg-gray-300" %> <!-- Augmenté la taille des images -->
               <% else %>
                 <div class="h-20 w-20 flex-shrink-0 rounded-full bg-gray-300"></div> <!-- Placeholder for missing photo -->
               <% end %>
             </div>
-            
             <div>
-              <p class="p-6 mt-1 text-sm text-gray-500"><%= user.description %></p>
+              <p class="p-6 mt-1 text-sm text-gray-500 truncate-description"><%= user.description %></p>
             </div>
           </a>
         </li>

@@ -2,7 +2,7 @@
   <meta name="description" content="Le fichier de navbar utilisé sur toutes les pages">
 </head>
 
-<nav class="sticky top-0 z-10 bg-slate-100 border border-gray-50">
+<nav class="sticky top-0 z-10 bg-gray-100 border border-gray-50">
   <div class="h-24 flex items-center justify-between px-8">
     <div>
       <%= link_to root_path do %>
@@ -14,22 +14,22 @@
     <div class="hidden md:flex flex-row pl-24 justify-center space-x-28 text-lg">
       <%= link_to users_path, class: 'flex items-center' do %>
         <%= image_tag 'icons/concierges.svg', alt: 'Concierges', class: 'h-6 w-6 hidden md:block lg:hidden' %>
-        <span class="hidden lg:inline text-HFblue-200 px-2 hover:text-violet-800">Concierges</span>
+        <span class="hidden lg:inline text-violet-950 px-2 hover:text-HFblue-200">Concierges</span>
       <% end %>
 
       <%= link_to missions_path, class: 'flex items-center' do %>
         <%= image_tag 'icons/list.svg', alt: 'Missions', class: 'h-6 w-6 hidden md:block lg:hidden' %>
-        <span class="hidden lg:inline text-HFblue-200 px-2 hover:text-violet-800">Missions</span>
+        <span class="hidden lg:inline text-violet-950 px-2 hover:text-HFblue-200">Missions</span>
       <% end %>
 
       <%= link_to team_path, class: 'flex items-center' do %>
         <%= image_tag 'icons/users.svg', alt: 'Équipe', class: 'h-6 w-6 hidden md:block lg:hidden' %>
-        <span class="hidden lg:inline text-HFblue-200 px-2 hover:text-violet-800">Équipe</span>
+        <span class="hidden lg:inline text-violet-950 px-2 hover:text-HFblue-200">Équipe</span>
       <% end %>
 
       <%= link_to about_path, class: 'flex items-center' do %>
         <%= image_tag 'icons/book-open.svg', alt: 'À propos', class: 'h-6 w-6 hidden md:block lg:hidden' %>
-        <span class="hidden lg:inline text-HFblue-200 px-2 hover:text-violet-800">À propos</span>
+        <span class="hidden lg:inline text-violet-950 px-2 hover:text-HFblue-200">À propos</span>
       <% end %>
     </div>
 
@@ -38,9 +38,9 @@
       <% if user_signed_in? %>
         <%= link_to user_path(current_user), class: 'flex items-center' do %>
           <%= image_tag 'icons/user.svg', alt: 'Profile', class: 'h-6 w-6 hidden md:block lg:hidden' %>
-          <span class="text-HFblue-200 px-2 hidden lg:inline">Profil</span>
+          <span class="text-violet-950 hover:text-violet-800 px-2 hidden lg:inline">Profil</span>
         <% end %>
-        <%= button_to "Déconnexion", destroy_user_session_path, method: :delete, class: 'btn-secondary-nav font-light bg-red-400 hidden lg:inline' %>
+        <%= button_to "Déconnexion", destroy_user_session_path, method: :delete, class: 'btn-secondary hover:bg-red-500 font-light bg-red-400 hidden lg:inline' %>
       <% else %>
         <div class="flex space-x-4 hidden lg:flex">
           <%= link_to "Connexion", new_user_session_path, class: 'btn-primary-nav hover:text-red-100' %>
@@ -83,10 +83,10 @@
 
       <% if user_signed_in? %>
         <%= link_to user_path(current_user), class: 'flex items-center', onclick: 'hideMobileMenu()' do %>
-          <%= image_tag 'icons/user.svg', alt: 'Profile', class: 'h-6 w-6 md:hidden' %>
+      <!--  <%= image_tag 'icons/user.svg', alt: 'Profile', class: 'h-6 w-6 md:hidden' %>-->
           <span class="text-HFblue-200 px-2">Profil</span>
         <% end %>
-        <%= button_to "Me déconnecter", destroy_user_session_path, method: :delete, class: 'btn-secondary-nav md:hidden' %>
+        <%= button_to "Déconnexion", destroy_user_session_path, method: :delete, class: 'btn-secondary-nav md:hidden' %>
       <% else %>
         <%= link_to new_user_session_path, class: 'text-right text-HFblue-200 md:hidden', onclick: 'hideMobileMenu()' do %>
           Connexion
