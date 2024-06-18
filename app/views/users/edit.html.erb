@@ -63,6 +63,16 @@
           <% end %>
         </div>
 
+        <div class="mb-4">
+          <%= f.label :cities, "Cities", class: "block text-HFblue-200 font-medium mb-2" %>
+          <% City.all.each do |city| %>
+            <div class="flex mb-2">
+              <%= check_box_tag "user[city_ids][]", city.id, @user.cities.include?(city), class: "form-checkbox rounded-md border-gray-300 shadow-sm mr-2" %>
+              <%= label_tag "user_city_ids_#{city.id}", city.postal_code, class: "text-HFred-200 font-medium" %>
+            </div>
+          <% end %>
+        </div>
+
         <div class="bg-white p-4">
           <h2 class=" text-HFred-300 text-xl">Mon rôle</h2>
           <div class="mt-4">
