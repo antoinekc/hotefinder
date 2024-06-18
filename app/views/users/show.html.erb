@@ -1,52 +1,34 @@
+
 <head>
-<meta name="description" content="La page de profil des utilisateur, concierge ou propreitaire">
+  <meta name="description" content="La page de profil des utilisateur, concierge ou propreitaire">
 </head>
 
-<div class="w-full mt-5">
-
-  <% content_for :title, "Informations de l'utilisateur" %>
-
-  <div class="flex flex-col items-center mb-5 justify-center relative w-full h-120">
-    <div class="relative w-full h-full">
-      <div class="absolute inset-0 bg-HFlight opacity-50"></div>
-      <div class="relative flex flex-col items-center justify-center h-full">
-        <!--<h1 class="font-bold text-4xl text-HFblue-200 mb-10 mt-10">Informations de l'utilisateur</h1>-->
-      </div>
+<div class="mt-8 flex flex-col lg:flex-row justify-center items-center bg-red-50">
+  <div class="w-full max-w-6xl p-4 flex flex-col lg:flex-row items-center ">
+    <div class="w-full h-full md:w-2/3 flex justify-center mb-4 ">
+      <% if @user.avatar.attached? %>
+        <%= image_tag @user.avatar.variant(resize_to_fill: [400, 400]), class: "rounded-full shadow-xl w-24 h-24 sm:w-32 sm:h-32 md:w-48 md:h-48 lg:w-64 lg:h-64 xl:w-96 xl:h-96" %>
+      <% end %>
     </div>
-  </div>
 
-  <div class="container mx-auto px-4 py-8">
-    <div class="flex flex-wrap items-top justify-center">
-      <!-- Photo agrandie -->
-      <div class="w-full md:w-1/2 lg:w-1/3 xl:w-1/4 mb-4">
-        <% if @user.avatar.attached? %>
-          <%= image_tag @user.avatar.variant(resize_to_fill: [450, 450]), class: "rounded-lg shadow-xl outline outline-HFblue-200" %>
-        <% end %>
-        <% if current_user != @user && @user.is_available == "Disponible" %>
-          <%= link_to 'Proposer une mission', new_mission_path(host_id: @user.id), class: "flex items-center mt-4 btn btn-primary mb-2" %>
-          <% elsif%>
-            <span class="flex items-center mt-4 btn btn-disabled mb-2">Proposer une mission</span>
-          <% end %>
-      </div>
-
-      <!-- Informations -->
-      <div class="w-full md:w-1/2 lg:w-2/3 xl:w-3/4 md:pl-8 lg:pl-12 mb-8 md:mb-0">
-        <h1 class="text-3xl font-bold mb-4 text-HFblue-200"><%= @user.first_name %> <%= @user.last_name %></h1>
-        <!-- Affichage de la disponibilité -->
+    <div class="flex flex-col items-center lg:items-start w-full lg:w-2/3 p-4 ">
+      <% content_for :title, "Informations de l'utilisateur" %>
+      <div class="mt-6 pt-4 w-full flex flex-col items-start md:items-start md:pl-8 lg:pl-12 mb-8">
+        <h1 class="text-3xl font-bold mb-4"><%= @user.first_name %> <%= @user.last_name %></h1>
         <div class="my-4 text-left">
           <% if @user.is_available == "Disponible" %>
-            <span class="inline-flex flex-shrink-0 items-center rounded-full bg-green-50 px-3 py-1 text-green-600 ring-1 ring-inset ring-green-500">Disponible</span>
+            <span class="inline-flex items-center rounded-full bg-green-50 px-3 py-1 text-green-600 ring-1 ring-inset ring-green-500">Disponible</span>
           <% else %>
-            <span class="inline-flex flex-shrink-0 items-center rounded-full bg-red-50 px-3 py-1 text-red-600 ring-1 ring-inset ring-red-500">Indisponible</span>
+            <span class="inline-flex items-center rounded-full bg-red-50 px-3 py-1 text-red-600 ring-1 ring-inset ring-red-500">Indisponible</span>
           <% end %>
         </div>
-        <ul class="mb-4">
-          <li class ="mt-2"><span class="font-bold text-HFblue-200">Email:</span> <%= @user.email %></li>
-          <li class ="mt-2"><span class="font-bold text-HFblue-200">Prénom:</span> <%= @user.first_name %></li>
-          <li class ="mt-2"><span class="font-bold text-HFblue-200">Nom:</span> <%= @user.last_name %></li>
-          <li class ="mt-2"><span class="font-bold text-HFblue-200">Téléphone:</span> <%= @user.phone_number %></li>
-          <li class ="mt-2"><span class="font-bold text-HFblue-200">Date de naissance:</span> <%= @user.birthdate %></li>
-          <li class ="mt-2"><span class="font-bold text-HFblue-200">Commission:</span> <%= "#{@user.commission.truncate}%" %></li>
+        <ul class="my-4">
+          <li class="mt-2"><span class="font-bold">Email:</span> <%= @user.email %></li>
+          <li class="mt-2"><span class="font-bold">Prénom:</span> <%= @user.first_name %></li>
+          <li class="mt-2"><span class="font-bold">Nom:</span> <%= @user.last_name %></li>
+          <li class="mt-2"><span class="font-bold">Téléphone:</span> <%= @user.phone_number %></li>
+          <li class="mt-2"><span class="font-bold">Date de naissance:</span> <%= @user.birthdate %></li>
+          <li class="mt-2"><span class="font-bold">Commission:</span> <%= "#{@user.commission.truncate}%" %></li>
           
           <% if current_user == @user %>
             <li class="mt-2">
@@ -59,44 +41,60 @@
             </li>
           <% end %>
         </ul>
+        <% if current_user != @user && @user.is_available == "Disponible" %>
+          <%= link_to 'Proposer une mission', new_mission_path(host_id: @user.id), class: "mt-4 btn btn-secondary-nav font-light shadow-red-500/50" %>
+        <% else %>
+          <span class="mt-4 btn btn-disabled">Proposer une mission</span>
+        <% end %>
       </div>
     </div>
-
-    <!-- Description -->
-    <div class="mt-8 justify-start">
-      <div class="bg-white w-5/6 p-5 outline outline-HFlight rounded">
-        <h2 class="text-2xl font-bold mb-4 text-HFblue-200">Description</h2>
-        <p class="text-gray-700"><%= @user.description %></p>
-      </div>
-    </div>
-
-    <div class="flex flex-col justify-center mt-8">
-  <h2 class="text-2xl font-bold mb-4 text-HFblue-200">Villes</h2>
-  <div>
-    <% @cities.each do |city| %>
-      <span class="inline-block bg-slate-200 text-HFred-200 font-semibold py-1 px-3 border rounded-full text-sm mr-2 mb-2">
-        <%= city.postal_code %>
-      </span>
-    <% end %>
   </div>
 </div>
 
-    <!-- Category Tags -->
-    <%= render partial: 'shared/category_tags', locals: { categories: @user.categories } %>
 
-    <!-- Décoration -->
-    <div class="flex justify-center mt-8">
-      <div class="h-1 w-32 bg-HFblue-200 rounded-full mb-4"></div>
-    </div>
+<!-- Description -->
+<div class="mt-8 flex justify-center">
+  <div class="bg-white w-5/6 p-5 rounded shadow-md">
+    <h2 class="text-2xl font-bold mb-4 text-violet-950">Description</h2>
+    <p class="text-gray-700"><%= @user.description %></p>
+  </div>
+</div>
 
-    <!-- Boutons d'action -->
-    <div class="flex flex-wrap items-center justify-center mt-8 gap-4">
-      <% if current_user == @user || current_user.is_admin %>
-        <%= link_to 'Modifier', edit_user_path(@user), class: "btn btn-primary-inverted mb-2" %>
-      <% end %>
-      <% if current_user == @user || current_user.is_admin %>
-        <%= button_to 'Supprimer le compte', @user, method: :delete, data: { confirm: "Are you sure you want to delete your account?" }, class: "btn btn-danger mb-2" %>
+<!-- Villes -->
+<div class="mt-8 flex justify-center">
+  <div class="bg-white w-5/6 p-5 rounded shadow-md">
+    <h2 class="text-2xl font-bold mb-4 text-violet-950">Villes</h2>
+    <div class="flex flex-wrap">
+      <% @cities.each do |city| %>
+        <span class="inline-block bg-slate-200 text-HFred-200 font-semibold py-1 px-3 border rounded-full text-sm mr-2 mb-2">
+          <%= city.postal_code %>
+        </span>
       <% end %>
     </div>
   </div>
+</div>
+
+<!-- Category Tags -->
+<div class="mt-8 flex justify-center">
+  <div class="bg-white w-5/6 p-5 rounded shadow-md">
+    <h2 class="text-2xl font-bold mb-4 text-violet-950">Categories</h2>
+    <div class="flex flex-wrap">
+      <%= render partial: 'shared/category_tags', locals: { categories: @user.categories } %>
+    </div>
+  </div>
+</div>
+
+<!-- Décoration -->
+<div class="flex justify-center mt-8">
+  <div class="h-1 w-32 bg-HFblue-200 rounded-full mb-4"></div>
+</div>
+
+<!-- Boutons d'action -->
+<div class="flex flex-wrap items-center justify-center my-12 gap-4">
+  <% if current_user == @user || current_user.is_admin %>
+    <%= link_to 'Modifier', edit_user_path(@user), class: "btn btn-primary mb-2" %>
+  <% end %>
+  <% if current_user == @user || current_user.is_admin %>
+    <%= button_to 'Supprimer le compte', @user, method: :delete, data: { confirm: "Are you sure you want to delete your account?" }, class: "btn btn-secondary bg-red-700 mb-2 font-normal" %>
+  <% end %>
 </div>

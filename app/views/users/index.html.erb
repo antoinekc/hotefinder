@@ -1,9 +1,13 @@
-<section class="py-12 px-4">
-  <div class="text-center mb-10">
-    <h1 class="text-3xl font-bold text-violet-950 m-10">Nos Concierges</h1>
-    <p class="text-HFdark">Découvrez les personnes disponibles pour des collaborations fructueuses.</p>
+<section class="relative py-12 px-4 bg-cover bg-center h-96 mb-10" style="background-image: url(<%= asset_path 'img/banner_small_01.jpg' %>);">
+  <div class="absolute inset-0 bg-black opacity-50"></div> <!-- Overlay pour rendre le texte plus lisible -->
+  <div class="relative text-center mb-10 z-10">
+    <%= image_tag 'img/banner_small.jpeg', class: 'hidden' %> <!-- Image pour les mobiles si nécessaire -->
+    <h1 class="text-4xl font-bold text-white m-10">Nos Concierges</h1>
+    <p class="text-white text-lg">Découvrez les personnes disponibles pour des collaborations fructueuses.</p>
   </div>
-  <ul role="list" class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 mx-auto max-w-7xl">
+</section>
+<section>
+  <ul role="list" class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 mx-auto max-w-7xl mb-24">
     <% @users.each do |user| %>
       <% if user.is_host && !user.is_admin %>
         <li class="col-span-1 divide-y divide-gray-200 rounded-lg bg-white shadow-lg min-h-[400px]"> <!-- Augmenté la hauteur minimale -->
@@ -35,6 +39,7 @@
             <div>
               <p class="p-6 mt-1 text-sm text-gray-500 truncate-description"><%= user.description %></p>
             </div>
+
           </a>
         </li>
       <% end %>
