@@ -93,3 +93,5 @@ gem "letter_opener", "~> 1.10"
 gem 'carrierwave'
 
 gem 'fog-aws'
+
+gem "devise-i18n", "~> 1.12"

@@ -27,12 +27,12 @@
 <div class="flex flex-row">
   <div class="flex items-start mx-4">
     <%= form.label :start_date, class: "block text-sm font-medium text-HFblue-200 mb-2" %>
-    <%= form.date_select :start_date, class: "flex mt-1 block w-full flex-row shadow-sm text-sm rounded-md text-HFdark border-HFlight hover:border-HFblue-200" %>
+    <%= form.date_select :start_date, order: [:day, :month, :year], class: "flex mt-1 block w-full flex-row shadow-sm text-sm rounded-md text-HFdark border-HFlight hover:border-HFblue-200" %>
   </div>
 
   <div class="flex items-start mx-4">
     <%= form.label :end_date, class: "block text-sm font-medium text-HFblue-200 mb-2" %>
-    <%= form.date_select :end_date, class: "flex mt-1 block w-full flex-row sm:text-sm rounded text-HFdark border-HFlight hover:border-HFblue-200" %>
+    <%= form.date_select :end_date, order: [:day, :month, :year], class: "flex mt-1 block w-full flex-row sm:text-sm rounded text-HFdark border-HFlight hover:border-HFblue-200" %>
   </div>
 </div>
 
