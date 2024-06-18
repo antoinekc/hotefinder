@@ -22,9 +22,11 @@
         <% if @user.avatar.attached? %>
           <%= image_tag @user.avatar.variant(resize_to_fill: [450, 450]), class: "rounded-lg shadow-xl outline outline-HFblue-200" %>
         <% end %>
-        <% if current_user != @user %>
+        <% if current_user != @user && @user.is_available == "Disponible" %>
           <%= link_to 'Proposer une mission', new_mission_path(host_id: @user.id), class: "flex items-center mt-4 btn btn-primary mb-2" %>
-        <% end %>
+          <% elsif%>
+            <span class="flex items-center mt-4 btn btn-disabled mb-2">Proposer une mission</span>
+          <% end %>
       </div>
 
       <!-- Informations -->
@@ -32,9 +34,11 @@
         <h1 class="text-3xl font-bold mb-4 text-HFblue-200"><%= @user.first_name %> <%= @user.last_name %></h1>
         <!-- Affichage de la disponibilité -->
         <div class="my-4 text-left">
-          <span class="<%= @user.is_available ? 'text-green-600' : 'text-red-600' %> text-2xl my-6 font-bold">
-            <%= @user.is_available ? 'Disponible' : 'Indisponible' %>
-          </span>
+          <% if @user.is_available == "Disponible" %>
+            <span class="inline-flex flex-shrink-0 items-center rounded-full bg-green-50 px-3 py-1 text-green-600 ring-1 ring-inset ring-green-500">Disponible</span>
+          <% else %>
+            <span class="inline-flex flex-shrink-0 items-center rounded-full bg-red-50 px-3 py-1 text-red-600 ring-1 ring-inset ring-red-500">Indisponible</span>
+          <% end %>
         </div>
         <ul class="mb-4">
           <li class ="mt-2"><span class="font-bold text-HFblue-200">Email:</span> <%= @user.email %></li>

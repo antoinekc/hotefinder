@@ -58,7 +58,7 @@ end
 puts "cities seeded"
 
 # USERS
-disponibilité = ["Disponible", "Indisponible", "Débordé"]
+disponibilité = ["Disponible", "Indisponible"]
 cities = City.all
 
 10.times do
