@@ -63,6 +63,20 @@
           <% end %>
         </div>
 
+        <div class="bg-white p-4">
+          <h2 class=" text-HFred-300 text-xl">Mon rôle</h2>
+          <div class="mt-4">
+            <div class="mb-4 mx-4">
+              <%= f.check_box :is_owner, { class: "form-checkbox rounded-md border-gray-300 shadow-sm mr-2"} %>
+              <%= f.label :is_owner, "Propriétaire", class: "text-HFblue-200 font-medium" %>
+            </div>
+            <div class="mb-4 mx-4">
+              <%= f.check_box :is_host, { class: "form-checkbox rounded-md border-gray-300 shadow-sm mr-2"} %>
+              <%= f.label :is_host, "Concierge", class: "text-HFblue-200 font-medium" %>
+            </div>
+          </div>
+        </div>
+
         <div class="mb-4 flex items-center p-2">
           <%= f.check_box :email_notifications, { class: "form-checkbox rounded-md border-gray-300 shadow-sm mr-2", checked: @user.email_notifications } %>
           <%= f.label :email_notifications, "Recevoir les notifications par Email", class: "text-gray-600 font-medium" %>
