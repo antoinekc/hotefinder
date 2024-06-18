@@ -36,7 +36,7 @@
 
         <div class="mb-4">
           <%= f.label :birthdate, "Date de Naissance",class: "block text-HFblue-200 font-medium mb-2" %>
-          <%= f.date_select :birthdate, class: "form-select mt-1 block w-full rounded-md border-gray-300 shadow-sm" %>
+          <%= f.date_select :birthdate, order: [:day, :month, :year], class: "form-select mt-1 block w-full rounded-md border-gray-300 shadow-sm" %>
         </div>
 
         <div class="mb-4">
