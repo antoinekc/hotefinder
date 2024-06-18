@@ -5,7 +5,7 @@
   </div>
   <ul role="list" class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 mx-auto max-w-7xl">
     <% @users.each do |user| %>
-      <% if user.is_host && user.is_admin == false %>
+      <% if user.is_host && !user.is_admin %>
         <li class="col-span-1 divide-y divide-gray-200 rounded-lg bg-white shadow-lg min-h-[400px]"> <!-- Augmenté la hauteur minimale -->
           <a href="<%= user_path(user) %>">
             <div class="flex w-full items-center justify-between space-x-6 p-6">
@@ -19,8 +19,12 @@
                   <% end %>
                 </div>
                 <p class="mt-1 truncate text-sm text-gray-500"><%= user.commission %>%</p>
-                <p class="mt-1 truncate text-sm text-gray-500"><%= user.city_id %>%</p>
-                
+                <div class="mt-1 truncate text-sm text-gray-500">
+                  <p><strong>Villes :</strong></p>
+                  <% user.cities.each do |city| %>
+                    <p><%= city.postal_code %></p>
+                  <% end %>
+                </div>
               </div>
               <% if user.avatar.attached? %>
                 <%= image_tag user.avatar.variant(resize_to_fill: [150, 150]), class: "h-20 w-20 flex-shrink-0 rounded-full bg-gray-300" %> <!-- Augmenté la taille des images -->
