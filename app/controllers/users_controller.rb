@@ -9,10 +9,14 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @categories = @user.categories
+    @cities = @user.cities
   end
 
   def edit
     @user = User.find(params[:id])
+    @categories = @user.categories
+    @cities = @user.cities
   end
 
   def update
@@ -40,6 +44,6 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:email, :first_name, :last_name, :phone_number, :birthdate, :commission, :description, :is_host, :is_owner, :is_available, :avatar, :email_notifications)
+    params.require(:user).permit(:email, :first_name, :last_name, :phone_number, :birthdate, :commission, :description, :is_host, :is_owner, :is_available, :avatar, :email_notifications, :city_id,  category_ids: [])
   end
 end

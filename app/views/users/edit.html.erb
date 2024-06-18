@@ -10,6 +10,7 @@
     <h1 class="font-bold text-4xl text-HFblue-200 mb-10 mt-10">Modifier les informations de l'utilisateur</h1>
   </div>
 
+
   <div class="flex justify-center">
     <div class="bg-HFlight shadow-md rounded-lg p-5 w-5/6 m-5">
       <%= form_for(@user, html: { multipart: true }) do |f| %>
@@ -53,7 +54,30 @@
           <%= f.file_field :avatar, class: "form-input mt-1 block w-full rounded-md border-gray-300 shadow-sm" %>
         </div>
 
+        <div class="mb-4">
+          <%= f.label :is_available, "Votre status", class: "block text-HFblue-200 font-medium mb-2" %>
+          <%= f.select :is_available, options_for_select([['Disponible', 'Disponible'], ['Indisponible', 'Indisponible']], @user.is_available), class: "form-select mt-1 block w-full rounded-md border-gray-300 shadow-sm" %>
+        </div>
 
+        <div class="mb-4">
+          <%= f.label :categories, "Catégories", class: "block text-HFblue-200 font-medium mb-2" %>
+          <% Category.all.each do |category| %>
+            <div class="flex mb-2">
+              <%= check_box_tag "user[category_ids][]", category.id, @user.categories.include?(category), class: "form-checkbox rounded-md border-gray-300 shadow-sm mr-2" %>
+              <%= label_tag "user_category_ids_#{category.id}", category.name, class: "text-HFred-200 font-medium" %>
+            </div>
+          <% end %>
+        </div>
+
+        <div class="mb-4">
+          <%= f.label :cities, "Cities", class: "block text-HFblue-200 font-medium mb-2" %>
+          <% City.all.each do |city| %>
+            <div class="flex mb-2">
+              <%= check_box_tag "user[city_ids][]", city.id, @user.cities.include?(city), class: "form-checkbox rounded-md border-gray-300 shadow-sm mr-2" %>
+              <%= label_tag "user_city_ids_#{city.id}", city.postal_code, class: "text-HFred-200 font-medium" %>
+            </div>
+          <% end %>
+        </div>
 
         <div class="bg-white p-4">
           <h2 class=" text-HFred-300 text-xl">Mon rôle</h2>

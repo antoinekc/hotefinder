@@ -13,4 +13,6 @@
   <p><span class="font-bold text-HFblue-200">Nom du propriétaire :</span> <%= mission.owner.first_name %> <%= mission.owner.last_name %></p>
   <p><span class="font-bold text-HFblue-200">Dates :</span> <%= mission.start_date %> au <%= mission.end_date %></p>
   <p><span class="font-bold text-HFblue-200">Ville :</span> <%= mission.city.name %> <%= mission.city.postal_code %></p>
+  
+  <%= render partial: 'shared/category_tags', locals: { categories: @mission.categories } %>
 </div>
