@@ -1,8 +1,7 @@
 class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  has_many :users_cities_join
-  has_many :cities, through: :users_cities_join
+  has_and_belongs_to_many :cities
   has_many :sent_missions, foreign_key: 'owner_id', class_name: "Mission"
   has_many :received_missions, foreign_key: 'host_id', class_name: "Mission"
   has_and_belongs_to_many :categories, join_table: :categories_users

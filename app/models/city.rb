@@ -1,5 +1,4 @@
 class City < ApplicationRecord
   has_many :missions
-  has_many :users_cities_join
-  has_many :users, through: :users_cities_join
+  has_and_belongs_to_many :users
 end
