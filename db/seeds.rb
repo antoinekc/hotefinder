@@ -1,16 +1,5 @@
 require "faker"
 require "open-uri"
-require "aws-sdk-s3"
-
-# AWS Credentials
-s3_client = Aws::S3::Client.new(
-  region: 'eu-west-3',
-  access_key_id: ENV['AWS_ACCESS_KEY_ID'],
-  secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']
-)
-
-s3_resource = Aws::S3::Resource.new(client: s3_client)
-bucket = s3_resource.bucket('hote-finder-media')
 
 # Défini la langue en Français
 Faker::Config.locale = 'fr'
@@ -77,10 +66,9 @@ disponibilité = ["Disponible", "Indisponible", "Débordé"]
     commission: rand(15..30)
   )
 
-  # S3 avatars
-  avatar_object = bucket.object('portrait_01.jpg')
-  avatar_url = avatar_object.presigned_url(:get, expires_in: 3600)
-  avatar_file = URI.open(avatar_url)
+  # Local avatars
+  avatar_path = Rails.root.join('app/assets/images/avatars', 'portrait_01.jpg')
+  avatar_file = File.open(avatar_path)
   user.avatar.attach(io: avatar_file, filename: 'avatar.jpg', content_type: 'image/jpg')
 
   # Assign random categories to the user
@@ -106,10 +94,9 @@ puts "hosts seeded"
     commission: rand(15..30)
   )
 
-  # S3 avatars
-  avatar_object = bucket.object('portrait_02.jpg')
-  avatar_url = avatar_object.presigned_url(:get, expires_in: 3600)
-  avatar_file = URI.open(avatar_url)
+  # Local avatars
+  avatar_path = Rails.root.join('app/assets/images/avatars', 'portrait_02.jpg')
+  avatar_file = File.open(avatar_path)
   user.avatar.attach(io: avatar_file, filename: 'avatar.jpg', content_type: 'image/jpg')
 
   # Assign random categories to the user
@@ -134,10 +121,9 @@ puts "host-owners seeded"
     commission: rand(15..30)
   )
 
-  # S3 avatars
-  avatar_object = bucket.object('portrait_03.jpg')
-  avatar_url = avatar_object.presigned_url(:get, expires_in: 3600)
-  avatar_file = URI.open(avatar_url)
+  # Local avatars
+  avatar_path = Rails.root.join('app/assets/images/avatars', 'portrait_02.jpg')
+  avatar_file = File.open(avatar_path)
   user.avatar.attach(io: avatar_file, filename: 'avatar.jpg', content_type: 'image/jpg')
 
   # Assign random categories to the user
