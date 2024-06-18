@@ -46,8 +46,20 @@ categories = %w[
 
 puts "categories seeded"
 
+# CITIES
+x = 75000
+20.times do
+  City.create(
+    name: "Paris",
+    postal_code: x += 1
+  )
+end
+
+puts "cities seeded"
+
 # USERS
 disponibilité = ["Disponible", "Indisponible", "Débordé"]
+cities = City.all
 
 10.times do
   user = User.create!(
@@ -73,6 +85,9 @@ disponibilité = ["Disponible", "Indisponible", "Débordé"]
 
   # Assign random categories to the user
   user.categories << categories.sample(rand(1..3))
+
+  # Assign random cities to the user
+  user.cities << cities.sample(rand(1..3))
 end
 
 puts "hosts seeded"
@@ -101,6 +116,9 @@ puts "hosts seeded"
 
   # Assign random categories to the user
   user.categories << categories.sample(rand(1..3))
+
+  # Assign random cities to the user
+  user.cities << cities.sample(rand(1..3))
 end
 
 puts "host-owners seeded"
@@ -128,20 +146,12 @@ puts "host-owners seeded"
 
   # Assign random categories to the user
   user.categories << categories.sample(rand(1..3))
+
+  # Assign random cities to the user
+  user.cities << cities.sample(rand(1..3))
 end
 
 puts "owners seeded"
-
-# CITIES
-x = 75000
-20.times do
-  City.create(
-    name: "Paris",
-    postal_code: x += 1
-  )
-end
-
-puts "cities seeded"
 
 # MISSIONS
 status = ["Crée", "Acceptée", "Refusée", "En cours"]

@@ -1,11 +1,11 @@
 <section class="py-12 px-4">
   <div class="text-center mb-10">
     <h1 class="text-3xl font-bold text-violet-950 m-10">Nos Concierges</h1>
-    <p class="text-HFdark">Découvrez nos les personnes disponibles pour des collaborations fructueuses.</p>
+    <p class="text-HFdark">Découvrez les personnes disponibles pour des collaborations fructueuses.</p>
   </div>
   <ul role="list" class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 mx-auto max-w-7xl">
     <% @users.each do |user| %>
-      <% if user.is_host %>
+      <% if user.is_host && user.is_admin == false %>
         <li class="col-span-1 divide-y divide-gray-200 rounded-lg bg-white shadow-lg min-h-[400px]"> <!-- Augmenté la hauteur minimale -->
           <a href="<%= user_path(user) %>">
             <div class="flex w-full items-center justify-between space-x-6 p-6">
@@ -19,6 +19,7 @@
                   <% end %>
                 </div>
                 <p class="mt-1 truncate text-sm text-gray-500"><%= user.commission %>%</p>
+                <p class="mt-1 truncate text-sm text-gray-500"><%= user.city_id %>%</p>
                 
               </div>
               <% if user.avatar.attached? %>
