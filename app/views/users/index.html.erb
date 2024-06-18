@@ -20,14 +20,14 @@
                 </div>
                 <p class="mt-1 truncate text-sm text-gray-500"><%= user.commission %>%</p>
                 <div class="mt-1 truncate text-sm text-gray-500">
-                  <p><strong>Villes :</strong></p>
+                  <p><strong>Arrondissements :</strong></p>
                   <% user.cities.each do |city| %>
                     <p><%= city.postal_code %></p>
                   <% end %>
                 </div>
               </div>
               <% if user.avatar.attached? %>
-                <%= image_tag user.avatar.variant(resize_to_fill: [300, 300]), class: "h-20 w-20 flex-shrink-0 rounded-full bg-gray-300" %> <!-- Augmenté la taille des images -->
+                <%= image_tag user.avatar.variant(resize_to_fill: [300, 300]), class: "h-40 w-40 flex-shrink-0 rounded-full bg-gray-300" %> <!-- Augmenté la taille des images -->
               <% else %>
                 <div class="h-20 w-20 flex-shrink-0 rounded-full bg-gray-300"></div> <!-- Placeholder for missing photo -->
               <% end %>

@@ -10,8 +10,8 @@
       <p class="text-lg lg:text-xl mb-6">
         Hotefinder vous aide à trouver le concierge idéal pour la gestion saisonnière de vos biens immobiliers.</p>
       <div class="flex justify-start space-x-4 lg:space-x-10">
-        <%= link_to 'Inscription', new_user_registration_path, class: 'btn-secondary bg-red-400 text-lg w-32 lg:w-48 hover:bg-red-500 font-light hidden md:inline-block flex items-center justify-center' %>
-        <%= link_to 'En savoir plus', about_path, class: 'btn-secondary bg-red-400 text-lg w-32 lg:w-48 hover:bg-red-500 font-light hidden md:inline-block flex items-center justify-center' %>
+        <%= link_to 'Inscription', new_user_registration_path, class: 'btn-secondary bg-red-400 text-lg w-32 lg:w-48 hover:bg-red-500 font-light hidden md:inline-block flex items-center justify-center text-center' %>
+        <%= link_to 'En savoir plus', about_path, class: 'btn-secondary bg-red-400 text-lg w-32 lg:w-48 hover:bg-red-500 font-light hidden md:inline-block flex items-center justify-center text-center' %>
       </div>
     </div>
     <!-- Right side: Image -->
@@ -101,7 +101,7 @@
     <% @randusers.first(3).each_with_index do |user, index| %>
       <div class="w-full bg-white rounded-lg p-12 flex flex-col justify-center items-center drop-shadow-md transition-transform transform hover:-translate-y-2 hover:shadow-2xl hover:scale-105 ">
         <div class="mb-8">
-          <% if user.avatar.attached? %>
+          <% if user.avatar.attached? && user.description? && !user.is_admin %>
             <%= image_tag user.avatar.variant(resize_to_fill: [500, 500]), class: "rounded-full w-36 h-36 object-cover" %>
           <% end %>
         </div>
@@ -111,6 +111,9 @@
         </div>
       </div>
     <% end %>
+  </div>
+  <div class="flex justify-center items-center mt-14">
+    <%= link_to 'Tous nos concierges', users_path, class: 'py-4 shadow-red-500/50 btn-secondary bg-red-400 text-center text-base hover:bg-red-500 font-light hidden md:inline-block flex items-center justify-center shadow-lg' %>
   </div>
 </section>
 
