@@ -9,7 +9,7 @@
       <%= render "status", mission: @mission %>
     </div>
     <div class="flex justify-center">
-      <div class="">
+      <div>
         <%= link_to "Retour aux missions", missions_path, class: "btn-primary" %>
         <% if @mission.owner_id == current_user.id %>
           <% if @mission.status != "En cours" && @mission.status != "Terminée" %>
