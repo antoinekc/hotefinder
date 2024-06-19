@@ -15,36 +15,47 @@
   <% end %>
 
   <div class = 'flex items-start flex-col mx-4'>
-    <%= form.label :title, class: "block text-sm font-medium text-HFblue-200 mr-2" %>
+    <%= form.label :title, class: "block text-sm font-medium text-HFblue-200 mr-2 my-2" %>
     <%= form.text_field :title, class: "mt-1 block w-full shadow-sm sm:text-sm rounded-md text-HFdark border-HFlight hover:border-HFblue-200"  %>
   </div>
 
   <div class = 'flex items-start flex-col mx-4'>
-    <%= form.label :description, class: "block text-sm font-medium text-HFblue-200 mr-2" %>
+    <%= form.label :description, class: "block text-sm font-medium text-HFblue-200 mr-2 my-2" %>
     <%= form.text_area :description, class: "mt-1 block w-full shadow-sm sm:text-sm rounded-md text-HFdark border-HFlight hoover:border-HFblue-200" %>
   </div>
 
-<div class="flex flex-row">
-  <div class="flex items-start mx-4">
-    <%= form.label :start_date, class: "block text-sm font-medium text-HFblue-200 mb-2" %>
-    <%= form.date_select :start_date, order: [:day, :month, :year], class: "flex mt-1 block w-full flex-row shadow-sm text-sm rounded-md text-HFdark border-HFlight hover:border-HFblue-200" %>
+  <div class="flex flex-row flex-wrap">
+  <div class="flex items-start w-full sm:w-1/2 lg:w-1/3 mx-4 flex-col">
+    <%= form.label :start_date, "Date de début", class: "block text-sm font-medium text-HFblue-200 mb-2" %>
+    <div class="flex flex-row">
+      <%= form.date_select :start_date, order: [:day, :month, :year], class: "mt-1 block w-full shadow-sm sm:text-sm rounded-md text-HFdark border-HFlight hover:border-HFblue-200" %>
+    </div>
   </div>
 
-  <div class="flex items-start mx-4">
-    <%= form.label :end_date, class: "block text-sm font-medium text-HFblue-200 mb-2" %>
-    <%= form.date_select :end_date, order: [:day, :month, :year], class: "flex mt-1 block w-full flex-row sm:text-sm rounded text-HFdark border-HFlight hover:border-HFblue-200" %>
+  <div class="flex items-start w-full sm:w-1/2 lg:w-1/3 mx-4 flex-col">
+    <%= form.label :end_date, "Date de fin", class: "block text-sm font-medium text-HFblue-200 mb-2" %>
+    <div class="flex flex-row">
+      <%= form.date_select :end_date, order: [:day, :month, :year], class: "mt-1 block w-full shadow-sm sm:text-sm rounded-md text-HFdark border-HFlight hover:border-HFblue-200" %>
+    </div>
+  </div>
+</div>
+
+<div class="flex flex-row flex-wrap">
+  <div class="flex items-start w-full sm:w-1/2 lg:w-1/3 mx-4 flex-col">
+    <%= form.label :city_id, "Ville", class: "block text-sm font-medium text-HFblue-200 mb-2" %>
+    <%= form.text_field :city_id, value: "Paris", readonly: true, class: "mt-1 block w-full shadow-sm sm:text-sm rounded-md text-HFdark border-HFlight hover:border-HFblue-200 bg-gray-200" %>
+    <%= form.hidden_field :city_id, value: 1 %>
+  </div>
+
+  <div class="w-full sm:w-1/2 lg:w-1/3 px-4 mb-4">
+    <%= form.label :postal_code, "Arrondissement", class: "block text-sm font-medium text-HFblue-200 mb-2" %>
+    <%= form.select :postal_code, options_for_select(paris_zip_codes), class: "mt-1 block w-full shadow-sm sm:text-sm rounded-md text-HFdark border-HFlight hover:border-HFblue-200" %>
   </div>
 </div>
 
 
-  <div class ='flex items-start flex-col mx-4'>
-    <%= form.label :city_id,"Ville", class: "block text-sm font-medium text-HFblue-200 mr-2" %>
-    <%= form.text_field :city_id, value: "Paris", readonly: true, class: "mt-1 block w-full shadow-sm sm:text-sm rounded-md text-HFdark border-HFlight hoover:border-HFblue-200 bg-gray-200" %>
-    <%= form.hidden_field :city_id, value: 1 %>
-  </div>
-
   <div class='flex items-start flex-col mx-4'>
-    <%= form.label :host_id, "Concierge", class: "block text-sm font-medium text-HFblue-200 mr-2" %>
+    <%= form.label :host_id, "Concierge", class: "block text-sm font-medium text-HFblue-200 mr-2 my-2" %>
     <% if @mission.persisted? %>
       <%= form.select :host_id, options_for_select(@users.map { |user| ["#{user.first_name} #{user.last_name}", user.id] }, @mission.host_id), { include_blank: true }, class: "mt-1 block w-full shadow-sm sm:text-sm rounded-md text-HFdark border-HFlight hoover:border-HFblue-200" %>
     <% else %>
@@ -55,23 +66,24 @@
 
   <%= form.hidden_field :host_id, value: @user.id if @user.present? %>
 
-  <div class="mb-4">
-    <%= form.label :categories, "Catégories", class: "block text-HFblue-200 font-medium mb-2" %>
-    <% Category.all.each do |category| %>
-      <div class="flex mb-2">
-        <%= check_box_tag "mission[category_ids][]", category.id, @mission.categories.include?(category), class: "form-checkbox rounded-md border-gray-300 shadow-sm mr-2" %>
-        <%= label_tag "mission_category_ids_#{category.id}", category.name, class: "text-HFred-200 font-medium" %>
-      </div>
-    <% end %>
+  <div class="flex items-start flex-col mx-4 mb-4">
+    <%= form.label :categories, "Catégories", class: "block text-sm font-medium text-HFblue-200 mr-2 my-4" %>
+    <div class="flex flex-wrap -mx-2">
+      <% Category.all.each do |category| %>
+        <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-2">
+          <div class="flex items-center">
+            <%= check_box_tag "mission[category_ids][]", category.id, @mission.categories.include?(category), class: "form-checkbox rounded-md border-gray-300 shadow-sm mr-2" %>
+            <%= label_tag "mission_category_ids_#{category.id}", category.name, class: "text-HFred-200 font-medium" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
   </div>
 
-  <div class = 'flex items-start flex-col mx-4'>
-    <%= form.label :postal_code,"Arrondissement", class: "block text-sm font-medium text-HFblue-200 mr-2" %>
-    <%= form.select :postal_code, options_for_select(paris_zip_codes), class: "mt-1 block w-full shadow-sm sm:text-sm rounded-md text-HFdark border-HFlight hoover:border-HFblue-200" %>  
-  </div>
-
-  <div class="mx-auto">
+  <div class="flex justify-center mx-4 mb-4">
     <%= form.submit "Save Mission", class: "btn-primary" %>
   </div>
 
-<% end %>
+  <% end %>
+
+</div>
