@@ -12,29 +12,42 @@
     @apply no-underline mx-6 my-5 flex items-center justify-center;
   }
   
+  /* Buttons CLASSIC */
+
   .btn-primary {
-    @apply bg-violet-950 hover:bg-white hover:text-violet-950 hover:border-violet-950 text-white font-bold py-2 px-5 rounded-full;
+    @apply bg-violet-950 hover:bg-violet-900 text-white font-light py-2 px-5 rounded-full;
   }
+
+  .btn-secondary {
+    @apply bg-HFblue-200 hover:bg-HFblue-100 font-light text-white py-2 px-5 rounded-full ;
+  }
+
+  .btn-tertiary {
+    @apply bg-red-400 hover:bg-red-500 font-light text-white py-2 px-5 rounded-full ;
+  }
+
+ /* Buttons DISABLED */
 
   .btn-disabled {
     @apply bg-gray-300 text-gray-200 font-bold py-2 px-5 rounded-full cursor-not-allowed;
   }
 
+   /* Buttons INVERTED */
+
   .btn-primary-inverted {
-    @apply bg-white hover:bg-violet-950 hover:text-white font-bold border-HFblue-200 text-HFblue-200 border-HFblue-200 hover:shadow-md py-2 px-5 rounded-full;
+    @apply bg-white hover:bg-violet-950 hover:text-white font-bold border-violet-950 text-violet-950 hover:shadow-md py-2 px-5 rounded-full;
   }
   
+   /* Buttons NAVBAR */
+
   .btn-primary-nav {
     @apply bg-HFblue-200 hover:outline-2 text-HFlight py-2 px-5 rounded-full mx-2;
   }
+
   .btn-outline-primary {
     @apply border-HFblue-300 border-4 text-HFblue-300 hover:bg-HFblue-100 hover:text-white font-bold py-3 px-8 rounded-full;
   }
   
-  .btn-secondary {
-    @apply bg-red-400 hover:bg-red-500 font-light text-white py-2 px-5 rounded-full ;
-  }
-
   .btn-secondary-nav {
     @apply bg-red-400 hover:bg-red-500 font-light shadow-red-500/50 text-white py-2 px-5 rounded-full ;
   }
@@ -42,6 +55,8 @@
   .btn-outline-secondary {
     @apply outline outline-2 outline-amber-500 hover:outline-amber-400 hover:text-zinc-500 text-zinc-700 font-bold py-2 px-4 rounded-full;
   }
+
+   /* Buttons OTHERS */
 
   .btn-primary-icon {
     @apply bg-pink-900 hover:bg-pink-800 text-white font-bold py-2 px-3 rounded-full;
@@ -52,7 +67,7 @@
   }
 
   .btn-danger {
-    @apply bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full;
+    @apply bg-red-600 hover:bg-red-700 text-white font-normal py-2 px-4 rounded-full;
   }
 
   .btn-success {

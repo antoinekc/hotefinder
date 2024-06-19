@@ -1,48 +1,46 @@
 <section class="relative py-12 px-4 bg-cover bg-center h-96 mb-10" style="background-image: url(<%= asset_path 'img/banner_small_01.jpg' %>);">
   <div class="absolute inset-0 bg-black opacity-50"></div> <!-- Overlay pour rendre le texte plus lisible -->
-  <div class="relative text-center mb-10 z-10">
+  <div class="relative text-center mb-10">
     <%= image_tag 'img/banner_small.jpeg', class: 'hidden' %> <!-- Image pour les mobiles si nécessaire -->
     <h1 class="text-4xl font-bold text-white m-10">Nos Concierges</h1>
     <p class="text-white text-lg">Découvrez les personnes disponibles pour des collaborations fructueuses.</p>
   </div>
 </section>
 <section>
-  <ul role="list" class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 mx-auto max-w-7xl mb-24">
+  <ul role="list" class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 mx-auto max-w-7xl mb-16">
     <% @users.each do |user| %>
       <% if user.is_host && !user.is_admin %>
-        <li class="col-span-1 divide-y divide-gray-200 rounded-lg bg-white shadow-lg min-h-[400px]"> <!-- Augmenté la hauteur minimale -->
-          <a href="<%= user_path(user) %>">
-            <div class="flex w-full items-center justify-between space-x-6 p-6">
-              <div class="flex-1 truncate">
-                <div class="flex items-center space-x-3">
-                  <h3 class="truncate text-lg font-medium text-gray-900"><%= user.first_name %></h3>
-                  <% if user.is_available == "Disponible" %>
-                    <span class="inline-flex flex-shrink-0 items-center rounded-full bg-green-50 px-1.5 py-0.5 text-xs font-medium text-green-600 ring-1 ring-inset ring-green-500">Disponible</span>
-                  <% else %>
-                    <span class="inline-flex flex-shrink-0 items-center rounded-full bg-red-50 px-1.5 py-0.5 text-xs font-medium text-red-600 ring-1 ring-inset ring-red-500">Indisponible</span>
-                  <% end %>
-                </div>
-                <p class="mt-1 truncate text-sm text-gray-500"><%= user.commission %>%</p>
-                <div class="mt-1 truncate text-sm text-gray-500">
-                  <p><strong>Arrondissements :</strong></p>
-                  <% user.cities.each do |city| %>
-                    <p><%= city.postal_code %></p>
-                  <% end %>
-                </div>
+        <a href="<%= user_path(user) %>" class="col-span-1 divide-y divide-gray-200 rounded-lg bg-white shadow-lg min-h-[300px] transition-transform transform hover:-translate-y-2 hover:shadow-2xl hover:scale-105 block">
+          <li class="flex w-full items-center justify-between space-x-6 p-6">
+            <div class="flex-1 truncate">
+              <div class="flex items-center space-x-3">
+                <h3 class="truncate text-lg font-medium text-gray-900"><%= user.first_name %></h3>
+                <% if user.is_available == "Disponible" %>
+                  <span class="inline-flex flex-shrink-0 items-center rounded-full bg-green-50 px-1.5 py-0.5 text-xs font-medium text-green-600 ring-1 ring-inset ring-green-500">Disponible</span>
+                <% else %>
+                  <span class="inline-flex flex-shrink-0 items-center rounded-full bg-red-50 px-1.5 py-0.5 text-xs font-medium text-red-600 ring-1 ring-inset ring-red-500">Indisponible</span>
+                <% end %>
               </div>
-              <% if user.avatar.attached? %>
-                <%= image_tag user.avatar.variant(resize_to_fill: [300, 300]), class: "h-40 w-40 flex-shrink-0 rounded-full bg-gray-300" %> <!-- Augmenté la taille des images -->
-              <% else %>
-                <div class="h-20 w-20 flex-shrink-0 rounded-full bg-gray-300"></div> <!-- Placeholder for missing photo -->
-              <% end %>
+              <p class="mt-1 truncate text-sm text-gray-500"><%= user.commission %>%</p>
+              <div class="mt-1 truncate text-sm text-gray-500">
+                <p><strong>Arrondissements :</strong></p>
+                <% user.cities.each do |city| %>
+                  <p><%= city.postal_code %></p>
+                <% end %>
+              </div>
             </div>
-            <div>
-              <p class="p-6 mt-1 text-sm text-gray-500 truncate-description"><%= user.description %></p>
-            </div>
-
-          </a>
-        </li>
+            <% if user.avatar.attached? %>
+              <%= image_tag user.avatar.variant(resize_to_fill: [300, 300]), class: "h-40 w-40 flex-shrink-0 rounded-full bg-gray-300" %> 
+            <% else %>
+              <div class="h-20 w-20 flex-shrink-0 rounded-full bg-gray-300 "></div> 
+            <% end %>
+          </li>
+          <div>
+            <p class="p-6 mt-1 text-sm text-gray-600 truncate-description mb-20"><%= user.description %></p>
+          </div>
+        </a>
       <% end %>
     <% end %>
   </ul>
 </section>
+
