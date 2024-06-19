@@ -5,6 +5,10 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
+
+    if params[:categories].present?
+      @users = @users.joins(:categories).where(categories: { id: params[:categories] }).distinct
+    end
   end
 
   def show

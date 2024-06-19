@@ -6,6 +6,13 @@
     <p class="text-white text-lg">Découvrez les personnes disponibles pour des collaborations fructueuses.</p>
   </div>
 </section>
+
+<section class="flex flex-col justify-center items-center my-6">
+  <h2 class="text-xl font-bold m-10">Catégories</h2>
+  <%= render 'shared/category_filter' %>
+</section>
+
+
 <section>
   <ul role="list" class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 mx-auto max-w-7xl mb-16">
     <% @users.each do |user| %>
