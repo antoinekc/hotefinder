@@ -22,7 +22,7 @@
 </section>
 
 <!-- Section sur les avantages de Hotefinder -->
-<div class="bg-red-50 py-10 sm:py-10">
+<div class=" py-10 sm:py-10">
   <div class="mx-auto max-w-7xl px-6 lg:px-8">
     <div class="mx-auto max-w-2xl lg:text-center">
       <h2 class="text-lg font-semibold leading-7 text-violet-950">Louez plus vite</h2>
@@ -88,34 +88,36 @@
 </div>
 
 <!-- Section sur Nos concierges -->
-<section class="mx-auto px-4 sm:px-6 lg:px-4 py-12 w-3/4">
-  <div class="text-center pb-12">
-    <h2 class="mb-10 text-lg font-bold text-violet-950">
-      Travailler avec eux
-    </h2>
-    <h1 class="font-bold text-3xl md:text-4xl lg:text-5xl font-heading text-violet-950 ">
-      Nos Concierges
-    </h1>
-  </div>
-  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6">
-    <% @randusers.first(3).each_with_index do |user, index| %>
-      <div class="w-full bg-white rounded-lg p-12 flex flex-col justify-center items-center drop-shadow-md transition-transform transform hover:-translate-y-2 hover:shadow-2xl hover:scale-105 ">        
-          <div class="mb-8">
-          <% if user.avatar.attached? && user.description? && !user.is_admin %>
-            <%= image_tag user.avatar.variant(resize_to_fill: [500, 500]), class: "rounded-full w-36 h-36 object-cover" %>
-          <% end %>
-          <a href="<%= user_path(user) %>">
+<section class="bg-red-50 py-10 sm:py-10">
+ <div class="mx-auto px-4 sm:px-6 lg:px-4 py-12 w-3/4"> 
+    <div class="text-center pb-12">
+      <h2 class="mb-10 text-lg font-bold text-violet-950">
+        Travailler avec eux
+      </h2>
+      <h1 class="font-bold text-3xl md:text-4xl lg:text-5xl font-heading text-violet-950 ">
+        Nos Concierges
+      </h1>
+    </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <% @randusers.first(3).each_with_index do |user, index| %>
+          <div class="w-full bg-white rounded-lg p-12 flex flex-col justify-center items-center drop-shadow-md transition-transform transform hover:-translate-y-2 hover:shadow-2xl hover:scale-105 ">        
+            <div class="mb-8">
+            <% if user.avatar.attached? && user.description? && !user.is_admin %>
+              <%= image_tag user.avatar.variant(resize_to_fill: [500, 500]), class: "rounded-full w-36 h-36 object-cover" %>
+            <% end %>
+            <a href="<%= user_path(user) %>">
+          </div>
+            <div class="text-center">
+              <p class="text-xl text-gray-700 font-bold mb-2"><%= user.first_name %></p>
+              <p class="text-base text-gray-400 font-normal truncate-description text-left"><%= user.description %></p>
+              </div>
+          </a>
         </div>
-          <div class="text-center">
-            <p class="text-xl text-gray-700 font-bold mb-2"><%= user.first_name %></p>
-            <p class="text-base text-gray-400 font-normal truncate-description text-left"><%= user.description %></p>
-            </div>
-        </a>
-      </div>
-    <% end %>
-  </div>
-  <div class="flex justify-center items-center mt-14">
-    <%= link_to 'Tous nos concierges', users_path, class: 'py-4 shadow-red-500/50 btn-secondary bg-red-400 text-center text-base hover:bg-red-500 font-light hidden md:inline-block flex items-center justify-center shadow-lg' %>
+      <% end %>
+    </div>
+    <div class="flex justify-center items-center mt-14">
+      <%= link_to 'Tous nos concierges', users_path, class: 'py-4 shadow-red-500/50 btn-secondary bg-red-400 text-center text-base hover:bg-red-500 font-light hidden md:inline-block flex items-center justify-center shadow-lg' %>
+    </div>
   </div>
 </section>
 
@@ -127,8 +129,8 @@
   <div class="bg-white w-full p-2 my-4">
     <div class="flex flex-col sm:flex-row justify-evenly items-center space-y-4 sm:space-y-0 sm:space-x-4">
       <%= image_tag 'icons/airbnb.webp', alt: 'Airbnb_logo', class: 'w-36 h-auto' %>
-      <%= image_tag 'icons/booking', alt: 'Booking_logo', class: 'w-40 h-auto' %>
-      <%= image_tag 'icons/abritel', alt: 'Abritel_logo', class: 'w-28 h-auto' %>
+      <%= image_tag 'icons/booking.png', alt: 'Booking_logo', class: 'w-40 h-auto' %>
+      <%= image_tag 'icons/abritel.svg', alt: 'Abritel_logo', class: 'w-28 h-auto' %>
       <%= image_tag 'icons/leboncoin.svg', alt: 'Leboncoin_logo', class: 'w-36 h-auto' %>
     </div>
   </div>

@@ -22,7 +22,7 @@ class MissionsController < ApplicationController
   def new
     @mission = Mission.new
     @user = params[:host_id].present? ? User.find(params[:host_id]) : nil
-    @users = User.where.not(id: current_user.id).where(is_admin: false) #To filter admin and current user out of the list of hosts
+    @users = User.where.not(id: current_user.id).where(is_admin: false).where(is_available: "Disponible") #To filter admin and current user out of the list of hosts
     @mission.status = ""
     @mission.city_id = 1
   end
