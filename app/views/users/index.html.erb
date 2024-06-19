@@ -7,10 +7,13 @@
   </div>
 </section>
 
-<section class="flex flex-col items-center my-6">
-  <h2 class="text-xl font-bold m-10">Catégories</h2>
-  <%= render 'shared/category_filter' %>
+<section class="flex flex-col items-center mb-6">
+  <details class="w-full max-w-4xl">
+    <summary class="px-4 py-2 rounded-md cursor-pointer mb-4 text-center text-2xl text-violet-950">Afficher les filtres</summary>
+    <%= render 'shared/category_filter' %>
+  </details>
 </section>
+
 
 
 <section>

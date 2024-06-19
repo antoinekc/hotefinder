@@ -9,6 +9,10 @@ class UsersController < ApplicationController
     if params[:categories].present?
       @users = @users.joins(:categories).where(categories: { id: params[:categories] }).distinct
     end
+
+    if params[:cities].present?
+      @users = @users.joins(:cities).where(cities: { id: params[:cities] }).distinct
+    end
   end
 
   def show

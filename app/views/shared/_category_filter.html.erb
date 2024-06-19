@@ -1,13 +1,34 @@
-<%= form_with url: users_path, method: :get, local: true do %>
-  <div class="flex flex-wrap justify-center items-center space-x-4">
-    <% Category.all.each do |category| %>
-      <div class="flex items-center mb-4">
-        <%= check_box_tag "categories[]", category.id, params[:categories]&.include?(category.id.to_s), id: "category_#{category.id}", class: "mr-2" %>
-        <%= label_tag "category_#{category.id}", category.name, class: "bg-slate-200 text-HFred-200 font-semibold py-1 px-3 border rounded-full text-sm mr-2 mb-2 cursor-pointer" %>
-      </div>
-    <% end %>
+<%= form_with url: users_path, method: :get, local: true, class: "flex flex-row items-center border p-6" do %>
+  <div class="flex flex-col items-start">
+    <h2 class="text-xl font-bold m-10">Services</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
+      <% Category.all.each do |category| %>
+        <% selected = params[:categories]&.include?(category.id.to_s) %>
+        <div class="flex items-center">
+          <%= check_box_tag "categories[]", category.id, selected, id: "category_#{category.id}", class: "hidden" %>
+          <%= label_tag "category_#{category.id}", category.name, class: "px-4 py-2 rounded-full text-sm cursor-pointer font-semibold 
+                          #{selected ? 'bg-HFred-200 text-white border-HFred-200' : 'bg-slate-200 text-HFred-200 border'} 
+                          active:bg-red-500" %>
+        </div>
+      <% end %>
+    </div>
   </div>
-  <div class="flex flex-wrap justify-center items-center space-x-4">
-    <%= submit_tag "Filtrer", class: " btn-primary bg-HFblue-200 text-white px-4 py-2 rounded-md cursor-pointer" %>
+
+  <div>
+    <h2 class="text-xl font-bold m-10">Arrondissements</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
+      <% City.all.each do |city| %>
+        <% selected = params[:cities]&.include?(city.id.to_s) %>
+        <div class="flex items-center">
+          <%= check_box_tag "cities[]", city.id, selected, id: "city_#{city.id}", class: "hidden" %>
+          <%= label_tag "city_#{city.id}", city.postal_code, class: "px-4 py-2 rounded-full text-sm cursor-pointer font-semibold 
+                          #{selected ? 'bg-HFred-200 text-white border-HFred-200' : 'bg-slate-200 text-HFred-200 border'} 
+                          hover:bg-HFred-200 hover:text-white hover:border-HFred-200" %>
+        </div>
+      <% end %>
+    </div>
   </div>
+    <div class="flex justify-center mt-4">
+      <%= submit_tag "Filtrer", class: "btn btn-primary cursor-pointer" %>
+    </div>
 <% end %>
