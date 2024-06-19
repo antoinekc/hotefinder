@@ -27,7 +27,7 @@
           <li class="mt-2"><span class="font-bold">Prénom:</span> <%= @user.first_name %></li>
           <li class="mt-2"><span class="font-bold">Nom:</span> <%= @user.last_name %></li>
           <li class="mt-2"><span class="font-bold">Téléphone:</span> <%= @user.phone_number %></li>
-          <li class="mt-2"><span class="font-bold">Commission:</span> <%= "#{@user.commission.truncate}%" %></li>
+          <li class="mt-2"><span class="font-bold">Commission:</span> <%= "#{@user.commission}%" %></li>
           
           <% if current_user == @user %>
           <li class="mt-2"><span class="font-bold">Date de naissance:</span> <%= @user.birthdate %></li>
