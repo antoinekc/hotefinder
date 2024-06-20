@@ -7,74 +7,74 @@
   <% content_for :title, "Modifier les informations de l'utilisateur" %>
 
   <div class="flex flex-col items-center mb-5 justify-center relative w-full h-120">
-    <h1 class="font-bold text-4xl text-HFblue-200 mb-10 mt-10">Modifier les informations de l'utilisateur</h1>
+    <h1 class="font-bold text-4xl text-violet-950 mb-10 mt-10">Modifier les informations de l'utilisateur</h1>
   </div>
 
 
   <div class="flex justify-center">
-    <div class="bg-HFlight shadow-md rounded-lg p-5 w-5/6 m-5">
+    <div class="bg-gray-100 shadow-md rounded-lg p-5 w-5/6 m-5">
       <%= form_for(@user, html: { multipart: true }) do |f| %>
         <div class="mb-4">
-          <%= f.label :email, class: "block text-HFblue-200 font-medium mb-2" %>
+          <%= f.label :email, class: "block text-violet-950 font-medium mb-2" %>
           <%= f.email_field :email, class: "form-input mt-1 block w-full rounded-md border-gray-300 shadow-sm" %>
         </div>
 
         <div class="mb-4">
-          <%= f.label :first_name, "Prénom", class: "block text-HFblue-200 font-medium mb-2" %>
+          <%= f.label :first_name, "Prénom", class: "block text-violet-950 font-medium mb-2" %>
           <%= f.text_field :first_name, class: "form-input mt-1 block w-full rounded-md border-gray-300 shadow-sm" %>
         </div>
 
         <div class="mb-4">
-          <%= f.label :last_name, "Nom", class: "block text-HFblue-200 font-medium mb-2" %>
+          <%= f.label :last_name, "Nom", class: "block text-violet-950 font-medium mb-2" %>
           <%= f.text_field :last_name, class: "form-input mt-1 block w-full rounded-md border-gray-300 shadow-sm" %>
         </div>
 
         <div class="mb-4">
-          <%= f.label :phone_number, "Téléphone", class: "block text-HFblue-200 font-medium mb-2" %>
+          <%= f.label :phone_number, "Téléphone", class: "block text-violet-950 font-medium mb-2" %>
           <%= f.text_field :phone_number, class: "form-input mt-1 block w-full rounded-md border-gray-300 shadow-sm" %>
         </div>
 
         <div class="mb-4">
-          <%= f.label :birthdate, "Date de Naissance",class: "block text-HFblue-200 font-medium mb-2" %>
+          <%= f.label :birthdate, "Date de Naissance",class: "block text-violet-950 font-medium mb-2" %>
           <%= f.date_select :birthdate, order: [:day, :month, :year], class: "form-select mt-1 block w-full rounded-md border-gray-300 shadow-sm" %>
         </div>
 
         <div class="mb-4">
-          <%= f.label :commission, class: "block text-HFblue-200 font-medium mb-2" %>
+          <%= f.label :commission, class: "block text-violet-950 font-medium mb-2" %>
           <%= f.number_field :commission, class: "form-input mt-1 block w-full rounded-md border-gray-300 shadow-sm" %>
         </div>
 
         <div class="mb-4">
-          <%= f.label :description, class: "block text-HFblue-200 font-medium mb-2" %>
+          <%= f.label :description, class: "block text-violet-950 font-medium mb-2" %>
           <%= f.text_field :description, class: "form-input mt-1 block w-full rounded-md border-gray-300 shadow-sm" %>
         </div>
 
         <div class="mb-4">
-          <%= f.label :avatar, "Image de profil", class: "block text-HFblue-200 font-medium mb-2" %>
+          <%= f.label :avatar, "Image de profil", class: "block text-violet-950 font-medium mb-2" %>
           <%= f.file_field :avatar, class: "form-input mt-1 block w-full rounded-md border-gray-300 shadow-sm" %>
         </div>
 
         <div class="mb-4">
-          <%= f.label :is_available, "Votre status", class: "block text-HFblue-200 font-medium mb-2" %>
+          <%= f.label :is_available, "Votre status", class: "block text-violet-950 font-medium mb-2" %>
           <%= f.select :is_available, options_for_select([['Disponible', 'Disponible'], ['Indisponible', 'Indisponible']], @user.is_available), class: "form-select mt-1 block w-full rounded-md border-gray-300 shadow-sm" %>
         </div>
 
         <div class="mb-4">
-          <%= f.label :categories, "Catégories", class: "block text-HFblue-200 font-medium mb-2" %>
+          <%= f.label :categories, "Services", class: "block text-violet-950 font-medium mb-2" %>
           <% Category.all.each do |category| %>
             <div class="flex mb-2">
               <%= check_box_tag "user[category_ids][]", category.id, @user.categories.include?(category), class: "form-checkbox rounded-md border-gray-300 shadow-sm mr-2" %>
-              <%= label_tag "user_category_ids_#{category.id}", category.name, class: "text-HFred-200 font-medium" %>
+              <%= label_tag "user_category_ids_#{category.id}", category.name, class: "text-gray-800" %>
             </div>
           <% end %>
         </div>
 
         <div class="mb-4">
-          <%= f.label :cities, "Cities", class: "block text-HFblue-200 font-medium mb-2" %>
+          <%= f.label :cities, "Aire de travail", class: "block text-violet-950 font-medium mb-2" %>
           <% City.all.each do |city| %>
             <div class="flex mb-2">
               <%= check_box_tag "user[city_ids][]", city.id, @user.cities.include?(city), class: "form-checkbox rounded-md border-gray-300 shadow-sm mr-2" %>
-              <%= label_tag "user_city_ids_#{city.id}", city.postal_code, class: "text-HFred-200 font-medium" %>
+              <%= label_tag "user_city_ids_#{city.id}", city.postal_code, class: "text-gray-800" %>
             </div>
           <% end %>
         </div>
@@ -84,11 +84,11 @@
           <div class="mt-4">
             <div class="mb-4 mx-4">
               <%= f.check_box :is_owner, { class: "form-checkbox rounded-md border-gray-300 shadow-sm mr-2"} %>
-              <%= f.label :is_owner, "Propriétaire", class: "text-HFblue-200 font-medium" %>
+              <%= f.label :is_owner, "Propriétaire", class: "text-violet-950 font-medium" %>
             </div>
             <div class="mb-4 mx-4">
               <%= f.check_box :is_host, { class: "form-checkbox rounded-md border-gray-300 shadow-sm mr-2"} %>
-              <%= f.label :is_host, "Concierge", class: "text-HFblue-200 font-medium" %>
+              <%= f.label :is_host, "Concierge", class: "text-violet-950 font-medium" %>
             </div>
           </div>
         </div>

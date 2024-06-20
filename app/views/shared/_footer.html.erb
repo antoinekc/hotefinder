@@ -5,10 +5,10 @@
 <footer class="w-full rounded-t-lg shadow bg-violet-950">
     <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
         <div class="sm:flex sm:items-center sm:justify-between">
-            <a href="https://hotefinder.com/" class="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse">
+            <%= link_to root_path, class: 'flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse' do %>
                 <%= image_tag 'icons/hotefinder.svg', alt: 'Hotefinder logo', class: 'h-8' %>
                 <span class="self-center text-2xl font-semibold whitespace-nowrap text-white">Hotefinder.</span>
-            </a>
+            <% end %>
             <ul class="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-300 sm:mb-0 ">
                 <li>
                     <%= link_to 'A propos', about_path, class: 'hover:underline me-4 md:me-6' %>
@@ -22,6 +22,6 @@
             </ul>
         </div>
         <hr class="my-6 border-gray-200 sm:mx-auto lg:my-8" />
-        <span class="block text-sm text-gray-500 sm:text-center ">© 2023 <a href="https://hotefinder.com/" class="hover:underline">Hotefinder</a></span>
+        <span class="block text-sm text-gray-300 sm:text-center ">© 2023 <%= link_to 'Hotefinder', root_path, class: 'hover:underline' %></span>
     </div>
 </footer>
