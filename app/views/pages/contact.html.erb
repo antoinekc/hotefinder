@@ -1,10 +1,10 @@
-<section class=" text-gray-900">
+<section class="text-gray-900">
     <div class="container mx-auto p-6">
         <h1 class="text-4xl font-bold mb-6 text-center">Contactez-nous</h1>
 
         <div class="bg-white p-8 rounded shadow-md max-w-lg mx-auto">
             <p class="mb-4 text-lg">Pour toute question concernant nos services, vous pouvez nous contacter à l'adresse email suivante :</p>
-            <p class="mb-6 text-xl font-semibold"><a href="mailto:hotefinder@gmail.com" class="text-blue-500 hover:underline">welcome@hotefinder.com</a></p>
+            <p class="mb-6 text-xl font-semibold"><%= mail_to 'welcome@hotefinder.com', 'welcome@hotefinder.com', class: 'text-blue-500 hover:underline' %></p>
         </div>
     </div>
 </section>
