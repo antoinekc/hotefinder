@@ -19,11 +19,11 @@
         <% if devise_mapping.rememberable? %>
           <div class="field snap-center">
             <%= f.check_box :remember_me, class:'rounded' %>
-            <%= f.label :se_rappeler_de_moi, class: 'text-HFlight' %>
+            <%= f.label :se_rappeler_de_moi, for: 'se rappeler de moi', class: 'text-HFlight' %>
           </div>
       <% end %>
       <div class="flex items-center justify-center">
-      <button class='rounded flex mt-3'>
+      <button class='rounded flex mt-5'>
         <%= f.submit "Me connecter", class: 'btn-primary' %>
         <% end %>
       </button>

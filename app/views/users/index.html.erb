@@ -20,9 +20,9 @@
                   <span class="inline-flex flex-shrink-0 items-center rounded-full px-1.5 py-0.5 text-xs font-medium text-red-700 ring-1 ring-inset ring-red-500">Indisponible</span>
                 <% end %>
               </div>
-              <p class="mt-1 truncate text-sm text-gray-500"><%= user.commission %>%</p>
+              <p class="mt-1 truncate text-sm text-gray-500">Commission : <%= user.commission %>%</p>
               <div class="mt-1 truncate text-sm text-gray-500">
-                <p><strong>Arrondissements :</strong></p>
+                <p><strong>Aire de travail :</strong></p>
                 <% user.cities.each do |city| %>
                   <p><%= city.postal_code %></p>
                 <% end %>
