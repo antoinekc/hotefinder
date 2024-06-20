@@ -2,11 +2,11 @@
   <meta name="description" content="Le fichier de navbar utilisé sur toutes les pages">
 </head>
 
-<nav class="sticky top-0 z-100 bg-gray-100 border border-gray-50">
+<nav class="sticky top-0 z-50 bg-gray-100 border border-gray-50">
   <div class="h-24 flex items-center justify-between px-8">
     <div>
       <%= link_to root_path do %>
-        <%= image_tag 'icons/Bg_logo.svg', alt: 'Logo', class: 'h-14 w-auto' %>
+        <%= image_tag 'icons/logo.svg', alt: 'Logo', class: 'h-14 w-auto' %>
       <% end %>
     </div>
 
@@ -59,7 +59,7 @@
   </div>
 
   <!-- Mobile Menu -->
-  <div id="mobile-menu" class="hidden md:hidden bg-slate-100 w-full">
+  <div id="mobile-menu" class="hidden md:hidden bg-slate-100 w-full z-50">
     <div class="flex flex-col items-end space-y-4 p-4">
       <%= link_to users_path, class: 'flex items-center', onclick: 'hideMobileMenu()' do %>
         <!--<%= image_tag 'icons/user.svg', alt: 'Concierges', class: 'h-6 w-6 md:hidden' %>-->
