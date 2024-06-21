@@ -1,16 +1,5 @@
 require "faker"
 require "open-uri"
-require "aws-sdk-s3"
-
-# AWS Credentials
-s3_client = Aws::S3::Client.new(
-  region: 'eu-west-3',
-  access_key_id: ENV['AWS_ACCESS_KEY_ID'],
-  secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']
-)
-
-s3_resource = Aws::S3::Resource.new(client: s3_client)
-bucket = s3_resource.bucket('hote-finder-media')
 
 # Set the locale to French
 Faker::Config.locale = 'fr'
@@ -21,7 +10,7 @@ City.destroy_all
 Mission.destroy_all
 Category.destroy_all
 
-puts "all tables seeded"
+puts "all tables destroyed"
 
 # Create Categories
 categories = %w[
@@ -54,7 +43,7 @@ puts "cities seeded"
 disponibilite = ["Disponible", "Indisponible"]
 cities = City.all
 
-def create_user(first_name, last_name, email, description, avatar_filename, disponibilite, categories, bucket, cities)
+def create_user(first_name, last_name, email, description, disponibilite, categories, cities)
   user = User.create!(
     first_name: first_name,
     last_name: last_name,
@@ -71,22 +60,6 @@ def create_user(first_name, last_name, email, description, avatar_filename, disp
     commission: rand(15..30)
   )
 
-  # S3 avatars
-  avatar_object = bucket.object(avatar_filename)
-  avatar_url = avatar_object.presigned_url(:get, expires_in: 3600)
-
-  avatar_file = URI.open(avatar_url)
-
-  # Determine content type based on file extension
-  content_type = case File.extname(avatar_filename)
-                 when '.jpg', '.jpeg' then 'image/jpeg'
-                 when '.png' then 'image/png'
-                 when '.webp' then 'image/webp'
-                 else 'application/octet-stream' # default content type if unknown
-                 end
-
-  user.avatar.attach(io: avatar_file, filename: avatar_filename, content_type: content_type)
-
   # Assign random categories to the user
   user.categories << categories.sample(rand(4..10))
 
@@ -95,20 +68,20 @@ def create_user(first_name, last_name, email, description, avatar_filename, disp
 end
 
 users_data = [
-  ["Emily", "Dupont", "e@dupont.com", "Emily, je travaille la journee comme tradeuse middle office au siege de la socite generale a la defense et la nuit je me transforme en super host? Pourquoi se donner tant de mal me dire-vous? Pour atteindre la liberte financiere avant 40 ans et ne plus rien faire ensuite", "Emily_Dupont.webp"],
-  ["Kevin", "Lochet", "k@lochet.com", "Disponible sur tous les arrondissements de la capitale et de navarre, je travaille comme conceierge a mi-temps afin de pouvoir me payer les dernieres jantes 198 pouces retro rotatives pour ma Xantia", "Kevin_Lochet.webp"],
-  ["Sophie", "Craisson", "s@craisson.com", "mon moto de vie: live, love laugh... et je souhaitre le transmettre autour de moi le plus possible. Disponible dans Paris 1 - 7, je travaille en journee comme editrice de set de table IKEA et transmets mon amour, carpe diem", "Sophie_Craisson.webp"],
-  ["Jon", "Livremont", "j@livrement.com", "Etudiant en double displome HEC & Polytechnique, ancien champion d'Isere de flechettes, j'aime la performance. Mon objectif a court terme, devenir le plus grand concierge de Paris et le premier influenceur dans le domaine, sky is la limite", "Jon_Livremont.webp"],
-  ["Anna", "Maloue", "a@maloue.com", "Depuis le covid, je me suis lance dans le business de la gestion d'appartement a la location dans le 9/10/11eme arrondissement. Mon objectif: me faire le plus d'argent possible sur le dos de la startup nation en visant les logements autours des bureaux de toutes les boites parisiennes les plus en vue du moment #lifehack", "Anna_Maloue.webp"],
-  ["Erica", "Linard", "e@linard.com", "I love tourisme you know y tambem encontrar pessosas nuevas y beber cervezas. Oui, je suis une passionnee de langue (duolingo n'a plus de secret pour moi). Pour moi Hote Finder c'est avant tout la possibilite d'echanger avec des gens de partout dans le monde #worldcitizen", "Erica_Linard.webp"],
-  ["Lea", "Lagollec", "l@lagollec.com", "A la recherche du plus beau bien immobilier de Paris, j'utillise Hotefinder pour completer mes revenus et faire une etude comparative de tous les Franxprix de la capitale.", "Lea_Lagollec.webp"],
-  ["Enrique", "Limoncelle",  "e@limoncelle.com", "6ft5, blue eyes, work in finance. Investisseur en crypto (#marchebullique) et amateur de podcasts et de #personnalgrowth, je suis ouvert aux locations dans le 16eme et sa proche banlieue (Pas au dela de Javel par contre).", "Enrique_Limoncelle.webp"],
-  ["Ben", "Jolowitz", "b@jolowitz.com", "Etudiant en Sciences politiques et journalisme, j'utilise HoteFinder essentellement pour me donner des informations pour ecrire mon memoire de fin de master (malin) tout en arrondissant mes fins de mois. Une fois ce dernier en poche je compte sortir un article sur l'impact negatif du marche de l'immobilier locatif sur les habitants de Paris.", "Ben_Jolowitz.webp"],
-  ["Olivia", "De Ligonne", "o@deligonne.com", "Apres plusieurs annees sur la route a voyager en europe et au 4 coins du monde avec ma famille, j'ai decide de m'installer a Paris pour renouer avec mon pays et profiter de cet ete pour assister aux JO et financer le tout en travaillant partiellement sur Hote Findus", "Olivia_De_Ligone.webp"]
+  ["Emily", "Dupont", "e@dupont.com", "Emily, je travaille la journee comme tradeuse middle office au siege de la socite generale a la defense et la nuit je me transforme en super host? Pourquoi se donner tant de mal me dire-vous? Pour atteindre la liberte financiere avant 40 ans et ne plus rien faire ensuite"],
+  ["Kevin", "Lochet", "k@lochet.com", "Disponible sur tous les arrondissements de la capitale et de navarre, je travaille comme conceierge a mi-temps afin de pouvoir me payer les dernieres jantes 198 pouces retro rotatives pour ma Xantia"],
+  ["Sophie", "Craisson", "s@craisson.com", "mon moto de vie: live, love laugh... et je souhaitre le transmettre autour de moi le plus possible. Disponible dans Paris 1 - 7, je travaille en journee comme editrice de set de table IKEA et transmets mon amour, carpe diem"],
+  ["Jon", "Livremont", "j@livrement.com", "Etudiant en double displome HEC & Polytechnique, ancien champion d'Isere de flechettes, j'aime la performance. Mon objectif a court terme, devenir le plus grand concierge de Paris et le premier influenceur dans le domaine, sky is la limite"],
+  ["Anna", "Maloue", "a@maloue.com", "Depuis le covid, je me suis lance dans le business de la gestion d'appartement a la location dans le 9/10/11eme arrondissement. Mon objectif: me faire le plus d'argent possible sur le dos de la startup nation en visant les logements autours des bureaux de toutes les boites parisiennes les plus en vue du moment #lifehack"],
+  ["Erica", "Linard", "e@linard.com", "I love tourisme you know y tambem encontrar pessosas nuevas y beber cervezas. Oui, je suis une passionnee de langue (duolingo n'a plus de secret pour moi). Pour moi Hote Finder c'est avant tout la possibilite d'echanger avec des gens de partout dans le monde #worldcitizen"],
+  ["Lea", "Lagollec", "l@lagollec.com", "A la recherche du plus beau bien immobilier de Paris, j'utillise Hotefinder pour completer mes revenus et faire une etude comparative de tous les Franxprix de la capitale."],
+  ["Enrique", "Limoncelle",  "e@limoncelle.com", "6ft5, blue eyes, work in finance. Investisseur en crypto (#marchebullique) et amateur de podcasts et de #personnalgrowth, je suis ouvert aux locations dans le 16eme et sa proche banlieue (Pas au dela de Javel par contre)."],
+  ["Ben", "Jolowitz", "b@jolowitz.com", "Etudiant en Sciences politiques et journalisme, j'utilise HoteFinder essentellement pour me donner des informations pour ecrire mon memoire de fin de master (malin) tout en arrondissant mes fins de mois. Une fois ce dernier en poche je compte sortir un article sur l'impact negatif du marche de l'immobilier locatif sur les habitants de Paris."],
+  ["Olivia", "De Ligonne", "o@deligonne.com", "Apres plusieurs annees sur la route a voyager en europe et au 4 coins du monde avec ma famille, j'ai decide de m'installer a Paris pour renouer avec mon pays et profiter de cet ete pour assister aux JO et financer le tout en travaillant partiellement sur Hote Findus"]
 ]
 
-users_data.each do |first_name, last_name, email, description, avatar_filename|
-  create_user(first_name, last_name, email, description, avatar_filename, disponibilite, categories, bucket, cities)
+users_data.each do |first_name, last_name, email, description|
+  create_user(first_name, last_name, email, description, disponibilite, categories, cities)
 end
 
 puts "hosts seeded"
