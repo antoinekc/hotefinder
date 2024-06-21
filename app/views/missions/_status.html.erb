@@ -11,7 +11,7 @@
       <%= button_to "Accepter Mission", mission_path(mission), method: :patch, params: { choix: "Accepter mission" }, class: "btn btn-primary" %>
       <%= button_to "Refuser Mission", mission_path(mission), method: :patch, params: { choix: "Refuser mission" }, class: "btn btn-danger" %>
     <% elsif mission.owner_id == current_user.id %>
-      <%= text_field_tag :info, "Attente de réponse", readonly: true, class: "mt-1 block w-full shadow-sm sm:text-sm rounded-md text-HFdark border-HFlight hover:border-HFblue-200 bg-gray-200" %>
+      <p class="mt-1 block w-full shadow-sm sm:text-sm rounded-md text-HFdark border-HFlight hover:border-HFblue-200 bg-gray-200 p-2">Attente de réponse</p>
     <% end %>
 
   <% elsif mission.status == "Acceptée" %>
