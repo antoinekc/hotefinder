@@ -5,6 +5,16 @@
     <p class="text-white text-lg">Découvrez les personnes disponibles pour des collaborations fructueuses.</p>
   </div>
 </section>
+
+<section class="flex flex-col items-center mb-6">
+  <details class="w-full max-w-4xl">
+    <summary class="px-4 py-2 rounded-md cursor-pointer mb-4 text-center text-2xl text-violet-950">Afficher les filtres</summary>
+    <%= render 'shared/category_filter' %>
+  </details>
+</section>
+
+
+
 <section>
   <ul role="list" class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 mx-auto max-w-7xl mb-16">
     <% @users.each do |user| %>

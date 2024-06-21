@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
   <head>
+    <%= favicon_link_tag asset_path('icons/favicon.ico') %>
     <title>Hotefinder</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
@@ -12,12 +13,10 @@
     <meta name="turbo-prefetch" content="false">
     <meta name="description" content="Le fichier d'architecture de l'application contenant les elements generiques">
     <script src="https://kit.fontawesome.com/7c499b006c.js" crossorigin="anonymous"></script>
-
   </head>
 
   <body class="flex flex-col min-h-screen">
     <%= render 'shared/navbar' %>
-
     <main class="flex-grow flex flex-col mt-0">
       <%= render 'layouts/flash_messages' %>
       <%= yield %>

@@ -8,7 +8,7 @@
     <div class="my-8">
       <%= render "status", mission: @mission %>
     </div>
-    <div class="flex justify-center">
+    <div class="flex justify-center p-4">
       <div>
         <%= link_to "Retour aux missions", missions_path, class: "btn-primary" %>
         <% if @mission.owner_id == current_user.id %>
