@@ -79,7 +79,7 @@ cities = City.all
   )
 
   # Local avatars
-  avatar_path = Rails.root.join('app/assets/images/avatars', 'portrait_01.jpg')
+  avatar_path = Rails.root.join('app/assets/images/avatars', 'portrait_01.webp')
   avatar_file = File.open(avatar_path)
   user.avatar.attach(io: avatar_file, filename: 'avatar.jpg', content_type: 'image/jpg')
 
@@ -110,7 +110,7 @@ puts "hosts seeded"
   )
 
   # Local avatars
-  avatar_path = Rails.root.join('app/assets/images/avatars', 'portrait_02.jpg')
+  avatar_path = Rails.root.join('app/assets/images/avatars', 'portrait_02.webp')
   avatar_file = File.open(avatar_path)
   user.avatar.attach(io: avatar_file, filename: 'avatar.jpg', content_type: 'image/jpg')
 
@@ -140,7 +140,7 @@ puts "host-owners seeded"
   )
 
   # Local avatars
-  avatar_path = Rails.root.join('app/assets/images/avatars', 'portrait_02.jpg')
+  avatar_path = Rails.root.join('app/assets/images/avatars', 'portrait_02.webp')
   avatar_file = File.open(avatar_path)
   user.avatar.attach(io: avatar_file, filename: 'avatar.jpg', content_type: 'image/jpg')
 
