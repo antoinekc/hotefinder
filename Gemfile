@@ -99,3 +99,5 @@ gem "devise-i18n", "~> 1.12"
 gem "rails-i18n", "~> 7.0"
 
 gem "concurrent-ruby", "~> 1.3"
+
+gem "puma_worker_killer", "~> 0.3.1"
