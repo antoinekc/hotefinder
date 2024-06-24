@@ -384,6 +384,7 @@ DEPENDENCIES
   bootsnap
   capybara
   carrierwave
+  concurrent-ruby (~> 1.3)
   debug
   devise (~> 4.9)
   devise-i18n (~> 1.12)
