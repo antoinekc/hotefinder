@@ -21,6 +21,11 @@ class User < ApplicationRecord
     attachable.variant :thumb, resize_to_fill: [150, 150]
   end
 
+  def avatar_as_thumbnail
+    avatar.variant(resize_to_fill: [400, 400])
+  end
+
+
   validate :avatar_size_validation
 
   private

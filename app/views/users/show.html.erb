@@ -7,7 +7,7 @@
   <div class="w-full max-w-6xl p-4 flex flex-col lg:flex-row items-center ">
     <div class="w-full h-full md:w-2/3 flex justify-center mb-4 ">
       <% if @user.avatar.attached? %>
-        <%= image_tag @user.avatar.variant(resize_to_fill: [400, 400]), class: "rounded-full shadow-xl w-24 h-24 sm:w-32 sm:h-32 md:w-48 md:h-48 lg:w-64 lg:h-64 xl:w-96 xl:h-96" %>
+        <%= image_tag @user.avatar_as_thumbnail, class: "rounded-full shadow-xl w-24 h-24 sm:w-32 sm:h-32 md:w-48 md:h-48 lg:w-64 lg:h-64 xl:w-96 xl:h-96" %>
       <% end %>
     </div>
 
