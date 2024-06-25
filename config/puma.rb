@@ -15,7 +15,7 @@ threads min_threads_count, max_threads_count
 # Workers are forked web server processes. If using threads and workers together
 # the concurrency of the application would be max `threads` * `workers`.
 # Use `workers 0` to disable worker mode.
-worker_count = ENV.fetch("WEB_CONCURRENCY") { 2 }.to_i
+worker_count = ENV.fetch("WEB_CONCURRENCY") { 0 }
 workers worker_count if worker_count > 1
 
 # Use the `preload_app!` method when specifying a `workers` number.
