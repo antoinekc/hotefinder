@@ -6,7 +6,7 @@ threads min_threads_count, max_threads_count
 # Workers are forked web server processes. If using threads and workers together
 # the concurrency of the application would be max `threads` * `workers`.
 # Use `workers 0` to disable worker mode.
-workers 2
+workers Integer(ENV['WEB_CONCURRENCY'] || 2)
 
 # Use the `preload_app!` method when specifying a `workers` number.
 # This directive tells Puma to first boot the application and load code
