@@ -15,7 +15,7 @@ threads min_threads_count, max_threads_count
 # Workers are forked web server processes. If using threads and workers together
 # the concurrency of the application would be max `threads` * `workers`.
 # Use `workers 0` to disable worker mode.
-worker_count = ENV.fetch("WEB_CONCURRENCY") { 0 }
+worker_count = ENV.fetch("WEB_CONCURRENCY") { 1 }
 workers worker_count if worker_count > 1
 
 # Use the `preload_app!` method when specifying a `workers` number.
@@ -29,10 +29,10 @@ preload_app! if worker_count > 1
 worker_timeout 3600 if ENV.fetch("RAILS_ENV", "development") == "development"
 
 # Specifies the `port` that Puma will listen on to receive requests; default is 3000.
-port ENV.fetch("PORT") { 3000 }
+# port ENV.fetch("PORT") { 3000 }
 
 # Specifies the `environment` that Puma will run in.
-environment ENV.fetch("RAILS_ENV") { "development" }
+environment ENV.fetch("RAILS_ENV") { "production" }
 
 # Specifies the `pidfile` that Puma will use.
 pidfile ENV.fetch("PIDFILE") { "tmp/pids/server.pid" }
