@@ -2,29 +2,30 @@ class UsersController < ApplicationController
   before_action :authenticate_user!, only: [:show, :edit, :update, :destroy]
   before_action :correct_user, only: [:edit, :update, :destroy]
 
-
   def index
-    @users = User.all
+    report = MemoryProfiler.report do
+      @users = User.includes(:categories, :cities, :avatar_attachment)
 
-    if params[:categories].present?
-      @users = @users.joins(:categories).where(categories: { id: params[:categories] }).distinct
+      if params[:categories].present?
+        @users = @users.where(categories: { id: params[:categories] }).distinct
+      end
+
+      if params[:cities].present?
+        @users = @users.where(cities: { id: params[:cities] }).distinct
+      end
+
+      @users.to_a  # Force loading of records
     end
 
-    if params[:cities].present?
-      @users = @users.joins(:cities).where(cities: { id: params[:cities] }).distinct
-    end
+    report.pretty_print(to_file: 'tmp/users_index_memory_report.txt')
   end
 
   def show
-    @user = User.find(params[:id])
-    @categories = @user.categories
-    @cities = @user.cities
+    @user = User.includes(:categories, :cities).find(params[:id])
   end
 
   def edit
-    @user = User.find(params[:id])
-    @categories = @user.categories
-    @cities = @user.cities
+    @user = User.includes(:categories, :cities).find(params[:id])
   end
 
   def update
@@ -39,8 +40,7 @@ class UsersController < ApplicationController
 
   def destroy
     @user.destroy
-
-    flash[:notice] = 'l\'utilisateur a été supprimé'
+    flash[:notice] = 'L\'utilisateur a été supprimé'
     redirect_to users_url
   end
 
@@ -52,6 +52,6 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:email, :first_name, :last_name, :phone_number, :birthdate, :commission, :description, :is_host, :is_owner, :is_available, :avatar, :email_notifications, city_ids: [],  category_ids: [])
+    params.require(:user).permit(:email, :first_name, :last_name, :phone_number, :birthdate, :commission, :description, :is_host, :is_owner, :is_available, :avatar, :email_notifications, city_ids: [], category_ids: [])
   end
 end

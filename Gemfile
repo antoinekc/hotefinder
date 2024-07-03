@@ -60,6 +60,10 @@ group :development do
   # gem "spring"
 end
 
+group :development do
+  gem 'bullet'
+end
+
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
@@ -95,3 +99,9 @@ gem 'carrierwave'
 gem 'fog-aws'
 
 gem "devise-i18n", "~> 1.12"
+
+gem 'memory_profiler'
+
+gem 'derailed_benchmarks', group: :development
+
+gem 'rack-mini-profiler', group: :development
