@@ -1,6 +1,10 @@
-<head>
-  <meta name="description" content="Le fichier de navbar utilisé sur toutes les pages">
-</head>
+<% content_for :meta_description do %>
+  Le fichier de navbar utilisé sur toutes les pages.
+<% end %>
+
+<% content_for :meta_keywords do %>
+  navbar
+<% end %>
 
 <nav class="sticky top-0 z-50 bg-gray-100 border border-gray-50">
   <div class="h-24 flex items-center justify-between px-8">

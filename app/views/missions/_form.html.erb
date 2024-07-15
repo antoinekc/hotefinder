@@ -1,6 +1,10 @@
-<head>
-<meta name="description" content="Le fichier de partial des formulaires.">
-</head>
+<% content_for :meta_description do %>
+  Le fichier de partial des formulaires.
+<% end %>
+
+<% content_for :meta_keywords do %>
+  formulaire
+<% end %>
 
 <%= form_with(model: mission, class: "space-y-6") do |form| %>
 

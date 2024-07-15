@@ -1,6 +1,10 @@
-<head>
-<meta name="description" content="Le fichier partial des status">
-</head>
+<% content_for :meta_description do %>
+  Le fichier partial des status
+<% end %>
+
+<% content_for :meta_keywords do %>
+  status, missions.
+<% end %>
 
 <div class="flex justify-center">
   <% if mission.status.blank? %>

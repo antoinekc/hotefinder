@@ -1,6 +1,10 @@
-<head>
-<meta name="description" content="Le fichier d'accichage du contenu des missions">
-</head>
+<% content_for :meta_description do %>
+  Le fichier d'affichage du contenu des missions.
+<% end %>
+
+<% content_for :meta_keywords do %>
+  formulaire de missions.
+<% end %>
 
 <div class="flex flex-col justify-center items-center my-8">
     <div class='text-center h2 font-bold text-violet-950 p-2 m-1'><%= mission.title %></div>

@@ -1,6 +1,10 @@
-<head>
-<meta name="description" content="Le fichier de footer utilise sur toutes les pages">
-</head>
+<% content_for :meta_description do %>
+  Le fichier de footer utilise sur toutes les pages.
+<% end %>
+
+<% content_for :meta_keywords do %>
+  footer
+<% end %>
 
 <footer class="w-full rounded-t-lg shadow bg-violet-950">
     <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
