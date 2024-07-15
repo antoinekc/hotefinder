@@ -98,21 +98,21 @@
         Nos Concierges
       </h1>
     </div>
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <% @randusers.first(3).each_with_index do |user, index| %>
-          <div class="w-full bg-white rounded-lg p-12 flex flex-col justify-center items-center drop-shadow-md transition-transform transform hover:-translate-y-2 hover:shadow-2xl hover:scale-105 ">        
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <% @randusers.first(3).each_with_index do |user, index| %>
+        <% if user.avatar.attached? && user.description.present? && !user.is_admin %>
+          <div class="w-full bg-white rounded-lg p-12 flex flex-col justify-center items-center drop-shadow-md transition-transform transform hover:-translate-y-2 hover:shadow-2xl hover:scale-105">
             <div class="mb-8">
-            <% if user.avatar.attached? && user.description? && !user.is_admin %>
-              <%= image_tag user.avatar.variant(resize_to_fill: [500, 500]), class: "rounded-full w-36 h-36 object-cover" %>
-            <% end %>
-            <a href="<%= user_path(user) %>">
-          </div>
+              <%= image_tag user.avatar.variant(resize_to_fill: [150, 150]), class: "rounded-full w-36 h-36 object-cover" %>
+            </div>
             <div class="text-center">
-              <p class="text-xl text-gray-700 font-bold mb-2"><%= user.first_name %></p>
-              <p class="text-base text-gray-500 font-normal truncate-description text-left"><%= user.description %></p>
-              </div>
-          </a>
-        </div>
+              <a href="<%= user_path(user) %>">
+                <p class="text-xl text-gray-700 font-bold mb-2"><%= user.first_name %></p>
+                <p class="text-base text-gray-500 font-normal truncate-description text-left"><%= user.description %></p>
+              </a>
+            </div>
+          </div>
+        <% end %>
       <% end %>
     </div>
     <div class="flex justify-center items-center mt-14">
