@@ -13,7 +13,6 @@ ENV RAILS_ENV="production" \
     BUNDLE_PATH="/usr/local/bundle" \
     BUNDLE_WITHOUT="development"
 
-
 # Throw-away build stage to reduce size of final image
 FROM base as build
 
@@ -46,9 +45,15 @@ COPY . .
 # Precompile bootsnap code for faster boot times
 RUN bundle exec bootsnap precompile app/ lib/
 
-# Precompiling assets for production without requiring secret RAILS_MASTER_KEY
-RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
+# Set AWS environment variables for the build process
+ENV AWS_REGION=eu-west-3 \
+    AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID} \
+    AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY} \
+    AWS_BUCKET_NAME=${AWS_BUCKET_NAME} \
+    SECRET_KEY_BASE_DUMMY=1
 
+# Precompiling assets for production
+RUN ./bin/rails assets:precompile
 
 # Final stage for app image
 FROM base

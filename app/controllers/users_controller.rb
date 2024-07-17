@@ -4,29 +4,28 @@ class UsersController < ApplicationController
 
   def index
     report = MemoryProfiler.report do
-      @users = User.includes(:avatar)
+      @users = User.includes(:categories, :cities, :avatar_attachment)
 
       if params[:categories].present?
-        @users = @users.joins(:categories).where(categories: { id: params[:categories] }).distinct
+        @users = @users.where(categories: { id: params[:categories] }).distinct
       end
 
       if params[:cities].present?
-        @users = @users.joins(:cities).where(cities: { id: params[:cities] }).distinct
+        @users = @users.where(cities: { id: params[:cities] }).distinct
       end
 
-      @users = @users.page(params[:page]).per(10) # Use pagination to limit records loaded into memory
-
+      @users.to_a  # Force loading of records
     end
 
     report.pretty_print(to_file: 'tmp/users_index_memory_report.txt')
   end
 
   def show
-    @user = User.includes(:avatar).find(params[:id])
+    @user = User.includes(:categories, :cities).find(params[:id])
   end
 
   def edit
-    @user = User.includes(:avatar).find(params[:id])
+    @user = User.includes(:categories, :cities).find(params[:id])
   end
 
   def update
