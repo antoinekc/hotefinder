@@ -39,3 +39,6 @@ console_command = '/rails/bin/rails console'
 
 [processes]
   app = "bin/rails server"
+
+[env]
+  PORT = "3000"

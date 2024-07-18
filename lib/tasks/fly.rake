@@ -4,6 +4,6 @@ namespace :fly do
   task :release => 'db:migrate'
 
   task :server do
-    sh 'bin/rails server'
+    sh 'bin/rails server -b 0.0.0.0'
   end
 end
