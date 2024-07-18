@@ -28,5 +28,8 @@ module Hotefinder
 
     # Allow the specified host
     config.hosts << "hotefinder-spring-fog-8693.fly.dev"
+
+    config.assets.paths << Rails.root.join("app/assets/builds")
+
   end
 end

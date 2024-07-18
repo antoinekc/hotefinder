@@ -1,13 +1,13 @@
-# fly.toml app configuration file generated for hotefinder-spring-fog-8693 on 2024-07-17T11:34:49+02:00
-#
-# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
-#
-
 app = 'hotefinder-spring-fog-8693'
 primary_region = 'cdg'
 console_command = '/rails/bin/rails console'
 
 [build]
+  [build.args]
+    BUILD_COMMAND = "bin/rails fly:build"
+
+[deploy]
+  release_command = "bin/rails fly:release"
 
 [http_service]
   internal_port = 3000
@@ -36,3 +36,6 @@ console_command = '/rails/bin/rails console'
   memory = '1gb'
   cpu_kind = 'shared'
   cpus = 1
+
+[processes]
+  app = "bin/rails server"
