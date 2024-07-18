@@ -13,6 +13,8 @@ Rails.application.configure do
 
   config.action_mailer.delivery_method = :test
 
+  config.assets.compile = true
+
   # Do not eager load code on boot.
   config.eager_load = false
 

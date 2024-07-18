@@ -23,6 +23,10 @@ module Hotefinder
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+
     config.i18n.default_locale = :fr
+
+    # Allow the specified host
+    config.hosts << "hotefinder-spring-fog-8693.fly.dev"
   end
 end
