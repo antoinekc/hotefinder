@@ -55,7 +55,7 @@
  <div class='flex flex-col mb-2 mx-4'>
     <%= form.label :categories, "Services", class: "block text-HFblue-200 text-sm font-medium mb-2" %>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        <% Category.all.each do |category| %>
+        <% Category.find_each do |category| %>
             <div class="flex items-center">
                 <%= check_box_tag "mission[category_ids][]", category.id, @mission.categories.include?(category), class: "form-checkbox rounded-md border-gray-300 shadow-sm mr-2" %>
                 <%= label_tag "mission_category_ids_#{category.id}", category.name, class: "text-HFdark text-sm font-medium" %>

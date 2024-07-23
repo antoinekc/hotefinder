@@ -3,7 +3,7 @@
     <div class="flex flex-col items-center">
       <h2 class="text-xl font-bold m-10">Services</h2>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
-        <% Category.all.each do |category| %>
+        <% Category.find_each do |category| %>
           <% selected = params[:categories]&.include?(category.id.to_s) %>
           <div class="flex items-center">
             <%= check_box_tag "categories[]", category.id, selected, id: "category_#{category.id}" %>
@@ -16,7 +16,7 @@
     <div class="flex flex-col items-center">
       <h2 class="text-xl font-bold m-10">Arrondissements</h2>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
-        <% City.all.each do |city| %>
+        <% City.find_each do |city| %>
           <% selected = params[:cities]&.include?(city.id.to_s) %>
           <div class="flex items-center">
             <%= check_box_tag "cities[]", city.id, selected, id: "city_#{city.id}" %>

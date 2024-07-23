@@ -65,7 +65,7 @@ La page modification du profil utilisateur.
 
         <div class="mb-4">
           <%= f.label :categories, "Services", class: "block text-violet-950 font-medium mb-2" %>
-          <% Category.all.each do |category| %>
+          <% Category.find_each do |category| %>
             <div class="flex mb-2">
               <%= check_box_tag "user[category_ids][]", category.id, @user.categories.include?(category), class: "form-checkbox rounded-md border-gray-300 shadow-sm mr-2" %>
               <%= label_tag "user_category_ids_#{category.id}", category.name, class: "text-gray-800" %>
@@ -75,7 +75,7 @@ La page modification du profil utilisateur.
 
         <div class="mb-4">
           <%= f.label :cities, "Aire de travail", class: "block text-violet-950 font-medium mb-2" %>
-          <% City.all.each do |city| %>
+          <% City.find_each do |city| %>
             <div class="flex mb-2">
               <%= check_box_tag "user[city_ids][]", city.id, @user.cities.include?(city), class: "form-checkbox rounded-md border-gray-300 shadow-sm mr-2" %>
               <%= label_tag "user_city_ids_#{city.id}", city.postal_code, class: "text-gray-800" %>

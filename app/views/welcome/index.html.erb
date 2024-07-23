@@ -107,7 +107,7 @@ Page d'accueil de Hotefinder incluant services, avantages et informations sur le
           <div class="w-full bg-white rounded-lg p-12 flex flex-col justify-center items-center drop-shadow-md transition-transform transform hover:-translate-y-2 hover:shadow-2xl hover:scale-105 ">        
             <div class="mb-8">
             <% if user.avatar.attached? && user.description? && !user.is_admin %>
-              <%= image_tag user.avatar.variant(resize_to_fill: [500, 500]), class: "rounded-full w-36 h-36 object-cover" %>
+              <%= image_tag user.avatar_as_thumbnail, class: "rounded-full w-36 h-36 object-cover" %>
             <% end %>
             <a href="<%= user_path(user) %>">
           </div>

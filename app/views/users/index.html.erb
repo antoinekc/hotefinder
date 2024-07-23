@@ -47,7 +47,7 @@ Page d'indexe des concierges.
               </div>
             </div>
             <% if user.avatar.attached? %>
-              <%= image_tag user.avatar.variant(resize_to_fill: [300, 300]), class: "h-40 w-40 flex-shrink-0 rounded-full bg-gray-300", alt: "image de profil" %> 
+              <%= image_tag user.avatar_as_thumbnail, class: "h-40 w-40 flex-shrink-0 rounded-full bg-gray-300", alt: "image de profil" %> 
             <% else %>
               <div class="h-20 w-20 flex-shrink-0 rounded-full bg-gray-300 "></div> 
             <% end %>
