@@ -14,6 +14,10 @@
  *= require_self
  */
 
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
  .truncate-description {
   display: -webkit-box;
   -webkit-line-clamp: 3; /* Nombre de lignes à afficher */

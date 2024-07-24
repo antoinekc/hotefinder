@@ -9,13 +9,15 @@ console_command = '/rails/bin/rails console'
 [deploy]
   release_command = "bin/rails fly:release"
 
+[env]
+  PORT = "3000"
+
 [http_service]
   internal_port = 3000
   force_https = true
   auto_stop_machines = true
   auto_start_machines = true
   min_machines_running = 0
-  processes = ['app']
 
 [checks]
   [checks.status]
@@ -29,16 +31,7 @@ console_command = '/rails/bin/rails console'
     protocol = 'http'
     tls_skip_verify = false
 
-    [checks.status.headers]
-      X-Forwarded-Proto = 'https'
-
 [[vm]]
   memory = '1gb'
   cpu_kind = 'shared'
   cpus = 1
-
-[processes]
-  app = "bin/rails server"
-
-[env]
-  PORT = "3000"

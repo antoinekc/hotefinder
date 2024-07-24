@@ -31,5 +31,7 @@ module Hotefinder
 
     config.assets.paths << Rails.root.join("app/assets/builds")
 
+    config.assets.enabled = true
+
   end
 end
